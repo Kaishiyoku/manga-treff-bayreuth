@@ -10,6 +10,8 @@
     {!! Html::style('css/app.css') !!}
 
     {!! Html::script('js/app.js') !!}
+
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
 </head>
 <body>
 
