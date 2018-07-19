@@ -1,3 +1,6 @@
-$body-size: 16pt;
+@import '~bootstrap/scss/bootstrap';
 
-@import '~bulma/bulma';
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
