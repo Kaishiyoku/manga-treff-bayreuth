@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $date
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereDate($value)
  */
 class Event extends Model
 {
@@ -27,7 +29,7 @@ class Event extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'external_id',
+        'date', 'external_id',
     ];
 
     /**
@@ -38,4 +40,13 @@ class Event extends Model
     protected $hidden = [
         //
     ];
+
+    protected $dates = [
+        'date',
+    ];
+
+    public function isFuture()
+    {
+        return $this->date->isFuture();
+    }
 }

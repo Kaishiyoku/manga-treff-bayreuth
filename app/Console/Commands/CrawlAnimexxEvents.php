@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Console\BaseCommand;
 use App\Models\Event;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -47,10 +48,14 @@ class CrawlAnimexxEvents extends BaseCommand
 
         $crawler = new Crawler(getExternalContent(env('ANIMEXX_EVENT_BASE_URL')));
 
-        $events = $crawler->filter('#beschreibungsseite_1 > table li > a')->each(function (Crawler $node) {
+        $events = $crawler->filter('#beschreibungsseite_1 > table ul > li')->each(function (Crawler $node) {
+            preg_match("/[0-3][0-9].[01][0-9].[1-3][0-9][0-9][0-9]/", $node->text(), $matches);
+
+            $date = Carbon::createFromFormat('d.m.Y', array_first($matches));
+
             return [
-                'title' => $node->text(),
-                'external_id' => (int)filter_var($node->attr('href'), FILTER_SANITIZE_NUMBER_INT),
+                'date' => $date,
+                'external_id' => (int)filter_var($node->children()->first()->attr('href'), FILTER_SANITIZE_NUMBER_INT),
             ];
         });
 
