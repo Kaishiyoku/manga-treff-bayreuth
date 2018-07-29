@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Event extends Model
 {
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -45,8 +47,8 @@ class Event extends Model
         'date',
     ];
 
-    public function isFuture()
+    public function getUrl()
     {
-        return $this->date->isFuture();
+        return env('ANIMEXX_EVENT_BASE_URL') . '/' . $this->external_id;
     }
 }

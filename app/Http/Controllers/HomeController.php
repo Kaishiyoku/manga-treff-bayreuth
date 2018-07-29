@@ -11,7 +11,8 @@ class HomeController extends Controller
     {
         $futureEvents = Event::where('date', '>=', Carbon::now())->orderBy('external_id', 'desc');
         $pastEvents = Event::where('date', '<', Carbon::now())->orderBy('external_id', 'desc');
+        $nextUpcomingEvent = $futureEvents->get()->last();
 
-        return view('home.index', compact('futureEvents', 'pastEvents'));
+        return view('home.index', compact('futureEvents', 'pastEvents', 'nextUpcomingEvent'));
     }
 }

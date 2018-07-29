@@ -8,6 +8,7 @@ return [
             'upcoming' => 'Kommende Events',
             'past' => 'Vergangene Events',
             'none' => 'Keine.',
+            'next_upcoming_at' => 'Das nächstes Event findet am :date statt.'
         ],
     ],
 ];
