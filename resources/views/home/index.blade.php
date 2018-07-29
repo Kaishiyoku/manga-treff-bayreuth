@@ -18,7 +18,7 @@
             <ul>
                 @foreach ($events->get() as $event)
                     <li>
-                        <a href="{{ env('ANIMEXX_EVENT_BASE_URL') . $event->external_id }}">
+                        <a href="{{ env('ANIMEXX_EVENT_BASE_URL') . '/' . $event->external_id }}">
                             {{ $event->title }}
                         </a>
                     </li>
