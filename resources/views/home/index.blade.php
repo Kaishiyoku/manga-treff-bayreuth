@@ -12,6 +12,11 @@
 
         <h2>@lang('home.index.events.title')</h2>
 
+        @if ($events->count() == 0)
+            <p class="font-italic">@lang('home.index.events.none')</p>
+        @else
+        @endif
+
         <ul>
             @foreach ($events->get() as $event)
                 <li>

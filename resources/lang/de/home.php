@@ -6,6 +6,7 @@ return [
         'events' => [
             'series' => 'Eventreihe',
             'title' => 'Events',
+            'none' => 'Keine.',
         ],
     ],
 ];
