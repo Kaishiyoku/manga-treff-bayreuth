@@ -14,10 +14,11 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('external_id')->unique()->nullable();
+            $table->unsignedInteger('external_id');
             $table->string('title');
             $table->timestamps();
+
+            $table->primary('external_id');
         });
     }
 

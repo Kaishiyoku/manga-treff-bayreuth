@@ -23,6 +23,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Event extends Model
 {
+    protected $primaryKey = 'external_id';
+
+    public $incrementing = false;
+
     public $timestamps = false;
 
     /**
