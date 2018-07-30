@@ -13,4 +13,14 @@ class HomeController extends Controller
 
         return view('home.index', compact('futureEvents', 'pastEvents', 'nextUpcomingEvent'));
     }
+
+    /**
+     * Show imprint.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function imprint()
+    {
+        return view('home.imprint');
+    }
 }

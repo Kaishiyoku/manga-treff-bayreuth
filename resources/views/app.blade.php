@@ -30,5 +30,12 @@
 
 @yield('content')
 
+
+<footer class="small">
+    <div class="container">
+        <a href="{{ route('home.imprint') }}">@lang('common.imprint')</a>
+    </div>
+</footer>
+
 </body>
 </html>
