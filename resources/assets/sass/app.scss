@@ -1,8 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i');
-
 @import 'bootstrap/bootstrap';
 
 body {
-  padding-top: 3rem;
   padding-bottom: 3rem;
+}
+
+.card-columns-prominent {
+  @include media-breakpoint-only(sm) {
+    column-count: 1;
+  }
+
+  @include media-breakpoint-only(md) {
+    column-count: 1;
+  }
+
+  @include media-breakpoint-only(lg) {
+    column-count: 1;
+  }
+
+  @include media-breakpoint-only(xl) {
+    column-count: 1;
+  }
 }

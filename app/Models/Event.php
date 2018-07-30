@@ -20,6 +20,14 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property string $date
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereDate($value)
+ * @property string $address
+ * @property string $category
+ * @property string $size
+ * @property string $description
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereCategory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereSize($value)
  */
 class Event extends Model
 {

@@ -15,14 +15,5 @@
                 @lang('home.index.events.series')
             </a>
         </p>
-
-        <h2>@lang('home.index.events.upcoming')</h2>
-
-        @include('home._event_list', ['events' => $futureEvents])
-
-
-        <h2>@lang('home.index.events.past')</h2>
-
-        @include('home._event_list', ['events' => $pastEvents])
     </div>
 @endsection

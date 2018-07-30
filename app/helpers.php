@@ -16,3 +16,20 @@ if (!function_exists('replaceNewLines')) {
         return preg_replace("/\n|\t/", $delimiter, $content);
     }
 }
+
+if (!function_exists('purifyHtml')) {
+    function purifyHtml($html)
+    {
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+
+        return $purifier->purify($html);
+    }
+}
+
+if (!function_exists('truncateHtml')) {
+    function truncateHtml($html, $length, $options = array())
+    {
+        return HtmlTruncator\Truncator::truncate($html, $length, $options);
+    }
+}

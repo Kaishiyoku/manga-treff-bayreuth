@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "820c0aef1a3a5fd76cc3d75aeaa1e64c",
+    "content-hash": "9589428ed4ff08e2e8cb6e924f9495b2",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -267,6 +267,58 @@
             "time": "2018-04-10T10:11:19+00:00"
         },
         {
+            "name": "electrolinux/php-html5lib",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/electrolinux/php-html5lib.git",
+                "reference": "9f92154993c7ecb120d9f9c0e558660d32846721"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/electrolinux/php-html5lib/zipball/9f92154993c7ecb120d9f9c0e558660d32846721",
+                "reference": "9f92154993c7ecb120d9f9c0e558660d32846721",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTML5Lib": "src/",
+                    "HTML5Lib\\Tests": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Multiple users",
+                    "homepage": "https://code.google.com/p/html5lib/",
+                    "role": "Original developers"
+                },
+                {
+                    "name": "Sébastien Lavoie",
+                    "homepage": "http://blog.lavoie.sl",
+                    "role": "Packager"
+                },
+                {
+                    "name": "didier Belot",
+                    "role": "Packager"
+                }
+            ],
+            "description": "A PHP implementations of a HTML parser based on the WHATWG HTML5 specification.",
+            "homepage": "https://github.com/electrolinux/php-html5lib",
+            "keywords": [
+                "HTML5",
+                "php"
+            ],
+            "time": "2013-03-18T18:32:30+00:00"
+        },
+        {
             "name": "erusev/parsedown",
             "version": "1.7.1",
             "source": {
@@ -311,6 +363,53 @@
                 "parser"
             ],
             "time": "2018-03-08T01:11:30+00:00"
+        },
+        {
+            "name": "ezyang/htmlpurifier",
+            "version": "v4.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "d85d39da4576a6934b72480be6978fb10c860021"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/d85d39da4576a6934b72480be6978fb10c860021",
+                "reference": "d85d39da4576a6934b72480be6978fb10c860021",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com"
+                }
+            ],
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
+            "time": "2018-02-23T01:58:20+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -633,6 +732,56 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "judev/php-htmltruncator",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/judev/php-htmltruncator.git",
+                "reference": "c1c44513f686e742f6b6f55e8fd86d3465e3a013"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/judev/php-htmltruncator/zipball/c1c44513f686e742f6b6f55e8fd86d3465e3a013",
+                "reference": "c1c44513f686e742f6b6f55e8fd86d3465e3a013",
+                "shasum": ""
+            },
+            "require": {
+                "electrolinux/php-html5lib": "0.1.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.4.*"
+            },
+            "suggest": {
+                "ext-intl": "*",
+                "ext-mbstring": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HtmlTruncator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jude Venn",
+                    "homepage": "https://github.com/judev",
+                    "role": "Developer"
+                }
+            ],
+            "description": "HTML Truncation library, ported from the html_truncator rubygem",
+            "homepage": "https://github.com/judev/php-htmltruncator",
+            "keywords": [
+                "html",
+                "php"
+            ],
+            "time": "2016-04-06T13:52:41+00:00"
         },
         {
             "name": "laravel/framework",
