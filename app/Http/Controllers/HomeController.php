@@ -9,9 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $futureEvents = Event::where('date', '>=', Carbon::now())->orderBy('external_id', 'desc');
-        $pastEvents = Event::where('date', '<', Carbon::now())->orderBy('external_id', 'desc');
-        $nextUpcomingEvent = $futureEvents->get()->last();
+        $nextUpcomingEvent = Event::where('date', '>=', Carbon::now())->orderBy('date')->first();
 
         return view('home.index', compact('futureEvents', 'pastEvents', 'nextUpcomingEvent'));
     }
