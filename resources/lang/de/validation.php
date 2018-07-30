@@ -170,5 +170,6 @@ return [
         'time'                  => 'Uhrzeit',
         'available'             => 'verfügbar',
         'size'                  => 'Größe',
+        'category'              => 'Kategorie',
     ],
 ];

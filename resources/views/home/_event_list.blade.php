@@ -8,15 +8,15 @@
                     <h5 class="card-title">{{ $event->date->format(__('date.short')) }}</h5>
 
                     <p class="card-text text-muted small">
-                        Kategorie: {{ $event->category }},
-                        Größe: {{ $event->size }}
+                        @lang('validation.attributes.category'): {{ $event->category }},
+                        @lang('validation.attributes.size'): {{ $event->size }}
                         <br/>
-                        Adresse: {{ $event->address }}
+                        @lang('validation.attributes.address'): {{ $event->address }}
 
                         &#8226;
 
                         <a href="https://www.google.com/maps/search/?api=1&query={{ $event->address }}">
-                            In Google Maps anzeigen
+                            @lang('home.index.events.show_in_google_maps')
                         </a>
                     </p>
 
@@ -26,7 +26,7 @@
                         </div>
 
                         <a href="#" data-toggle="collapse" data-target="#collapseExample-{{ $event->external_id }}" aria-expanded="false" aria-controls="collapseExample">
-                            Weiterlesen
+                            @lang('common.read_more')
                         </a>
 
                         <div class="collapse" id="collapseExample-{{ $event->external_id }}">
@@ -37,7 +37,7 @@
 
                 <div class="card-footer">
                     <a href="{{ $event->getUrl() }}" class="btn btn-dark">
-                        Details
+                        @lang('common.details')
                     </a>
                 </div>
             </div>

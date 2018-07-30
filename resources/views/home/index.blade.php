@@ -11,7 +11,7 @@
         @endif
 
         <p>
-            <a class="btn btn-outline-primary" href="http://bit.ly/manga-treff-bayreuth">
+            <a class="btn btn-outline-primary" href="{{ env('SHORT_EVENT_BASE_URL') }}">
                 @lang('home.index.events.series')
             </a>
         </p>
