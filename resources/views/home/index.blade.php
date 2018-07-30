@@ -12,8 +12,14 @@
 
         <p>
             <a class="btn btn-outline-primary" href="{{ env('SHORT_EVENT_BASE_URL') }}">
-                @lang('home.index.events.series')
+                @lang('home.index.events.animexx_series')
             </a>
         </p>
+
+        @if ($nextUpcomingEvent)
+            <h1 class="pt-5">@lang('home.index.events.next_upcoming')</h1>
+
+            @include('home._event_card', ['event' => $nextUpcomingEvent])
+        @endif
     </div>
 @endsection
