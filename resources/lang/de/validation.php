@@ -171,5 +171,6 @@ return [
         'available'             => 'verfügbar',
         'size'                  => 'Größe',
         'category'              => 'Kategorie',
+        'fullname'              => 'Name',
     ],
 ];

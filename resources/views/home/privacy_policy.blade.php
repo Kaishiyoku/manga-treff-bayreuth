@@ -1,9 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div class="container">
-        <h1>{{ trans('home.privacy_policy.title') }}</h1>
+    <h1>{{ trans('home.privacy_policy.title') }}</h1>
 
-        {!! trans('home.privacy_policy.text') !!}
-    </div>
+    {!! trans('home.privacy_policy.text') !!}
 @endsection

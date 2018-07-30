@@ -27,12 +27,16 @@
     </div>
 </nav>
 
+<div class="container">
+    @include('flash::message')
 
-@yield('content')
-
+    @yield('content')
+</div>
 
 <footer class="small">
     <div class="container">
+        <a href="{{ route('home.show_contact_form') }}">@lang('common.contact')</a>
+        &#8226;
         <a href="{{ route('home.imprint') }}">@lang('common.imprint')</a>
         &#8226;
         <a href="{{ route('home.privacy_policy') }}">@lang('common.privacy_policy')</a>

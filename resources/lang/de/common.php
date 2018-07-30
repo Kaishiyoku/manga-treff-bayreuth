@@ -5,4 +5,6 @@ return [
     'details'           => 'Details',
     'imprint'           => 'Impressum',
     'privacy_policy'    => 'Datenschutzerklärung',
+    'contact'           => 'Kontakt',
+    'send'              => 'Absenden',
 ];
