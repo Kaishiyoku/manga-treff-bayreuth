@@ -9,3 +9,10 @@ if (!function_exists('getExternalContent')) {
         return $response->getBody()->getContents();
     }
 }
+
+if (!function_exists('replaceNewLines')) {
+    function replaceNewLines($content, $delimiter = '')
+    {
+        return preg_replace("/\n|\t/", $delimiter, $content);
+    }
+}

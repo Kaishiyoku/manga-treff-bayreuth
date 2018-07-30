@@ -50,12 +50,36 @@ class CrawlAnimexxEvents extends BaseCommand
 
         $events = $crawler->filter('#beschreibungsseite_1 > table ul > li')->each(function (Crawler $node) {
             preg_match("/[0-3][0-9].[01][0-9].[1-3][0-9][0-9][0-9]/", $node->text(), $matches);
-
             $date = Carbon::createFromFormat('d.m.Y', array_first($matches));
+            $externalId = (int)filter_var($node->children()->first()->attr('href'), FILTER_SANITIZE_NUMBER_INT);
+
+            $eventDetailsCrawler = new Crawler(getExternalContent(env('ANIMEXX_EVENT_BASE_URL') . '/' . $externalId));
+
+            $eventDetailsXPath = collect([3, 4, 5, 11])->map(function ($number) {
+                return "(//div[contains(@class, 'beschreibungsseite')]//td)[$number]";
+            })->implode('|');
+
+            $detailNodes = $eventDetailsCrawler->filterXPath($eventDetailsXPath)->each(function (Crawler $detailNode, $i) {
+                if ($i == 0) {
+                    return preg_replace('/Treffpunkt/', '', preg_replace("/\r/", ', ', replaceNewLines($detailNode->text())));
+                }
+
+                return $detailNode->html();
+            });
+
+            list($address, $category, $size, $description) = $detailNodes;
+
+            $this->verbose(function () use ($externalId) {
+                $this->line('Crawled event #' . $externalId);
+            });
 
             return [
                 'date' => $date,
-                'external_id' => (int)filter_var($node->children()->first()->attr('href'), FILTER_SANITIZE_NUMBER_INT),
+                'external_id' => $externalId,
+                'address' => $address,
+                'category' => $category,
+                'size' => $size,
+                'description' => $description,
             ];
         });
 
