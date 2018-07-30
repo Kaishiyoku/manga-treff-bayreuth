@@ -2,8 +2,8 @@
     <p class="font-italic">@lang('home.index.events.none')</p>
 @else
     <div class="card-columns card-columns-prominent">
-        @foreach ($events->get() as $event)
-            <div class="card">
+        @foreach ($events->get() as $i => $event)
+            <div class="card {{ $i == 0 && isset($isNextEventHighlighted) && $isNextEventHighlighted ? 'border-primary' : null }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ $event->date->format(__('date.short')) }}</h5>
 

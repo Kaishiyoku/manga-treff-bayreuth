@@ -9,7 +9,7 @@ class EventController extends Controller
 {
     public function upcoming()
     {
-        $upcomingEvents = Event::where('date', '>=', Carbon::now())->orderBy('external_id', 'desc');
+        $upcomingEvents = Event::where('date', '>=', Carbon::now())->orderBy('external_id');
 
         return view('event.upcoming', compact('upcomingEvents'));
     }

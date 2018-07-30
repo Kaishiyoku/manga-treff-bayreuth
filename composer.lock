@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9589428ed4ff08e2e8cb6e924f9495b2",
+    "content-hash": "9410fc6181971d55d56a2e90056fdaa3",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -782,6 +782,84 @@
                 "php"
             ],
             "time": "2016-04-06T13:52:41+00:00"
+        },
+        {
+            "name": "kaishiyoku/laravel-html-purifier",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kaishiyoku/laravel-html-purifier.git",
+                "reference": "374c353b3f1a90b53955a8486ab5ec943f3a3bb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kaishiyoku/laravel-html-purifier/zipball/374c353b3f1a90b53955a8486ab5ec943f3a3bb3",
+                "reference": "374c353b3f1a90b53955a8486ab5ec943f3a3bb3",
+                "shasum": ""
+            },
+            "require": {
+                "ezyang/htmlpurifier": "4.*",
+                "illuminate/support": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kaishiyoku\\": "src/Kaishiyoku"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Wiedel",
+                    "email": "dev@andreas-wiedel.de"
+                }
+            ],
+            "description": "A HTML filter using htmlpurifier with additional HTML5 rules.",
+            "time": "2018-07-30T18:21:29+00:00"
+        },
+        {
+            "name": "kaishiyoku/laravel-menu",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kaishiyoku/laravel-menu.git",
+                "reference": "ec1495339810d4970eaff38e86132f2dffd1726d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kaishiyoku/laravel-menu/zipball/ec1495339810d4970eaff38e86132f2dffd1726d",
+                "reference": "ec1495339810d4970eaff38e86132f2dffd1726d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.*",
+                "illuminate/routing": "5.*",
+                "illuminate/support": "5.*",
+                "kaishiyoku/laravel-html-purifier": "1.1.*",
+                "laravelcollective/html": "5.*",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kaishiyoku\\": "src/Kaishiyoku"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kaishiyoku",
+                    "email": "dev@andreas-wiedel.de"
+                }
+            ],
+            "description": "Create menus for Laravel 5 with css-class highlighting support",
+            "time": "2018-03-24T10:39:45+00:00"
         },
         {
             "name": "laravel/framework",
