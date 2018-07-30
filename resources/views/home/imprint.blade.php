@@ -1,7 +1,5 @@
 @extends('app')
 
-@section('title', trans('home.imprint.title'))
-
 @section('content')
     <div class="container">
         <h1>{{ trans('home.imprint.title') }}</h1>

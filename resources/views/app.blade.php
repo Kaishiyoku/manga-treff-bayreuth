@@ -34,6 +34,8 @@
 <footer class="small">
     <div class="container">
         <a href="{{ route('home.imprint') }}">@lang('common.imprint')</a>
+        &#8226;
+        <a href="{{ route('home.privacy_policy') }}">@lang('common.privacy_policy')</a>
     </div>
 </footer>
 

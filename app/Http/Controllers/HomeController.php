@@ -23,4 +23,14 @@ class HomeController extends Controller
     {
         return view('home.imprint');
     }
+
+    /**
+     * Show private policy.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function privacyPolicy()
+    {
+        return view('home.privacy_policy');
+    }
 }
