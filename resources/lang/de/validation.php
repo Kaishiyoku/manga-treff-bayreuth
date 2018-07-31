@@ -172,5 +172,6 @@ return [
         'size'                  => 'Größe',
         'category'              => 'Kategorie',
         'fullname'              => 'Name',
+        'remember'              => 'An mich erinnern',
     ],
 ];

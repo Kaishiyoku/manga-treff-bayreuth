@@ -24,6 +24,23 @@
         </button>
 
         {!! Menu::render() !!}
+
+        @if (auth()->check())
+            <span class="navbar-text">
+                @lang('common.logged_in_as', ['name' => auth()->user()->name])
+            </span>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-submit="#logout-form">
+                        @lang('common.logout')
+                    </a>
+
+                    {{ Form::open(['route' => 'logout', 'method' => 'post', 'id' => 'logout-form', 'style' => 'display: none;']) }}
+                    {{ Form::close() }}
+                </li>
+            </ul>
+        @endif
     </div>
 </nav>
 
@@ -35,11 +52,13 @@
 
 <footer class="small">
     <div class="container">
-        <a href="{{ route('home.show_contact_form') }}">@lang('common.contact')</a>
+        {{ Html::linkRoute('home.show_contact_form', __('common.contact')) }}
         &#8226;
-        <a href="{{ route('home.imprint') }}">@lang('common.imprint')</a>
+        {{ Html::linkRoute('home.imprint', __('common.imprint')) }}
         &#8226;
-        <a href="{{ route('home.privacy_policy') }}">@lang('common.privacy_policy')</a>
+        {{ Html::linkRoute('home.privacy_policy', __('common.privacy_policy')) }}
+        &#8226;
+        {{ Html::linkRoute('login', __('common.login')) }}
     </div>
 </footer>
 
