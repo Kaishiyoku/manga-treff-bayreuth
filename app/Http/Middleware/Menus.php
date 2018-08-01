@@ -39,7 +39,11 @@ class Menus
         Menu::setConfig(Config::forBootstrap4());
 
         Menu::registerDefault([
-            Menu::linkRoute('events.upcoming', 'Events', [], [], ['events.past']),
+            Menu::linkRoute('events.upcoming', __('common.events'), [], [], ['events.past']),
+        ], ['class' => 'navbar-nav mr-auto']);
+
+        Menu::register('admin', [
+            Menu::linkRoute('admin.users.index', __('common.users'), [], [], ['admin.users.create', 'admin.users.edit']),
         ], ['class' => 'navbar-nav mr-auto']);
 
         return $next($request);

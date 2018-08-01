@@ -33,3 +33,16 @@ if (!function_exists('truncateHtml')) {
         return HtmlTruncator\Truncator::truncate($html, $length, $options);
     }
 }
+
+if (!function_exists('formatBoolean')) {
+    function formatBoolean($bool)
+    {
+        if ($bool == true || $bool == 1) {
+            $str = trans('common.lists.boolean.1');
+        } else {
+            $str = trans('common.lists.boolean.0');
+        }
+
+        return $str;
+    }
+}

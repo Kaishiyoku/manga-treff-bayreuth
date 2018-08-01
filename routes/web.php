@@ -11,4 +11,9 @@ Route::group(['middleware' => ['menus']], function () {
     Route::get('/events/past', 'EventController@past')->name('events.past');
 
     Auth::routes();
+
+    Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+        Route::get('/', 'Admin\HomeController@index')->name('home.index');
+        Route::resource('users', 'Admin\UserController');
+    });
 });

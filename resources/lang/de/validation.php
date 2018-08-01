@@ -173,5 +173,9 @@ return [
         'category'              => 'Kategorie',
         'fullname'              => 'Name',
         'remember'              => 'An mich erinnern',
+        'is_admin'              => 'Administrator',
+        'created_at'            => 'Erstellt am',
+        'updated_at'            => 'Geändert am',
+        'new_password'          => 'Neues Passwort',
     ],
 ];

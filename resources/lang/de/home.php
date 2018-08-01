@@ -34,4 +34,9 @@ return [
         'subject' => 'Jemand kontaktierte „:name”',
         'success' => 'Nachricht versendet.',
     ],
+    'admin' => [
+        'index' => [
+            'title' => 'Administration',
+        ],
+    ],
 ];

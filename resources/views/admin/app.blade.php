@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home.index') }}">{{ env('APP_NAME') }}</a>
 
@@ -23,7 +23,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        {!! Menu::render() !!}
+        {!! Menu::render('admin') !!}
 
         @if (auth()->check())
             <span class="navbar-text">
@@ -61,11 +61,6 @@
         @if (auth()->guest())
             &#8226;
             {{ Html::linkRoute('login', __('common.login')) }}
-        @endif
-
-        @if (auth()->check() && auth()->user()->is_admin)
-            &#8226;
-            {{ Html::linkRoute('admin.home.index', __('common.administration')) }}
         @endif
     </div>
 </footer>
