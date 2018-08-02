@@ -15,5 +15,10 @@ return [
             'password_help' => 'Leer lassen, um aktuelles Passwort beizubehalten.',
             'success' => 'Benutzer geändert.',
         ],
+        'destroy' => [
+            'you_cannot_delete_your_own_account' => 'Sie können nicht Ihren eigenen Account löschen.',
+            'administrators_cannot_be_deleted' => 'Administratoren können nicht gelöscht werden.',
+            'success' => 'Benutzer gelöscht.',
+        ],
     ],
 ];

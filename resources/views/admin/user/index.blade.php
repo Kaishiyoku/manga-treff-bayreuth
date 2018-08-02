@@ -4,7 +4,7 @@
     <h1>@lang('user.admin.index.title')</h1>
 
     <p>
-        {{ Html::linkRoute('admin.users.create', trans('user.admin.index.new_user'), [], ['class' => 'btn btn-primary']) }}
+        {{ Html::linkRoute('admin.users.create', __('user.admin.index.new_user'), [], ['class' => 'btn btn-primary']) }}
     </p>
 
     @if ($users->get()->count() == 0)
@@ -13,10 +13,10 @@
         <table class="table table-sm table-striped">
             <thead>
             <tr>
-                <th>{{ trans('validation.attributes.name') }}</th>
-                <th>{{ trans('validation.attributes.is_admin') }}</th>
-                <th>{{ trans('validation.attributes.created_at') }}</th>
-                <th>{{ trans('validation.attributes.updated_at') }}</th>
+                <th>@lang('validation.attributes.name')</th>
+                <th>@lang('validation.attributes.is_admin')</th>
+                <th>@lang('validation.attributes.created_at')</th>
+                <th>@lang('validation.attributes.updated_at')</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -35,7 +35,7 @@
                         <td>
                             @include('shared._delete_link', ['route' => ['admin.users.destroy', $user->id]])
                         </td>
-                        <td>{{ Html::linkRoute('admin.users.edit', trans('common.edit'), [$user->id]) }}</td>
+                        <td>{{ Html::linkRoute('admin.users.edit', __('common.edit'), [$user->id]) }}</td>
                     </tr>
                 @endforeach
             </tbody>

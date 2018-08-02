@@ -23,7 +23,7 @@ class UserController extends Controller
     {
         $users = User::orderBy('name');
 
-        return view('admin.user.index', ['users' => $users]);
+        return view('admin.user.index', compact('users'));
     }
 
     /**
@@ -35,7 +35,7 @@ class UserController extends Controller
     {
         $user = new User();
 
-        return view('admin.user.create', ['user' => $user]);
+        return view('admin.user.create', compact('user'));
     }
 
     /**
@@ -49,10 +49,10 @@ class UserController extends Controller
         $request->validate($this->getValidationRulesForCreate());
 
         $user = new User($request->only($this->getFillableFields()));
-        $user->password = bcrypt($request->get('password'));
+        $user->password = Hash::make($request->get('password'));
         $user->save();
 
-        flash()->success(trans('user.admin.create.success'));
+        flash()->success(__('user.admin.create.success'));
 
         return redirect()->route($this->redirectRoute);
     }
@@ -93,7 +93,7 @@ class UserController extends Controller
 
         $user->save();
 
-        flash()->success(trans('user.admin.edit.success'));
+        flash()->success(__('user.admin.edit.success'));
 
         return redirect()->route($this->redirectRoute);
     }
@@ -108,13 +108,13 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         if ($user->id == auth()->user()->id) {
-            flash()->error(trans('user.admin.destroy.you_cannot_delete_your_own_account'));
+            flash()->error(__('user.admin.destroy.you_cannot_delete_your_own_account'));
         } else if ($user->is_admin) {
-            flash()->error(trans('user.admin.destroy.administrators_cannot_be_deleted'));
+            flash()->error(__('user.admin.destroy.administrators_cannot_be_deleted'));
         } else {
             $user->delete();
 
-            flash()->success(trans('user.admin.destroy.success'));
+            flash()->success(__('user.admin.destroy.success'));
         }
 
         return redirect()->route($this->redirectRoute);
