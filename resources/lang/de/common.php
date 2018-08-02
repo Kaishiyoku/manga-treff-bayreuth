@@ -9,7 +9,6 @@ return [
     'send' => 'Absenden',
     'login' => 'Login',
     'logout' => 'Logout',
-    'logged_in_as' => 'Eingeloggt als :name',
     'events' => 'Events',
     'users' => 'Benutzer',
     'delete' => 'Löschen',
@@ -17,6 +16,7 @@ return [
     'create' => 'Erstellen',
     'update' => 'Speichern',
     'administration' => 'Administration',
+    'register' => 'Registrieren',
     'lists' => [
         'boolean' => [
             0 => 'Nein',
