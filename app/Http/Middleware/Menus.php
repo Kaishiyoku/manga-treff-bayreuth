@@ -39,21 +39,21 @@ class Menus
         Menu::setConfig(Config::forBootstrap4());
 
         Menu::registerDefault([
-            Menu::linkRoute('events.upcoming', __('common.events'), [], [], ['events.past']),
+            Menu::linkRoute('events.upcoming', '<i class="fas fa-calendar"></i> ' . __('common.events'), [], [], ['events.past']),
         ], ['class' => 'navbar-nav mr-auto']);
 
         Menu::register('auth_public', [
-            Menu::linkRoute('login', __('common.login')),
-            Menu::linkRoute('register', __('common.register')),
+            Menu::linkRoute('login', '<i class="fas fa-sign-in-alt"></i> ' . __('common.login')),
+            Menu::linkRoute('register', '<i class="fas fa-user-plus"></i> ' . __('common.register')),
         ], ['class' => 'navbar-nav']);
 
         Menu::register('auth_logged_in', [
-            Menu::linkRoute('admin.home.index', __('common.administration'), [], [], [], $this->isAdmin())
+            Menu::linkRoute('admin.home.index', '<i class="fas fa-unlock"></i> ' . __('common.administration'), [], [], [], $this->isAdmin())
         ], ['class' => 'navbar-nav']);
 
         Menu::register('admin', [
-            Menu::linkRoute('admin.users.index', __('common.users'), [], [], ['admin.users.create', 'admin.users.edit']),
-            Menu::linkRoute('admin.events.index', __('common.events'), [], [], ['admin.events.edit']),
+            Menu::linkRoute('admin.users.index', '<i class="fas fa-users"></i> ' . __('common.users'), [], [], ['admin.users.create', 'admin.users.edit']),
+            Menu::linkRoute('admin.events.index', '<i class="fas fa-calendar"></i> ' . __('common.events'), [], [], ['admin.events.edit']),
         ], ['class' => 'navbar-nav mr-auto']);
 
         return $next($request);
