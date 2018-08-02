@@ -14,6 +14,7 @@ Route::group(['middleware' => ['menus']], function () {
 
     Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', 'Admin\HomeController@index')->name('home.index');
-        Route::resource('users', 'Admin\UserController');
+        Route::resource('users', 'Admin\UserController', ['except' => 'show']);
+        Route::resource('events', 'Admin\EventController', ['except' => ['create', 'store', 'show']]);
     });
 });

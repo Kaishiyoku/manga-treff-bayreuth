@@ -44,6 +44,7 @@ class Menus
 
         Menu::register('admin', [
             Menu::linkRoute('admin.users.index', __('common.users'), [], [], ['admin.users.create', 'admin.users.edit']),
+            Menu::linkRoute('admin.events.index', __('common.events'), [], [], ['admin.events.edit']),
         ], ['class' => 'navbar-nav mr-auto']);
 
         return $next($request);
