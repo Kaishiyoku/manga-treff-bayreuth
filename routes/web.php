@@ -12,9 +12,21 @@ Route::group(['middleware' => ['menus']], function () {
 
     Auth::routes();
 
-    Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::get('/', 'Admin\HomeController@index')->name('home.index');
-        Route::resource('users', 'Admin\UserController', ['except' => 'show']);
-        Route::resource('events', 'Admin\EventController', ['except' => ['create', 'store', 'show']]);
+    /////////////////////
+    // Logged on users //
+    /////////////////////
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/profile', 'ProfileController@index')->name('profile.index');
+        Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
+        Route::put('/profile/edit', 'ProfileController@update')->name('profile.update');
+
+        ////////////////////
+        // Administrators //
+        ////////////////////
+        Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+            Route::get('/', 'Admin\HomeController@index')->name('home.index');
+            Route::resource('users', 'Admin\UserController', ['except' => 'show']);
+            Route::resource('events', 'Admin\EventController', ['except' => ['create', 'store', 'show']]);
+        });
     });
 });

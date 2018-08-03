@@ -17,6 +17,8 @@ return [
     'update' => 'Speichern',
     'administration' => 'Administration',
     'register' => 'Registrieren',
+    'profile' => 'Profil',
+    'general' => 'Allgemein',
     'lists' => [
         'boolean' => [
             0 => 'Nein',
