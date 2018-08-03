@@ -17,8 +17,7 @@ Route::group(['middleware' => ['menus']], function () {
     /////////////////////
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/profile', 'ProfileController@index')->name('profile.index');
-        Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
-        Route::put('/profile/edit', 'ProfileController@update')->name('profile.update');
+        Route::get('/profile/login_attempts', 'ProfileController@loginAttempts')->name('profile.login_attempts');
 
         ////////////////////
         // Administrators //

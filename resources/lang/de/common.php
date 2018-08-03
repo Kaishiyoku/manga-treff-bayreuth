@@ -1,6 +1,16 @@
 <?php
 
 return [
+    'lists' => [
+        'boolean' => [
+            0 => 'Nein',
+            1 => 'Ja',
+        ],
+        'login_attempt_status' => [
+            'success' => 'Erfolg',
+            'failure' => 'Fehlschlag',
+        ],
+    ],
     'read_more' => 'Weiterlesen',
     'details' => 'Details',
     'imprint' => 'Impressum',
@@ -19,10 +29,8 @@ return [
     'register' => 'Registrieren',
     'profile' => 'Profil',
     'general' => 'Allgemein',
-    'lists' => [
-        'boolean' => [
-            0 => 'Nein',
-            1 => 'Ja',
-        ],
-    ],
+    'security' => 'Sicherheit',
+    'no_entries_yet' => 'Noch keine Einträge vorhanden.',
+    'estimated_location' => 'Geschätzter Standort',
+    'unknown' => 'Unbekannt',
 ];

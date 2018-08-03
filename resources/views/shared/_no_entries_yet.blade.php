@@ -1,0 +1,1 @@
+<p class="text-muted"><em>@lang('common.no_entries_yet')</em></p>

@@ -155,7 +155,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Webup\LaravelSendinBlue\SendinBlueServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
-
+        Torann\GeoIP\GeoIPServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -218,6 +218,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Menu' => Kaishiyoku\Menu\Facades\Menu::class,
+        'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
     ],
 
 ];

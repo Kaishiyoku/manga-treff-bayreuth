@@ -24,6 +24,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
+ * @property bool $is_admin
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereIsAdmin($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LoginAttempt[] $loginAttempts
  */
 class User extends Authenticatable
 {
@@ -55,4 +58,9 @@ class User extends Authenticatable
     protected $casts = [
         'is_admin' => 'boolean',
     ];
+
+    public function loginAttempts()
+    {
+        return $this->hasMany(LoginAttempt::class)->orderBy('login_at', 'desc');
+    }
 }

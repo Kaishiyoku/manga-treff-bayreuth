@@ -46,3 +46,10 @@ if (!function_exists('formatBoolean')) {
         return $str;
     }
 }
+
+if (!function_exists('translateLoginAttemptStatus')) {
+    function translateLoginAttemptStatus($status)
+    {
+        return trans('common.lists.login_attempt_status.' . $status);
+    }
+}

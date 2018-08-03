@@ -16,6 +16,12 @@
                     {{ $user->created_at->format(__('date.datetime')) }}
                 </div>
             </div>
+
+            <h2>@lang('common.security')</h2>
+
+            <p class="lead">
+                {!! Html::decode(Html::linkRoute('profile.login_attempts', '<i class="fas fa-shield-alt"></i> ' . __('profile.login_attempts.title'))) !!}
+            </p>
         </div>
     </div>
 @endsection

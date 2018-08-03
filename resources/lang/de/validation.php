@@ -177,5 +177,8 @@ return [
         'created_at'            => 'Erstellt am',
         'updated_at'            => 'Geändert am',
         'new_password'          => 'Neues Passwort',
+        'status'                => 'Status',
+        'ip_address'            => 'IP-Adresse',
+        'login_at'              => 'Login am',
     ],
 ];
