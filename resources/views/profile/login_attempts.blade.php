@@ -14,10 +14,10 @@
             <thead>
             <tr>
                 <th width="40px"></th>
-                <th>{{ trans('validation.attributes.status') }}</th>
-                <th>{{ trans('validation.attributes.ip_address') }}</th>
-                <th>{{ trans('validation.attributes.login_at') }}</th>
-                <th>{{ trans('common.estimated_location') }}</th>
+                <th>@lang('validation.attributes.status')</th>
+                <th>@lang('validation.attributes.ip_address')</th>
+                <th>@lang('validation.attributes.login_at')</th>
+                <th>@lang('common.estimated_location')</th>
             </tr>
             </thead>
             <tbody>

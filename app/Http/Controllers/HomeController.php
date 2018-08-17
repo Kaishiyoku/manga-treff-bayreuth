@@ -64,7 +64,7 @@ class HomeController extends Controller
 
         Mail::to(env('APP_ADMIN_EMAIL'))->send(new ContactFormSent($validated['email'], $validated['fullname'], $validated['content']));
 
-        flash()->success(trans('home.contact.success'));
+        flash()->success(__('home.contact.success'));
 
         return redirect('/');
     }

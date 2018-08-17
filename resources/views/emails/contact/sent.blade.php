@@ -1,4 +1,4 @@
-@section('title', trans('home.emails.contact.title'))
+@section('title', __('home.emails.contact.title'))
 
 @lang('validation.attributes.fullname'): {{ $fullname }}
 @lang('validation.attributes.email'): {{ $email }}

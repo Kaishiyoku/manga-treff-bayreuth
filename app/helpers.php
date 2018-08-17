@@ -38,9 +38,9 @@ if (!function_exists('formatBoolean')) {
     function formatBoolean($bool)
     {
         if ($bool == true || $bool == 1) {
-            $str = trans('common.lists.boolean.1');
+            $str = __('common.lists.boolean.1');
         } else {
-            $str = trans('common.lists.boolean.0');
+            $str = __('common.lists.boolean.0');
         }
 
         return $str;
@@ -50,7 +50,7 @@ if (!function_exists('formatBoolean')) {
 if (!function_exists('translateLoginAttemptStatus')) {
     function translateLoginAttemptStatus($status)
     {
-        return trans('common.lists.login_attempt_status.' . $status);
+        return __('common.lists.login_attempt_status.' . $status);
     }
 }
 

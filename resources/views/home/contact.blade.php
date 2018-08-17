@@ -21,7 +21,7 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('fullname', trans('validation.attributes.fullname'), ['class' => 'col-md-12 control-label']) }}
+            {{ Form::label('fullname', __('validation.attributes.fullname'), ['class' => 'col-md-12 control-label']) }}
 
             <div class="col-md-12">
                 {{ Form::text('fullname', old('fullname'), ['class' => 'form-control' . ($errors->has('fullname') ? ' is-invalid' : ''), 'required' => true]) }}
@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('content', trans('validation.attributes.content'), ['class' => 'col-md-12 control-label']) }}
+            {{ Form::label('content', __('validation.attributes.content'), ['class' => 'col-md-12 control-label']) }}
 
             <div class="col-md-12">
                 {{ Form::textarea('content', old('content'), ['class' => 'form-control' . ($errors->has('content') ? ' is-invalid' : ''), 'required' => true]) }}

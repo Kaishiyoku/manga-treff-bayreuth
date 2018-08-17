@@ -1,17 +1,17 @@
 @extends('app')
 
 @section('content')
-    <h1>{{ trans('home.imprint.title') }}</h1>
+    <h1>@lang('home.imprint.title')</h1>
 
     <address>
-        <strong>{{ trans('home.imprint.name') }}</strong><br/>
-        {{ trans('home.imprint.city') }}<br/>
-        {{ trans('home.imprint.street') }}<br/>
-        {{ trans('home.imprint.country') }}<br/>
-        {{ trans('home.imprint.email') }}
+        <strong>@lang('home.imprint.name')</strong><br/>
+        @lang('home.imprint.city')<br/>
+        @lang('home.imprint.street')<br/>
+        @lang('home.imprint.country')<br/>
+        ä@lang('home.imprint.email')
     </address>
 
-    <h2>{{ trans('home.imprint.disclaimer.title') }}</h2>
+    <h2>@lang('home.imprint.disclaimer.title')</h2>
 
-    {!! trans('home.imprint.disclaimer.text') !!}
+    {!! __('home.imprint.disclaimer.text') !!}
 @endsection
