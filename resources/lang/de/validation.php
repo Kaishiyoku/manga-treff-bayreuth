@@ -184,5 +184,8 @@ return [
         'last_activity'             => 'Letzte Aktivität',
         'current_password'          => 'Derzeitiges Passwort',
         'new_password_confirmation' => 'Neues Passwort (Wiederholung)',
+        'current_email'             => 'Derzeitige E-Mail-Adresse',
+        'new_email'                 => 'Neue E-Mail-Adresse',
+        'new_email_confirmation'    => 'Neue E-Mail-Adresse (Wiederholung)',
     ],
 ];
