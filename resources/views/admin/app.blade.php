@@ -23,11 +23,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        {!! Menu::render('admin') !!}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {!! Menu::render('admin') !!}
 
-        @if (auth()->check())
-            @include('shared._logout_navbar')
-        @endif
+            @if (auth()->check())
+                @include('shared._logout_navbar')
+            @endif
+        </div>
     </div>
 </nav>
 

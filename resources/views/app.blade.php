@@ -21,15 +21,17 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        {!! Menu::render() !!}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {!! Menu::render() !!}
 
-        @if (auth()->check())
-            {!! Menu::render('auth_logged_in') !!}
+            @if (auth()->check())
+                {!! Menu::render('auth_logged_in') !!}
 
-            @include('shared._logout_navbar')
-        @else
-            {!! Menu::render('auth_public') !!}
-        @endif
+                @include('shared._logout_navbar')
+            @else
+                {!! Menu::render('auth_public') !!}
+            @endif
+        </div>
     </div>
 </nav>
 
