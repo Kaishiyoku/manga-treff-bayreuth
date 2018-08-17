@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(LoginAttempt::class)->orderBy('login_at', 'desc');
     }
+
+    public function databaseSessions()
+    {
+        return $this->hasMany(DBSession::class);
+    }
 }

@@ -48,7 +48,7 @@ class Menus
         ], ['class' => 'navbar-nav']);
 
         Menu::register('auth_logged_in', [
-            Menu::linkRoute('profile.index', '<i class="fas fa-user"></i> ' . __('common.profile'), [], [], [], $this->auth->check()),
+            Menu::linkRoute('profile.index', '<i class="fas fa-user"></i> ' . __('common.profile'), [], [], ['profile.login_attempts', 'profile.active_sessions'], $this->auth->check()),
             Menu::linkRoute('admin.home.index', '<i class="fas fa-unlock"></i> ' . __('common.administration'), [], [], [], $this->isAdmin())
         ], ['class' => 'navbar-nav']);
 

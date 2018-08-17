@@ -18,6 +18,8 @@ Route::group(['middleware' => ['menus']], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/profile', 'ProfileController@index')->name('profile.index');
         Route::get('/profile/login_attempts', 'ProfileController@loginAttempts')->name('profile.login_attempts');
+        Route::get('/profile/active_sessions', 'ProfileController@activeSessions')->name('profile.active_sessions');
+        Route::delete('/profile/destroy_session', 'ProfileController@destroySession')->name('profile.destroy_session');
 
         ////////////////////
         // Administrators //

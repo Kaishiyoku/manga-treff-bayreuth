@@ -180,5 +180,7 @@ return [
         'status'                => 'Status',
         'ip_address'            => 'IP-Adresse',
         'login_at'              => 'Login am',
+        'user_agent'            => 'User Agent',
+        'last_activity'         => 'Letzte Aktivität',
     ],
 ];

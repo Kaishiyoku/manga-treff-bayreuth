@@ -28,5 +28,7 @@ try {
                 return false;
             }
         });
+
+        $('[data-toggle="tooltip"]').tooltip();
     });
 } catch (e) {}
