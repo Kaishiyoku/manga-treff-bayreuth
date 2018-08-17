@@ -33,4 +33,5 @@ return [
     'no_entries_yet' => 'Noch keine Einträge vorhanden.',
     'estimated_location' => 'Geschätzter Standort',
     'unknown' => 'Unbekannt',
+    'or' => 'oder',
 ];

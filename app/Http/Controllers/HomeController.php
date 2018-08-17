@@ -7,7 +7,6 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {

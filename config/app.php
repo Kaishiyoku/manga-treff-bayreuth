@@ -156,6 +156,7 @@ return [
         Webup\LaravelSendinBlue\SendinBlueServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
+        Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -219,6 +220,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Menu' => Kaishiyoku\Menu\Facades\Menu::class,
         'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
+        'GoogleCalendar' => Spatie\GoogleCalendar\GoogleCalendarFacade::class,
     ],
 
 ];

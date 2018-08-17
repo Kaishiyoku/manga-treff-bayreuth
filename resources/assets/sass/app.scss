@@ -57,3 +57,12 @@ footer {
     }
   }
 }
+
+.btn-text {
+  display: inline-block;
+  font-weight: $font-weight-normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+}

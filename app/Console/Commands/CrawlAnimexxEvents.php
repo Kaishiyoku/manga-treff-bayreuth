@@ -7,6 +7,7 @@ use App\Models\Event;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Symfony\Component\DomCrawler\Crawler;
+use Spatie\GoogleCalendar\Event as GoogleEvent;
 
 class CrawlAnimexxEvents extends BaseCommand
 {
@@ -32,6 +33,9 @@ class CrawlAnimexxEvents extends BaseCommand
     public function __construct()
     {
         parent::__construct();
+
+        Carbon::setLocale(config('app.locale'));
+        setlocale(LC_TIME, 'German');
     }
 
     /**
@@ -106,9 +110,11 @@ class CrawlAnimexxEvents extends BaseCommand
         $this->logInfo('Number of new events: ' . count($newEvents));
         $this->line('');
 
-        foreach ($newEvents as $item) {
+        foreach ($newEvents as $i => $item) {
             $event = new Event($item);
             $event->save();
+
+            storeGoogleEventFrom($event);
 
             $this->verbose(function () use ($item) {
                 $this->line('Added event #' . $item['external_id']);

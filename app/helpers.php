@@ -53,3 +53,34 @@ if (!function_exists('translateLoginAttemptStatus')) {
         return trans('common.lists.login_attempt_status.' . $status);
     }
 }
+
+if (!function_exists('convertEncoding')) {
+    function convertEncoding($str)
+    {
+        return mb_convert_encoding($str, 'UTF-8', mb_detect_encoding($str));
+    }
+}
+
+if (!function_exists('storeGoogleEventFrom')) {
+    function storeGoogleEventFrom(\App\Models\Event $event)
+    {
+        $googleEvent = new \Spatie\GoogleCalendar\Event();
+        $googleEvent->name = convertEncoding(env('APP_NAME') . ' (' . $event->date->formatLocalized('%B') . ')');
+        $googleEvent->location = $event->address;
+        $googleEvent->description = convertEncoding($event->description);
+        $googleEvent->startDateTime = $event->date->setTime(14, 0);
+        $googleEvent->endDateTime = $event->date->setTime(22, 0);
+        $googleEvent->save();
+    }
+}
+
+if (!function_exists('clearGoogleCalendar')) {
+    function clearGoogleCalendar()
+    {
+        $googleEvents = \Spatie\GoogleCalendar\Event::get(\Illuminate\Support\Carbon::create(1990, 1, 1, 0, 0, 0));
+
+        foreach ($googleEvents as $googleEvent) {
+            $googleEvent->delete();
+        }
+    }
+}

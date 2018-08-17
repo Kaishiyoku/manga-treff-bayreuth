@@ -15,6 +15,14 @@
                 <a class="btn btn-outline-primary" href="{{ env('SHORT_EVENT_BASE_URL') }}">
                     @lang('home.index.events.animexx_series')
                 </a>
+
+                <span class="btn-text">
+                    @lang('common.or')
+                </span>
+
+                <a class="btn btn-outline-primary" href="{{ env('GOOGLE_CALENDAR_PUBLIC_URL') }}">
+                    @lang('home.index.events.google_calendar')
+                </a>
             </p>
         </div>
 
