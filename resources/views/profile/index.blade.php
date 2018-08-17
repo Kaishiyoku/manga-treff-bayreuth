@@ -27,5 +27,13 @@
                 {!! Html::decode(Html::linkRoute('profile.active_sessions', '<i class="fas fa-desktop" aria-hidden="true"></i> ' . __('profile.active_sessions.title'))) !!}
             </p>
         </div>
+
+        <div class="col-md-6">
+            <h2>{{ __('profile.index.options') }}</h2>
+
+            <p class="lead p-t-10">
+                {!! Html::decode(Html::linkRoute('profile.edit_password', '<i class="fas fa-key" aria-hidden="true"></i> ' . __('profile.edit_password.title'))) !!}
+            </p>
+        </div>
     </div>
 @endsection

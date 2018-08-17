@@ -3,7 +3,8 @@
 return [
     'index' => [
         'title' => 'Profil',
-        'registered_at' => 'Registriert am'
+        'registered_at' => 'Registriert am',
+        'options' => 'Optionen',
     ],
     'login_attempts' => [
         'title' => 'Login-Versuche',
@@ -17,5 +18,11 @@ return [
     ],
     'destroy_session' => [
         'success' => 'Ausgewählte Session beendet.',
+    ],
+    'edit_password' => [
+        'title' => 'Passwort ändern',
+        'submit' => 'Neues Passwort setzen',
+        'success' => 'Passwort geändert.',
+        'invalid_current_password' => 'Das derzeitige Passwort ist falsch.',
     ],
 ];
