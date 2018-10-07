@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $nextUpcomingEvent = Event::where('date', '>=', Carbon::now())->orderBy('date')->first();
+        $nextUpcomingEvent = Event::where('date', '>=', Carbon::today())->orderBy('date')->first();
 
         return view('home.index', compact('futureEvents', 'pastEvents', 'nextUpcomingEvent'));
     }
