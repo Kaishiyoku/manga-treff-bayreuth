@@ -27,6 +27,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property bool $is_admin
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereIsAdmin($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LoginAttempt[] $loginAttempts
+ * @property string|null $new_email
+ * @property string|null $new_email_token
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\DBSession[] $databaseSessions
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereNewEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereNewEmailToken($value)
  */
 class User extends Authenticatable
 {

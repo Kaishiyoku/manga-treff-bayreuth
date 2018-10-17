@@ -6,6 +6,23 @@ use App\Models\Traits\Shortcode;
 use App\Models\Traits\Slug;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\DBSession
+ *
+ * @property int $id
+ * @property int|null $user_id
+ * @property string|null $ip_address
+ * @property string|null $user_agent
+ * @property string $payload
+ * @property int $last_activity
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession whereIpAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession whereLastActivity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession wherePayload($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession whereUserAgent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession whereUserId($value)
+ * @mixin \Eloquent
+ */
 class DBSession extends Model
 {
     /**
