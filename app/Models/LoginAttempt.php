@@ -19,6 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt whereUserId($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt query()
  */
 class LoginAttempt extends Model
 {

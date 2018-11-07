@@ -28,6 +28,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereCategory($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereSize($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event query()
  */
 class Event extends Model
 {

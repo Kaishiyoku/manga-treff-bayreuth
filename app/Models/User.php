@@ -32,6 +32,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\DBSession[] $databaseSessions
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereNewEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereNewEmailToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User query()
  */
 class User extends Authenticatable
 {
