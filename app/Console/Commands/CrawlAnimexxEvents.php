@@ -4,10 +4,9 @@ namespace App\Console\Commands;
 
 use App\Console\BaseCommand;
 use App\Models\Event;
+use App\Models\EventType;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
-use Symfony\Component\DomCrawler\Crawler;
-use Spatie\GoogleCalendar\Event as GoogleEvent;
 
 class CrawlAnimexxEvents extends BaseCommand
 {
@@ -50,47 +49,52 @@ class CrawlAnimexxEvents extends BaseCommand
         $this->logInfo('Crawling events...this will take some time.');
         $this->line('');
 
-        $crawler = new Crawler(getExternalContent(env('ANIMEXX_EVENT_BASE_URL')));
+        $json = getDataForAnimexxEventSeries(env('ANIMEXX_EVENT_SERIES_ID'));
 
-        $events = $crawler->filter('#beschreibungsseite_1 > table ul > li')->each(function (Crawler $node) {
-            preg_match("/[0-3][0-9].[01][0-9].[1-3][0-9][0-9][0-9]/", $node->text(), $matches);
-            $date = Carbon::createFromFormat('d.m.Y', array_first($matches));
-            $externalId = (int)filter_var($node->children()->first()->attr('href'), FILTER_SANITIZE_NUMBER_INT);
+        $events = collect();
 
-            $eventDetailsCrawler = new Crawler(getExternalContent(env('ANIMEXX_EVENT_BASE_URL') . '/' . $externalId));
+        foreach ($json->data->events as $animexxEvent) {
+            $eventType = EventType::find($animexxEvent->type->id);
 
-            $eventDetailsXPath = collect([3, 4, 5, 11])->map(function ($number) {
-                return "(//div[contains(@class, 'beschreibungsseite')]//td)[$number]";
-            })->implode('|');
+            if ($eventType == null) {
+                $eventType = new EventType();
+                $eventType->external_id = $animexxEvent->type->id;
+                $eventType->title = $animexxEvent->type->title;
+                $eventType->description = $animexxEvent->type->description;
+                $eventType->color = $animexxEvent->type->color;
+                $eventType->parent_id = $animexxEvent->type->parent;
+                $eventType->save();
+            }
 
-            $detailNodes = $eventDetailsCrawler->filterXPath($eventDetailsXPath)->each(function (Crawler $detailNode, $i) {
-                if ($i == 0) {
-                    return preg_replace('/Treffpunkt/', '', preg_replace("/\r/", ', ', replaceNewLines($detailNode->text())));
-                }
+            $event = new Event();
+            $event->external_id = $animexxEvent->id;
+            $event->address = $animexxEvent->address;
+            $event->name = $animexxEvent->name;
+            $event->date_start = new Carbon($animexxEvent->dateStart->date, $animexxEvent->dateStart->timezone);
+            $event->date_end = new Carbon($animexxEvent->dateEnd->date, $animexxEvent->dateEnd->timezone);
+            $event->zip = $animexxEvent->zip;
+            $event->city = $animexxEvent->city;
+            $event->state = $animexxEvent->state;
+            $event->contact_id = (int) filter_var($animexxEvent->contact, FILTER_SANITIZE_NUMBER_INT);;
+            $event->attendees = $animexxEvent->attendees;
+            $event->intro = $animexxEvent->intro;
+            $event->main_image = $animexxEvent->mainImage;
+            $event->logo_image = $animexxEvent->logoImage;
+            $event->country = $animexxEvent->country;
+            $event->geo_lat = $animexxEvent->geoLat;
+            $event->geo_long = $animexxEvent->geoLong;
+            $event->geo_zoom = $animexxEvent->geoZoom;
+            $event->geo_type = $animexxEvent->geoType;
+            $event->event_type_external_id = $animexxEvent->type->id;
 
-                return $detailNode->html();
-            });
+            $events->push($event);
+        }
 
-            list($address, $category, $size, $description) = $detailNodes;
-
-            $this->verbose(function () use ($externalId) {
-                $this->line('Crawled event #' . $externalId);
-            });
-
-            return [
-                'date' => $date,
-                'external_id' => $externalId,
-                'address' => $address,
-                'category' => $category,
-                'size' => $size,
-                'description' => $description,
-            ];
-        });
 
         $this->logInfo('Number of events: ' . count($events));
         $this->line('');
 
-        $this->insertEvents(collect($events));
+        $this->insertEvents($events);
 
         $timeElapsedInSeconds = microtime(true) - $start;
 
@@ -110,14 +114,13 @@ class CrawlAnimexxEvents extends BaseCommand
         $this->logInfo('Number of new events: ' . count($newEvents));
         $this->line('');
 
-        foreach ($newEvents as $i => $item) {
-            $event = new Event($item);
+        foreach ($newEvents as $i => $event) {
             $event->save();
 
             storeGoogleEventFrom($event);
 
-            $this->verbose(function () use ($item) {
-                $this->line('Added event #' . $item['external_id']);
+            $this->verbose(function () use ($event) {
+                $this->line('Added event #' . $event->external_id);
             });
         }
     }

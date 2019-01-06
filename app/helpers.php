@@ -1,5 +1,33 @@
 <?php
 
+if (!function_exists('getUrlForAnimexxEventSeries')) {
+    function getUrlForAnimexxEventSeries($id)
+    {
+        $httpQueryString = http_build_query([
+            'filter' => [
+                'search' => '',
+                'includePast' => true,
+                'includeSubEvents' => false,
+                'isAnimexx' => false,
+                'timeframe' => 'past',
+                'attendees' => 'ka',
+                'series' => $id,
+                'offset' => 0,
+                'limit' => null,
+            ],
+        ]);
+
+        return env('ANIMEXX_EVENT_BASE_URL_JSON') . '?' . $httpQueryString;
+    }
+}
+
+if (!function_exists('getDataForAnimexxEventSeries')) {
+    function getDataForAnimexxEventSeries($id)
+    {
+        return json_decode(getExternalContent(getUrlForAnimexxEventSeries($id)));
+    }
+}
+
 if (!function_exists('getExternalContent')) {
     function getExternalContent($url)
     {
@@ -65,11 +93,11 @@ if (!function_exists('storeGoogleEventFrom')) {
     function storeGoogleEventFrom(\App\Models\Event $event)
     {
         $googleEvent = new \Spatie\GoogleCalendar\Event();
-        $googleEvent->name = convertEncoding(env('APP_NAME') . ' (' . $event->date->formatLocalized('%B') . ')');
+        $googleEvent->name = convertEncoding(env('APP_NAME') . ' (' . $event->date_start->formatLocalized('%B') . ')');
         $googleEvent->location = $event->address;
-        $googleEvent->description = convertEncoding($event->description);
-        $googleEvent->startDateTime = $event->date->setTime(14, 0);
-        $googleEvent->endDateTime = $event->date->setTime(22, 0);
+//        $googleEvent->description = convertEncoding($event->description);
+        $googleEvent->startDateTime = $event->date_start->setTime(...explode(':', env('ANIMEXX_EVENT_DEFAULT_START_TIME')));
+        $googleEvent->endDateTime = $event->date_start->setTime(...explode(':', env('ANIMEXX_EVENT_DEFAULT_END_TIME')));
         $googleEvent->save();
     }
 }
