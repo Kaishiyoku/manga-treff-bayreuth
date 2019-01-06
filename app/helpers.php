@@ -28,6 +28,13 @@ if (!function_exists('getDataForAnimexxEventSeries')) {
     }
 }
 
+if (!function_exists('fetchEventDescriptionFor')) {
+    function fetchEventDescriptionFor($id)
+    {
+        return json_decode(getExternalContent('https://rewind.animexx.de/api/event-descriptions/' . $id));
+    }
+}
+
 if (!function_exists('getExternalContent')) {
     function getExternalContent($url)
     {
@@ -95,9 +102,9 @@ if (!function_exists('storeGoogleEventFor')) {
         $googleEvent = new \Spatie\GoogleCalendar\Event();
         $googleEvent->name = $event->name;
         $googleEvent->location = $event->getEventLocation();
-//        $googleEvent->description = convertEncoding($event->description);
-        $googleEvent->startDateTime = $event->date_start->setTime(...explode(':', env('ANIMEXX_EVENT_DEFAULT_START_TIME')));
-        $googleEvent->endDateTime = $event->date_start->setTime(...explode(':', env('ANIMEXX_EVENT_DEFAULT_END_TIME')));
+        $googleEvent->description = convertEncoding($event->description);
+        $googleEvent->startDateTime = $event->date_start;
+        $googleEvent->endDateTime = $event->date_end;
         $googleEvent->save();
     }
 }

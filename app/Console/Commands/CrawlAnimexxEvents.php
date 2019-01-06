@@ -70,8 +70,19 @@ class CrawlAnimexxEvents extends BaseCommand
             $event->external_id = $animexxEvent->id;
             $event->address = $animexxEvent->address;
             $event->name = $animexxEvent->name;
+
             $event->date_start = new Carbon($animexxEvent->dateStart->date, $animexxEvent->dateStart->timezone);
             $event->date_end = new Carbon($animexxEvent->dateEnd->date, $animexxEvent->dateEnd->timezone);
+
+            if ($event->date_start == $event->date_end) {
+                $getDefaultTime = function ($str) {
+                    return explode(':', $str);
+                };
+
+                $event->date_start = $event->date_start->setTime(...$getDefaultTime(env('ANIMEXX_EVENT_DEFAULT_START_TIME')));
+                $event->date_end = $event->date_start->setTime(...$getDefaultTime(env('ANIMEXX_EVENT_DEFAULT_END_TIME')));
+            }
+
             $event->zip = $animexxEvent->zip;
             $event->city = $animexxEvent->city;
             $event->state = $animexxEvent->state;
@@ -115,6 +126,8 @@ class CrawlAnimexxEvents extends BaseCommand
         $this->line('');
 
         foreach ($newEvents as $i => $event) {
+            $event->description = fetchEventDescriptionFor($event->external_id)->data->attributes->content;
+
             $event->save();
 
             storeGoogleEventFor($event);

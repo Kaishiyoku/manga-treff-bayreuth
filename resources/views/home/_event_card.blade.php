@@ -1,6 +1,6 @@
 <div class="card {{ isset($isHighlighted) && $isHighlighted ? 'border-primary' : null }}">
     <div class="card-body">
-        <h5 class="card-title">{{ $event->date_start->format(__('date.short')) }}</h5>
+        <h5 class="card-title">{{ $event->date_start->format(__('date.datetime')) }}</h5>
 
         <p class="card-text text-muted small">
             @lang('validation.attributes.category'): {{ $event->eventType->title }},
