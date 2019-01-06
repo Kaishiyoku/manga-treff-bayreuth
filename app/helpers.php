@@ -89,12 +89,12 @@ if (!function_exists('convertEncoding')) {
     }
 }
 
-if (!function_exists('storeGoogleEventFrom')) {
-    function storeGoogleEventFrom(\App\Models\Event $event)
+if (!function_exists('storeGoogleEventFor')) {
+    function storeGoogleEventFor(\App\Models\Event $event)
     {
         $googleEvent = new \Spatie\GoogleCalendar\Event();
-        $googleEvent->name = convertEncoding(env('APP_NAME') . ' (' . $event->date_start->formatLocalized('%B') . ')');
-        $googleEvent->location = $event->address;
+        $googleEvent->name = $event->name;
+        $googleEvent->location = $event->getEventLocation();
 //        $googleEvent->description = convertEncoding($event->description);
         $googleEvent->startDateTime = $event->date_start->setTime(...explode(':', env('ANIMEXX_EVENT_DEFAULT_START_TIME')));
         $googleEvent->endDateTime = $event->date_start->setTime(...explode(':', env('ANIMEXX_EVENT_DEFAULT_END_TIME')));

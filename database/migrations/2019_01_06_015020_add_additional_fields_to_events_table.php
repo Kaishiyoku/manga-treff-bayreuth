@@ -28,7 +28,7 @@ class AddAdditionalFieldsToEventsTable extends Migration
             $table->string('zip');
             $table->string('city');
             $table->string('state');
-            $table->integer('contact_id');
+            $table->unsignedInteger('contact_id');
             $table->string('attendees');
             $table->string('intro');
             $table->string('main_image')->nullable();

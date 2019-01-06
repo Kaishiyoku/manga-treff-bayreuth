@@ -127,4 +127,9 @@ class Event extends Model
     {
         return env('ANIMEXX_EVENT_BASE_URL') . '/' . $this->external_id;
     }
+
+    public function getEventLocation()
+    {
+        return $this->country . ', ' . $this->state . ', ' . $this->zip . ' ' . $this->city . ', ' . $this->address;
+    }
 }

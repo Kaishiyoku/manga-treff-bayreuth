@@ -9,14 +9,14 @@ class EventController extends Controller
 {
     public function upcoming()
     {
-        $upcomingEvents = Event::where('date', '>=', Carbon::today())->orderBy('external_id');
+        $upcomingEvents = Event::where('date_start', '>=', Carbon::today()->startOfDay())->orderBy('external_id');
 
         return view('event.upcoming', compact('upcomingEvents'));
     }
 
     public function past()
     {
-        $pastEvents = Event::where('date', '<', Carbon::now())->orderBy('external_id', 'desc');
+        $pastEvents = Event::where('date_end', '<', Carbon::now()->endOfDay())->orderBy('external_id', 'desc');
 
         return view('event.past', compact('pastEvents'));
     }

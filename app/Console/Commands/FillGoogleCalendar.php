@@ -49,14 +49,12 @@ class FillGoogleCalendar extends BaseCommand
 
             clearGoogleCalendar();
 
-            $events = Event::all();
-
-            foreach ($events as $event) {
+            foreach (Event::all() as $event) {
                 $this->verbose(function () use ($event) {
                     $this->line(' ' . $event->date);
                 });
 
-                storeGoogleEventFrom($event);
+                storeGoogleEventFor($event);
             }
 
             $timeElapsedInSeconds = microtime(true) - $start;

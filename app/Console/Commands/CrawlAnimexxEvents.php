@@ -117,7 +117,7 @@ class CrawlAnimexxEvents extends BaseCommand
         foreach ($newEvents as $i => $event) {
             $event->save();
 
-            storeGoogleEventFrom($event);
+            storeGoogleEventFor($event);
 
             $this->verbose(function () use ($event) {
                 $this->line('Added event #' . $event->external_id);
