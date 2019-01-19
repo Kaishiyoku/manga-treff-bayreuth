@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dad9c3b81cb8faa59430b8f8295678a4",
+    "content-hash": "45467650f44102977ea57929bd8e91fe",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -1031,6 +1031,55 @@
                 "php"
             ],
             "time": "2016-04-06T13:52:41+00:00"
+        },
+        {
+            "name": "kaishiyoku/animexx-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kaishiyoku/animexx-api.git",
+                "reference": "2053618f4ded9912e5e9b9dcc6843a960ed1422b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kaishiyoku/animexx-api/zipball/2053618f4ded9912e5e9b9dcc6843a960ed1422b",
+                "reference": "2053618f4ded9912e5e9b9dcc6843a960ed1422b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.3",
+                "illuminate/support": "^5.7",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.11",
+                "phpmd/phpmd": "^2.6",
+                "phpstan/phpstan-shim": "^0.9",
+                "phpunit/phpunit": "^6.5",
+                "spatie/phpunit-snapshot-assertions": "^1.3",
+                "squizlabs/php_codesniffer": "^3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kaishiyoku\\AnimexxApi\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kaishiyoku",
+                    "email": "dev@andreas-wiedel.de"
+                }
+            ],
+            "time": "2019-01-18T23:46:37+00:00"
         },
         {
             "name": "kaishiyoku/laravel-html-purifier",

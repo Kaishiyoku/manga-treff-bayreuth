@@ -68,7 +68,7 @@ class CrawlAnimexxEvents extends BaseCommand
 
             $event = new Event();
             $event->external_id = $animexxEvent->id;
-            $event->address = $animexxEvent->address;
+            $event->address = $animexxEvent->address ?? env('ANIMEXX_EVENT_DEFAULT_ADDRESS');
             $event->name = $animexxEvent->name;
 
             $event->date_start = new Carbon($animexxEvent->dateStart->date, $animexxEvent->dateStart->timezone);

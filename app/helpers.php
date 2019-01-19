@@ -9,7 +9,6 @@ if (!function_exists('getUrlForAnimexxEventSeries')) {
                 'includePast' => true,
                 'includeSubEvents' => false,
                 'isAnimexx' => false,
-                'timeframe' => 'past',
                 'attendees' => 'ka',
                 'series' => $id,
                 'offset' => 0,
