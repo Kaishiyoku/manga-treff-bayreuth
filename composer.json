@@ -13,6 +13,7 @@
         "guzzlehttp/guzzle": "6.3.3",
         "judev/php-htmltruncator": "1.1.0",
         "kaishiyoku/animexx-api": "^0.1.0",
+        "kaishiyoku/laravel-cli-create-user": "^2.1",
         "kaishiyoku/laravel-menu": "2.0.0",
         "laracasts/flash": "3.0.2",
         "laravel/framework": "5.7.13",

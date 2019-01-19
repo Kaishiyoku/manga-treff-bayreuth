@@ -65,6 +65,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereZip($value)
+ * @property-read \App\Models\EventType $eventType
  */
 class Event extends Model
 {

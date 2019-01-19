@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventType whereParentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventType whereTitle($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Event[] $events
  */
 class EventType extends Model
 {
