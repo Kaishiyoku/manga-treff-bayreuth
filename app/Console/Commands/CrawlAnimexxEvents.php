@@ -126,7 +126,7 @@ class CrawlAnimexxEvents extends BaseCommand
         $this->line('');
 
         foreach ($newEvents as $i => $event) {
-            $event->description = fetchEventDescriptionFor($event->external_id)->data->attributes->content;
+            $event->description = fetchEventDescriptionFor($event->external_id);
 
             $event->save();
 

@@ -30,7 +30,15 @@ if (!function_exists('getDataForAnimexxEventSeries')) {
 if (!function_exists('fetchEventDescriptionFor')) {
     function fetchEventDescriptionFor($id)
     {
-        return json_decode(getExternalContent('https://rewind.animexx.de/api/event-descriptions/' . $id));
+        $crawler = new \Symfony\Component\DomCrawler\Crawler(getExternalContent('https://www.animexx.de/events/' . $id));
+
+        $descriptions = $crawler->filter('.tabs-panel')->each(function (\Symfony\Component\DomCrawler\Crawler $node) {
+            return $node->html();
+        });
+
+        return array_reduce($descriptions, function ($accum, $description) {
+            return $accum . $description;
+        }, '');
     }
 }
 
