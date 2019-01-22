@@ -9,8 +9,9 @@
         <table class="table table-sm table-striped">
             <thead>
             <tr>
-                <th>@lang('validation.attributes.date')</th>
-                <th>@lang('validation.attributes.address')</th>
+                <th>@lang('validation.attributes.name')</th>
+                <th>@lang('validation.attributes.date_start')</th>
+                <th>@lang('validation.attributes.date_end')</th>
                 <th>@lang('event.admin.index.animexx_event')</th>
                 <th></th>
             </tr>
@@ -18,8 +19,9 @@
             <tbody>
                 @foreach ($events->get() as $event)
                     <tr>
-                        <td>{{ $event->date->format(__('date.short')) }}</td>
-                        <td>{{ $event->address }}</td>
+                        <td>{{ $event->name }}</td>
+                        <td>{{ $event->date_start->format(__('date.datetime')) }}</td>
+                        <td>{{ $event->date_end->format(__('date.datetime')) }}</td>
                         <td>
                             {{ Html::link($event->getUrl(), $event->external_id) }}
                         </td>

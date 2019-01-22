@@ -8,7 +8,7 @@ return [
             'animexx_event' => 'Animexx Event',
         ],
         'edit' => [
-            'title' => 'Event vom :date ändern',
+            'title' => 'Event „:name” ändern',
             'success' => 'Event gespeichert.',
         ],
         'destroy' => [

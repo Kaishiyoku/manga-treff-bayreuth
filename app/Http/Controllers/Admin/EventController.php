@@ -23,7 +23,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::orderBy('date', 'desc');
+        $events = Event::orderBy('date_start', 'desc');
 
         return view('admin.event.index', compact('events'));
     }
@@ -51,7 +51,8 @@ class EventController extends Controller
         $request->validate($this->getValidationRules());
 
         $event->fill($request->only($this->getFillableFields()));
-        $event->date = Carbon::createFromFormat(__('date.short'), $request->get('date'));
+        $event->date_start = Carbon::createFromFormat(__('date.datetime'), $request->get('date_start') . ' ' . $request->get('time_start'));
+        $event->date_end = Carbon::createFromFormat(__('date.datetime'), $request->get('date_end') . ' ' . $request->get('time_end'));
         $event->save();
 
         flash()->success(__('event.admin.edit.success'));
@@ -81,7 +82,13 @@ class EventController extends Controller
     private function getFillableFields()
     {
         return [
-
+            'country',
+            'state',
+            'address',
+            'zip',
+            'city',
+            'intro',
+            'description',
         ];
     }
 
@@ -91,7 +98,17 @@ class EventController extends Controller
     protected function getValidationRules()
     {
         return [
-            'date' => ['required', 'date_format:' . __('date.short')],
+            'date_start' => ['required', 'date_format:' . __('date.short')],
+            'date_end' => ['required', 'date_format:' . __('date.short')],
+            'time_start' => ['required', 'date_format:' . __('date.time')],
+            'time_end' => ['required', 'date_format:' . __('date.time')],
+            'country' => 'required',
+            'state' => 'required',
+            'address' => 'required',
+            'zip' => 'required',
+            'city' => 'required',
+            'intro' => 'required',
+            'description' => 'required',
         ];
     }
 }

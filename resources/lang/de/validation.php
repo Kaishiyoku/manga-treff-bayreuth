@@ -187,5 +187,12 @@ return [
         'current_email'             => 'Derzeitige E-Mail-Adresse',
         'new_email'                 => 'Neue E-Mail-Adresse',
         'new_email_confirmation'    => 'Neue E-Mail-Adresse (Wiederholung)',
+        'date_start'                => 'Datum (Beginn)',
+        'date_end'                  => 'Datum (Ende)',
+        'time_start'                => 'Uhrzeit (Beginn)',
+        'time_end'                  => 'Uhrzeit (Ende)',
+        'zip'                       => 'PLZ',
+        'state'                     => 'Bundesland',
+        'intro'                     => 'Einleitung',
     ],
 ];
