@@ -10,6 +10,8 @@ $fa-font-path: "../fonts";
 @import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-regular";
 @import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-solid";
 
+@import "waves";
+
 body {
   padding-bottom: 3rem;
 }
