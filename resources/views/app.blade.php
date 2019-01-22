@@ -42,6 +42,8 @@
 
 <footer class="small">
     <div class="container">
+        v{{ env('APP_VERSION') }}
+        &#8226;
         {{ Html::linkRoute('home.show_contact_form', __('common.contact')) }}
         &#8226;
         {{ Html::linkRoute('home.imprint', __('common.imprint')) }}
