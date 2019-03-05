@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ContactFormSent;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 
@@ -12,9 +13,16 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $discordItem = fetchDiscordWidgetApiContent();
+        $getDiscordMembersInChannel = function ($discordItem, $channelId) {
+            return Arr::where($discordItem->members, function ($member) use ($channelId) {
+                return property_exists($member, 'channel_id') && $member->channel_id == $channelId;
+            });
+        };
+
         $nextUpcomingEvent = Event::where('date_start', '>=', Carbon::today())->orderBy('date_start')->first();
 
-        return view('home.index', compact('futureEvents', 'pastEvents', 'nextUpcomingEvent'));
+        return view('home.index', compact('futureEvents', 'pastEvents', 'nextUpcomingEvent', 'discordItem', 'getDiscordMembersInChannel'));
     }
 
     /**

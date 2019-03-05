@@ -126,3 +126,10 @@ if (!function_exists('clearGoogleCalendar')) {
         }
     }
 }
+
+if (!function_exists('fetchDiscordWidgetApiContent')) {
+    function fetchDiscordWidgetApiContent()
+    {
+        return json_decode(getExternalContent(env('DISCORD_WIDGET_API_URL')));
+    }
+}

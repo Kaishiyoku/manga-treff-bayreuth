@@ -68,3 +68,23 @@ footer {
   vertical-align: middle;
   @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
 }
+
+.font-sm {
+  font-size: $font-size-sm;
+}
+
+.font-xs {
+  font-size: $font-size-sm * 0.9;
+}
+
+.text-muted-extra {
+  color: $text-muted-extra;
+}
+
+.btn, .btn-text {
+  margin-top: .3rem;
+}
+
+.btn-xs {
+  @include button-size($btn-padding-y-xs, $btn-padding-x-xs, $btn-font-size-xs, $btn-line-height-xs, $btn-border-radius-xs);
+}
