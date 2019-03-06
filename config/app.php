@@ -166,7 +166,6 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Kaishiyoku\Menu\MenuServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-        Webup\LaravelSendinBlue\SendinBlueServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,

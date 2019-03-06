@@ -50,7 +50,7 @@
 
         <div class="form-group">
             <div class="col-md-12">
-                {{ Form::submit(__('common.send'), ['class' => 'btn btn-primary']) }}
+                {{ Form::button(__('common.send'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
             </div>
         </div>
     {{ Form::close() }}
