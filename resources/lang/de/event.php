@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'show' => [
+        'title' => 'Event am :date'
+    ],
     'admin' => [
         'index' => [
             'title' => 'Events',

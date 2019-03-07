@@ -9,15 +9,20 @@ class EventController extends Controller
 {
     public function upcoming()
     {
-        $upcomingEvents = Event::where('date_start', '>=', Carbon::today()->startOfDay())->orderBy('external_id');
+        $upcomingEvents = Event::upcoming()->orderBy('external_id');
 
         return view('event.upcoming', compact('upcomingEvents'));
     }
 
     public function past()
     {
-        $pastEvents = Event::where('date_end', '<', Carbon::now()->endOfDay())->orderBy('external_id', 'desc');
+        $pastEvents = Event::past()->orderBy('external_id', 'desc');
 
         return view('event.past', compact('pastEvents'));
+    }
+
+    public function show(Event $event)
+    {
+        return view('event.show', compact('event'));
     }
 }

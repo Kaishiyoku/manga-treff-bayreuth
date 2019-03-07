@@ -39,6 +39,8 @@
 <div class="container">
     @include('flash::message')
 
+    @yield('breadcrumbs')
+
     @yield('content')
 </div>
 

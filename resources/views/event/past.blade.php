@@ -1,6 +1,5 @@
 @extends('app')
 
-
 @section('content')
     <h1>@lang('home.index.events.past')</h1>
 

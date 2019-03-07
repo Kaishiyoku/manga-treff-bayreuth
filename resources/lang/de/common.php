@@ -19,6 +19,7 @@ return [
     'send' => 'Absenden',
     'login' => 'Login',
     'logout' => 'Logout',
+    'home' => 'Startseite',
     'events' => 'Events',
     'users' => 'Benutzer',
     'delete' => 'Löschen',
@@ -39,4 +40,5 @@ return [
         'connect' => 'Verbinden',
         'members_online' => ':count Mitglieder online'
     ],
+    'animexx_event' => 'Animexx',
 ];

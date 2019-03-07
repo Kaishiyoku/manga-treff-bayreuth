@@ -2,40 +2,60 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-5 col-sm-8 col-8 pb-5">
-            <p class="lead">@lang('home.index.description')</p>
+        <div class="col-lg-8 pb-5">
+            <div class="row">
+                <div class="col-md-7">
+                    <p class="border border-gray rounded shadow-sm lead p-3">
+                        @lang('home.index.description')
+                    </p>
+
+                    @if ($nextUpcomingEvent)
+                        <p class="lead">
+                            @lang('home.index.events.next_upcoming_at', ['date' => '<a href="' . $nextUpcomingEvent->getUrl() . '">' . $nextUpcomingEvent->date_start->format(__('date.short')) . '</a>'])
+                        </p>
+                    @endif
+
+                    <div>
+                        <a class="btn btn-block btn-lg btn-outline-primary" href="{{ env('SHORT_EVENT_BASE_URL') }}">
+                            <i class="far fa-calendar"></i>
+
+                            @lang('home.index.events.animexx_series')
+
+                            @include('shared._external_icon')
+                        </a>
+
+                        <div class="btn-text btn-block text-center">
+                            @lang('common.or')
+                        </div>
+
+                        <a class="btn btn-block btn-lg btn-outline-primary" href="{{ env('GOOGLE_CALENDAR_PUBLIC_URL') }}">
+                            <i class="far fa-calendar"></i>
+
+                            @lang('home.index.events.google_calendar')
+
+                            @include('shared._external_icon')
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-5 d-none d-md-block">
+                    <img src="{{ asset('img/drawing.png') }}" class="img-fluid"/>
+                </div>
+            </div>
 
             @if ($nextUpcomingEvent)
-                <p class="lead">
-                    @lang('home.index.events.next_upcoming_at', ['date' => '<a href="' . $nextUpcomingEvent->getUrl() . '">' . $nextUpcomingEvent->date_start->format(__('date.short')) . '</a>'])
-                </p>
+                <h1 class="pt-5">@lang('home.index.events.next_upcoming')</h1>
+
+                @include('home._event_card', ['event' => $nextUpcomingEvent, 'isHighlighted' => true])
             @endif
-
-            <p>
-                <a class="btn btn-outline-primary" href="{{ env('SHORT_EVENT_BASE_URL') }}">
-                    @lang('home.index.events.animexx_series')
-                </a>
-
-                <span class="btn-text">
-                    @lang('common.or')
-                </span>
-
-                <a class="btn btn-outline-primary" href="{{ env('GOOGLE_CALENDAR_PUBLIC_URL') }}">
-                    @lang('home.index.events.google_calendar')
-                </a>
-            </p>
         </div>
 
-        <div class="col-md-3 col-sm-4 col-4">
-            <img src="{{ asset('img/drawing.png') }}" class="img-fluid"/>
-        </div>
-
-        <div class="col-md-4 col-12">
+        <div class="col-lg-4 pb-5">
             <div class="card shadow-sm">
                 <h5 class="card-header bg-secondary text-white">
                     <i class="fab fa-discord"></i>
 
-                    <span class="d-inline d-md-none d-lg-inline">
+                    <span>
                         {{ __('common.discord.title') }}
                     </span>
 
@@ -43,8 +63,11 @@
                         <i class="fas fa-arrow-right"></i>
 
                         {{ __('common.discord.connect') }}
+
+                        @include('shared._external_icon')
                     </a>
                 </h5>
+
                 <div class="card-body">
                     <div class="font-xs">
                         <ul class="list-unstyled">
@@ -90,9 +113,7 @@
         </div>
     </div>
 
-    @if ($nextUpcomingEvent)
-        <h1 class="pt-5">@lang('home.index.events.next_upcoming')</h1>
-
-        @include('home._event_card', ['event' => $nextUpcomingEvent])
-    @endif
+    <div class="d-block d-md-none">
+        <img src="{{ asset('img/drawing.png') }}" class="img-fluid"/>
+    </div>
 @endsection

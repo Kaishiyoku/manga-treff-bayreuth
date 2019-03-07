@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Event
@@ -66,6 +67,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event whereZip($value)
  * @property-read \App\Models\EventType $eventType
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event past()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event upcoming()
  */
 class Event extends Model
 {
@@ -119,9 +122,37 @@ class Event extends Model
         'date_end'
     ];
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeUpcoming($query)
+    {
+        return $query->where('date_start', '>=', Carbon::today()->startOfDay());
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePast($query)
+    {
+        return $query->where('date_end', '<', Carbon::now()->endOfDay());
+    }
+
     public function eventType()
     {
         return $this->belongsTo(EventType::class);
+    }
+
+    public function isUpcoming()
+    {
+        return $this->date_start >= Carbon::today()->startOfDay();
+    }
+
+    public function isPast()
+    {
+        return $this->date_end < Carbon::now()->endOfDay();
     }
 
     public function getUrl()
