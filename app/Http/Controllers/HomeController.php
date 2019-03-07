@@ -76,4 +76,11 @@ class HomeController extends Controller
 
         return redirect('/');
     }
+
+    public function discord()
+    {
+        $discordItem = fetchDiscordWidgetApiContent();
+
+        return redirect($discordItem->instant_invite);
+    }
 }

@@ -12,6 +12,8 @@ Route::group(['middleware' => ['menus']], function () {
 
     Auth::routes();
 
+    Route::get('/discord', 'HomeController@discord')->name('home.discord');
+
     /////////////////////
     // Logged on users //
     /////////////////////
