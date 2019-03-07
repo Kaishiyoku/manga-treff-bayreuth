@@ -34,4 +34,9 @@ return [
     'estimated_location' => 'Geschätzter Standort',
     'unknown' => 'Unbekannt',
     'or' => 'oder',
+    'discord' => [
+        'title' => 'Discord',
+        'connect' => 'Verbinden',
+        'members_online' => ':count Mitglieder online'
+    ],
 ];

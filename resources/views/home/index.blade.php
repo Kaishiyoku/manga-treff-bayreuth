@@ -36,10 +36,14 @@
                     <i class="fab fa-discord"></i>
 
                     <span class="d-inline d-md-none d-lg-inline">
-                        Discord
+                        {{ __('common.discord.title') }}
                     </span>
 
-                    <a href="{{ $discordItem->instant_invite }}" class="btn btn-outline-light btn-xs float-right m-0">Verbinden</a>
+                    <a href="{{ $discordItem->instant_invite }}" class="btn btn-outline-light btn-xs float-right m-0">
+                        <i class="fas fa-arrow-right"></i>
+
+                        {{ __('common.discord.connect') }}
+                    </a>
                 </h5>
                 <div class="card-body">
                     <div class="font-xs">
@@ -61,7 +65,7 @@
                         </ul>
 
                         <p>
-                            {{ count($discordItem->members) }} Mitglieder online
+                            {{ __('common.discord.members_online', ['count' => count($discordItem->members)]) }}
                         </p>
 
                         <ul class="list-unstyled">
