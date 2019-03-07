@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5 shadow-md border-bottom border-primary-darker">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home.index') }}">{{ env('APP_NAME') }}</a>
 
