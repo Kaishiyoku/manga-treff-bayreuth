@@ -9,6 +9,8 @@
     {!! Html::style('css/app.css') !!}
 
     {!! Html::script('js/app.js') !!}
+
+    @include('shared._favicon')
 </head>
 <body>
 
