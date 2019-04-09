@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use \App\Models\Event;
+use \App\Models\Meetup;
 
 class AddAdditionalFieldsToEventsTable extends Migration
 {
@@ -14,7 +14,7 @@ class AddAdditionalFieldsToEventsTable extends Migration
      */
     public function up()
     {
-        Event::truncate();
+        Meetup::truncate();
 
         Schema::table('events', function (Blueprint $table) {
             $table->dropColumn('date');
@@ -51,10 +51,10 @@ class AddAdditionalFieldsToEventsTable extends Migration
      */
     public function down()
     {
-        Event::truncate();
+        Meetup::truncate();
 
         Schema::table('events', function (Blueprint $table) {
-            $table->dropForeign(['event_type_external_id']);
+            $table->dropForeign('meetups_event_type_external_id_foreign');
 
             $table->dropColumn('name');
             $table->dropColumn('date_start');

@@ -1,7 +1,7 @@
 <?php
 
-if (!function_exists('getUrlForAnimexxEventSeries')) {
-    function getUrlForAnimexxEventSeries($id)
+if (!function_exists('getUrlForAnimexxMeetupSeries')) {
+    function getUrlForAnimexxMeetupSeries($id)
     {
         $httpQueryString = http_build_query([
             'filter' => [
@@ -20,15 +20,15 @@ if (!function_exists('getUrlForAnimexxEventSeries')) {
     }
 }
 
-if (!function_exists('getDataForAnimexxEventSeries')) {
-    function getDataForAnimexxEventSeries($id)
+if (!function_exists('getDataForAnimexxMeetupSeries')) {
+    function getDataForAnimexxMeetupSeries($id)
     {
-        return json_decode(getExternalContent(getUrlForAnimexxEventSeries($id)));
+        return json_decode(getExternalContent(getUrlForAnimexxMeetupSeries($id)));
     }
 }
 
-if (!function_exists('fetchEventDescriptionFor')) {
-    function fetchEventDescriptionFor($id)
+if (!function_exists('fetchMeetupDescriptionFor')) {
+    function fetchMeetupDescriptionFor($id)
     {
         $crawler = new \Symfony\Component\DomCrawler\Crawler(getExternalContent('https://www.animexx.de/events/' . $id));
 
@@ -104,14 +104,14 @@ if (!function_exists('convertEncoding')) {
 }
 
 if (!function_exists('storeGoogleEventFor')) {
-    function storeGoogleEventFor(\App\Models\Event $event)
+    function storeGoogleEventFor(\App\Models\Meetup $meetup)
     {
         $googleEvent = new \Spatie\GoogleCalendar\Event();
-        $googleEvent->name = $event->name;
-        $googleEvent->location = $event->getEventLocation();
-        $googleEvent->description = convertEncoding($event->description);
-        $googleEvent->startDateTime = $event->date_start;
-        $googleEvent->endDateTime = $event->date_end;
+        $googleEvent->name = $meetup->name;
+        $googleEvent->location = $meetup->getMeetupLocation();
+        $googleEvent->description = convertEncoding($meetup->description);
+        $googleEvent->startDateTime = $meetup->date_start;
+        $googleEvent->endDateTime = $meetup->date_end;
         $googleEvent->save();
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Console\BaseCommand;
-use App\Models\Event;
-use App\Models\EventType;
+use App\Models\Meetup;
+use App\Models\MeetupType;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
@@ -49,63 +49,63 @@ class CrawlAnimexxEvents extends BaseCommand
         $this->logInfo('Crawling events...this will take some time.');
         $this->line('');
 
-        $json = getDataForAnimexxEventSeries(env('ANIMEXX_EVENT_SERIES_ID'));
+        $json = getDataForAnimexxMeetupSeries(env('ANIMEXX_EVENT_SERIES_ID'));
 
-        $events = collect();
+        $meetups = collect();
 
         foreach ($json->data->events as $animexxEvent) {
-            $eventType = EventType::find($animexxEvent->type->id);
+            $meetupType = MeetupType::find($animexxEvent->type->id);
 
-            if ($eventType == null) {
-                $eventType = new EventType();
-                $eventType->external_id = $animexxEvent->type->id;
-                $eventType->title = $animexxEvent->type->title;
-                $eventType->description = $animexxEvent->type->description;
-                $eventType->color = $animexxEvent->type->color;
-                $eventType->parent_id = $animexxEvent->type->parent;
-                $eventType->save();
+            if ($meetupType == null) {
+                $meetupType = new MeetupType();
+                $meetupType->external_id = $animexxEvent->type->id;
+                $meetupType->title = $animexxEvent->type->title;
+                $meetupType->description = $animexxEvent->type->description;
+                $meetupType->color = $animexxEvent->type->color;
+                $meetupType->parent_id = $animexxEvent->type->parent;
+                $meetupType->save();
             }
 
-            $event = new Event();
-            $event->external_id = $animexxEvent->id;
-            $event->address = $animexxEvent->address ?? env('ANIMEXX_EVENT_DEFAULT_ADDRESS');
-            $event->name = $animexxEvent->name;
+            $meetup = new Meetup();
+            $meetup->external_id = $animexxEvent->id;
+            $meetup->address = $animexxEvent->address ?? env('ANIMEXX_EVENT_DEFAULT_ADDRESS');
+            $meetup->name = $animexxEvent->name;
 
-            $event->date_start = new Carbon($animexxEvent->dateStart->date, $animexxEvent->dateStart->timezone);
-            $event->date_end = new Carbon($animexxEvent->dateEnd->date, $animexxEvent->dateEnd->timezone);
+            $meetup->date_start = new Carbon($animexxEvent->dateStart->date, $animexxEvent->dateStart->timezone);
+            $meetup->date_end = new Carbon($animexxEvent->dateEnd->date, $animexxEvent->dateEnd->timezone);
 
-            if ($event->date_start == $event->date_end) {
+            if ($meetup->date_start == $meetup->date_end) {
                 $getDefaultTime = function ($str) {
                     return explode(':', $str);
                 };
 
-                $event->date_start = $event->date_start->setTime(...$getDefaultTime(env('ANIMEXX_EVENT_DEFAULT_START_TIME')));
-                $event->date_end = $event->date_start->setTime(...$getDefaultTime(env('ANIMEXX_EVENT_DEFAULT_END_TIME')));
+                $meetup->date_start = $meetup->date_start->setTime(...$getDefaultTime(env('ANIMEXX_EVENT_DEFAULT_START_TIME')));
+                $meetup->date_end = $meetup->date_start->setTime(...$getDefaultTime(env('ANIMEXX_EVENT_DEFAULT_END_TIME')));
             }
 
-            $event->zip = $animexxEvent->zip;
-            $event->city = $animexxEvent->city;
-            $event->state = $animexxEvent->state;
-            $event->contact_id = (int) filter_var($animexxEvent->contact, FILTER_SANITIZE_NUMBER_INT);;
-            $event->attendees = $animexxEvent->attendees;
-            $event->intro = $animexxEvent->intro;
-            $event->main_image = $animexxEvent->mainImage;
-            $event->logo_image = $animexxEvent->logoImage;
-            $event->country = $animexxEvent->country;
-            $event->geo_lat = $animexxEvent->geoLat;
-            $event->geo_long = $animexxEvent->geoLong;
-            $event->geo_zoom = $animexxEvent->geoZoom;
-            $event->geo_type = $animexxEvent->geoType;
-            $event->event_type_external_id = $animexxEvent->type->id;
+            $meetup->zip = $animexxEvent->zip;
+            $meetup->city = $animexxEvent->city;
+            $meetup->state = $animexxEvent->state;
+            $meetup->contact_id = (int) filter_var($animexxEvent->contact, FILTER_SANITIZE_NUMBER_INT);;
+            $meetup->attendees = $animexxEvent->attendees;
+            $meetup->intro = $animexxEvent->intro;
+            $meetup->main_image = $animexxEvent->mainImage;
+            $meetup->logo_image = $animexxEvent->logoImage;
+            $meetup->country = $animexxEvent->country;
+            $meetup->geo_lat = $animexxEvent->geoLat;
+            $meetup->geo_long = $animexxEvent->geoLong;
+            $meetup->geo_zoom = $animexxEvent->geoZoom;
+            $meetup->geo_type = $animexxEvent->geoType;
+            $meetup->meetup_type_external_id = $animexxEvent->type->id;
 
-            $events->push($event);
+            $meetups->push($meetup);
         }
 
 
-        $this->logInfo('Number of events: ' . count($events));
+        $this->logInfo('Number of events: ' . count($meetups));
         $this->line('');
 
-        $this->insertEvents($events);
+        $this->insertMeetups($meetups);
 
         $timeElapsedInSeconds = microtime(true) - $start;
 
@@ -114,26 +114,26 @@ class CrawlAnimexxEvents extends BaseCommand
         $this->line('');
     }
 
-    private function insertEvents(Collection $events)
+    private function insertMeetups(Collection $meetups)
     {
-        $externalIds = Event::whereNotNull('external_id')->pluck('external_id')->toArray();
+        $externalIds = Meetup::whereNotNull('external_id')->pluck('external_id')->toArray();
 
-        $newEvents = $events->filter(function ($event) use ($externalIds) {
-            return !in_array($event['external_id'], $externalIds);
+        $newMeetups = $meetups->filter(function ($meetup) use ($externalIds) {
+            return !in_array($meetup['external_id'], $externalIds);
         });
 
-        $this->logInfo('Number of new events: ' . count($newEvents));
+        $this->logInfo('Number of new events: ' . count($newMeetups));
         $this->line('');
 
-        foreach ($newEvents as $i => $event) {
-            $event->description = fetchEventDescriptionFor($event->external_id);
+        foreach ($newMeetups as $i => $meetup) {
+            $meetup->description = fetchMeetupDescriptionFor($meetup->external_id);
 
-            $event->save();
+            $meetup->save();
 
-            storeGoogleEventFor($event);
+            storeGoogleEventFor($meetup);
 
-            $this->verbose(function () use ($event) {
-                $this->line('Added event #' . $event->external_id);
+            $this->verbose(function () use ($meetup) {
+                $this->line('Added event #' . $meetup->external_id);
             });
         }
     }

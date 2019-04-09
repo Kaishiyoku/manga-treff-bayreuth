@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Console\BaseCommand;
-use App\Models\Event;
+use App\Models\Meetup;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
 use Spatie\GoogleCalendar\Event as GoogleEvent;
@@ -49,12 +49,12 @@ class FillGoogleCalendar extends BaseCommand
 
             clearGoogleCalendar();
 
-            foreach (Event::all() as $event) {
-                $this->verbose(function () use ($event) {
-                    $this->line(' ' . $event->date);
+            foreach (Meetup::all() as $meetup) {
+                $this->verbose(function () use ($meetup) {
+                    $this->line(' ' . $meetup->date);
                 });
 
-                storeGoogleEventFor($event);
+                storeGoogleEventFor($meetup);
             }
 
             $timeElapsedInSeconds = microtime(true) - $start;

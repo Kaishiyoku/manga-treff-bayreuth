@@ -3,15 +3,15 @@
 return [
     'index' => [
         'description' => 'Wir treffen uns jeden 1. Samstag eines Monats. Treffpunk ist der Bayreuther Hauptbahnhof gegen 14:00 Uhr.',
-        'events' => [
+        'meetups' => [
             'animexx_series' => 'Animexx-Eventreihe',
             'google_calendar' => 'Google Kalender',
-            'upcoming' => 'Kommende Events',
-            'past' => 'Vergangene Events',
+            'upcoming' => 'Kommende Treffen',
+            'past' => 'Vergangene Treffen',
             'none' => 'Keine.',
-            'next_upcoming_at' => 'Das nächstes Event findet am :date statt.',
+            'next_upcoming_at' => 'Das nächstes Treffen findet am :date statt.',
             'show_in_google_maps' => 'In Google Maps anzeigen',
-            'next_upcoming' => 'Nächstes Event',
+            'next_upcoming' => 'Nächstes Treffen',
         ],
     ],
     'imprint' => [

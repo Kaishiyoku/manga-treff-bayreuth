@@ -7,9 +7,12 @@ Route::group(['middleware' => ['menus']], function () {
     Route::get('/contact', 'HomeController@showContactForm')->name('home.show_contact_form');
     Route::post('/contact', 'HomeController@sendContactForm')->name('home.send_contact_form');
 
-    Route::get('/events/upcoming', 'EventController@upcoming')->name('events.upcoming');
-    Route::get('/events/past', 'EventController@past')->name('events.past');
-    Route::resource('events', 'EventController')->only(['show']);
+    Route::get('/meetups/upcoming', 'MeetupController@upcoming')->name('meetups.upcoming');
+    Route::get('/meetups/past', 'MeetupController@past')->name('meetups.past');
+    Route::resource('meetups', 'MeetupController')->only(['show']);
+
+    Route::redirect('/events/upcoming', '/meetups/upcoming', 302);
+    Route::redirect('/events/past', '/meetups/past', 302);
 
     Auth::routes();
 
@@ -35,7 +38,7 @@ Route::group(['middleware' => ['menus']], function () {
         Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/', 'Admin\HomeController@index')->name('home.index');
             Route::resource('users', 'Admin\UserController', ['except' => 'show']);
-            Route::resource('events', 'Admin\EventController', ['except' => ['create', 'store', 'show']]);
+            Route::resource('meetups', 'Admin\MeetupController', ['except' => ['create', 'store', 'show']]);
         });
     });
 });

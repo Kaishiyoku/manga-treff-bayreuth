@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Event;
+use App\Models\Meetup;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 use RestCord\DiscordClient;
@@ -47,15 +47,15 @@ class SendEventNotificationToDiscord extends Command
      */
     public function handle()
     {
-        $nextUpcomingEvent = Event::where('date_start', '>=', Carbon::today())->orderBy('date_start')->first();
-        $diffInHours = now()->diffInHours($nextUpcomingEvent->date_start);
+        $nextUpcomingMeetup = Meetup::where('date_start', '>=', Carbon::today())->orderBy('date_start')->first();
+        $diffInHours = now()->diffInHours($nextUpcomingMeetup->date_start);
 
-        if (!empty($nextUpcomingEvent) && $diffInHours <= 24 && $diffInHours > 23) {
-            $formattedDate = $nextUpcomingEvent->date_start->format('d.m.Y H:i');
+        if (!empty($nextUpcomingMeetup) && $diffInHours <= 24 && $diffInHours > 23) {
+            $formattedDate = $nextUpcomingMeetup->date_start->format('d.m.Y H:i');
 
             $this->discordClient->channel->createMessage([
                 'channel.id' => 476121162456367125,
-                'content' => "@everyone <@&552521261771653130> Nächstes Event am {$formattedDate}. Treffpunkt im Bahnhof",
+                'content' => "@everyone Nächstes Event am {$formattedDate}. Treffpunkt im Bahnhof",
             ]);
         }
     }

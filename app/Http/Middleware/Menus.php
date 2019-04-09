@@ -40,7 +40,7 @@ class Menus
 
         Menu::registerDefault([
             Menu::linkRoute('home.index', '<i class="fas fa-home"></i> ' . __('common.home')),
-            Menu::linkRoute('events.upcoming', '<i class="fas fa-calendar"></i> ' . __('common.events'), [], [], ['events.past', 'events.show']),
+            Menu::linkRoute('meetups.upcoming', '<i class="fas fa-calendar"></i> ' . __('common.meetups'), [], [], ['meetups.past', 'meetups.show']),
             Menu::linkRoute('home.discord', '<i class="fab fa-discord"></i> ' . __('common.discord.title')),
         ], ['class' => 'navbar-nav mr-auto']);
 
@@ -56,7 +56,7 @@ class Menus
 
         Menu::register('admin', [
             Menu::linkRoute('admin.users.index', '<i class="fas fa-users"></i> ' . __('common.users'), [], [], ['admin.users.create', 'admin.users.edit']),
-            Menu::linkRoute('admin.events.index', '<i class="fas fa-calendar"></i> ' . __('common.events'), [], [], ['admin.events.edit']),
+            Menu::linkRoute('admin.meetups.index', '<i class="fas fa-calendar"></i> ' . __('common.meetups'), [], [], ['admin.meetups.edit']),
         ], ['class' => 'navbar-nav mr-auto']);
 
         return $next($request);

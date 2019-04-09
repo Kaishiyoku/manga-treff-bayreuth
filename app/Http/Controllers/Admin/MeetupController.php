@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Event;
+use App\Models\Meetup;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 
-class EventController extends Controller
+class MeetupController extends Controller
 {
     /**
      * @var string
      */
-    private $redirectRoute = 'admin.events.index';
+    private $redirectRoute = 'admin.meetups.index';
 
     /**
      * Display a listing of the resource.
@@ -23,39 +23,39 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::orderBy('date_start', 'desc');
+        $meetups = Meetup::orderBy('date_start', 'desc');
 
-        return view('admin.event.index', compact('events'));
+        return view('admin.meetup.index', compact('meetups'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Event $event
+     * @param Meetup $meetup
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit(Meetup $meetup)
     {
-        return view('admin.event.edit', compact('event'));
+        return view('admin.meetup.edit', compact('meetup'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param Event $event
+     * @param Meetup $meetup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, Meetup $meetup)
     {
         $request->validate($this->getValidationRules());
 
-        $event->fill($request->only($this->getFillableFields()));
-        $event->date_start = Carbon::createFromFormat(__('date.datetime'), $request->get('date_start') . ' ' . $request->get('time_start'));
-        $event->date_end = Carbon::createFromFormat(__('date.datetime'), $request->get('date_end') . ' ' . $request->get('time_end'));
-        $event->save();
+        $meetup->fill($request->only($this->getFillableFields()));
+        $meetup->date_start = Carbon::createFromFormat(__('date.datetime'), $request->get('date_start') . ' ' . $request->get('time_start'));
+        $meetup->date_end = Carbon::createFromFormat(__('date.datetime'), $request->get('date_end') . ' ' . $request->get('time_end'));
+        $meetup->save();
 
-        flash()->success(__('event.admin.edit.success'));
+        flash()->success(__('meetup.admin.edit.success'));
 
         return redirect()->route($this->redirectRoute);
     }
@@ -63,15 +63,15 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Event $event
+     * @param Meetup $meetup
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy(Event $event)
+    public function destroy(Meetup $meetup)
     {
-        $event->delete();
+        $meetup->delete();
 
-        flash()->success(__('event.admin.destroy.success'));
+        flash()->success(__('meetup.admin.destroy.success'));
 
         return redirect()->route($this->redirectRoute);
     }

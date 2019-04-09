@@ -9,9 +9,9 @@
                         @lang('home.index.description')
                     </p>
 
-                    @if ($nextUpcomingEvent)
+                    @if ($nextUpcomingMeetup)
                         <p class="lead">
-                            @lang('home.index.events.next_upcoming_at', ['date' => '<a href="' . $nextUpcomingEvent->getUrl() . '">' . $nextUpcomingEvent->date_start->format(__('date.short')) . '</a>'])
+                            @lang('home.index.meetups.next_upcoming_at', ['date' => '<a href="' . $nextUpcomingMeetup->getUrl() . '">' . $nextUpcomingMeetup->date_start->format(__('date.short')) . '</a>'])
                         </p>
                     @endif
 
@@ -19,7 +19,7 @@
                         <a class="btn btn-block btn-lg btn-outline-primary" href="{{ env('SHORT_EVENT_BASE_URL') }}">
                             <i class="far fa-calendar"></i>
 
-                            @lang('home.index.events.animexx_series')
+                            @lang('home.index.meetups.animexx_series')
 
                             @include('shared._external_icon')
                         </a>
@@ -31,7 +31,7 @@
                         <a class="btn btn-block btn-lg btn-outline-primary" href="{{ env('GOOGLE_CALENDAR_PUBLIC_URL') }}">
                             <i class="far fa-calendar"></i>
 
-                            @lang('home.index.events.google_calendar')
+                            @lang('home.index.meetups.google_calendar')
 
                             @include('shared._external_icon')
                         </a>
@@ -43,10 +43,10 @@
                 </div>
             </div>
 
-            @if ($nextUpcomingEvent)
-                <h1 class="pt-5">@lang('home.index.events.next_upcoming')</h1>
+            @if ($nextUpcomingMeetup)
+                <h1 class="pt-5">@lang('home.index.meetups.next_upcoming')</h1>
 
-                @include('home._event_card', ['event' => $nextUpcomingEvent, 'isHighlighted' => true])
+                @include('home._meetup_card', ['meetup' => $nextUpcomingMeetup, 'isHighlighted' => true])
             @endif
         </div>
 

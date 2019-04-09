@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\NewEmailSet;
 use App\Mail\EmailChanged;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;

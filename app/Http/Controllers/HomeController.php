@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactFormSent;
-use App\Models\Event;
+use App\Models\Meetup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
@@ -20,9 +20,9 @@ class HomeController extends Controller
             });
         };
 
-        $nextUpcomingEvent = Event::where('date_start', '>=', Carbon::today())->orderBy('date_start')->first();
+        $nextUpcomingMeetup = Meetup::where('date_start', '>=', Carbon::today())->orderBy('date_start')->first();
 
-        return view('home.index', compact('futureEvents', 'pastEvents', 'nextUpcomingEvent', 'discordItem', 'getDiscordMembersInChannel'));
+        return view('home.index', compact('nextUpcomingMeetup', 'discordItem', 'getDiscordMembersInChannel'));
     }
 
     /**

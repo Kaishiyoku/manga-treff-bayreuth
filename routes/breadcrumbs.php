@@ -5,24 +5,24 @@ Breadcrumbs::for('home.index', function ($trail) {
     $trail->push('Home', route('home.index'));
 });
 
-// Upcoming events
-Breadcrumbs::for('events.upcoming', function ($trail) {
-    $trail->push(__('home.index.events.upcoming'), route('events.upcoming'));
+// Upcoming meetups
+Breadcrumbs::for('meetups.upcoming', function ($trail) {
+    $trail->push(__('home.index.meetups.upcoming'), route('meetups.upcoming'));
 });
 
-// Past events
-Breadcrumbs::for('events.past', function ($trail) {
-    $trail->push(__('home.index.events.past'), route('events.past'));
+// Past meetups
+Breadcrumbs::for('meetups.past', function ($trail) {
+    $trail->push(__('home.index.meetups.past'), route('meetups.past'));
 });
 
-// Upcoming events > [Event]
-Breadcrumbs::for('events.show_upcoming', function ($trail, \App\Models\Event $event) {
-    $trail->parent('events.upcoming');
-    $trail->push($event->date_start->format(__('date.datetime')), route('events.show', $event));
+// Upcoming meetups > [Meetup]
+Breadcrumbs::for('meetups.show_upcoming', function ($trail, \App\Models\Meetup $meetup) {
+    $trail->parent('meetups.upcoming');
+    $trail->push($meetup->date_start->format(__('date.datetime')), route('meetups.show', $meetup));
 });
 
-// Past events > [Event]
-Breadcrumbs::for('events.show_past', function ($trail, \App\Models\Event $event) {
-    $trail->parent('events.past');
-    $trail->push($event->date_start->format(__('date.datetime')), route('events.show', $event));
+// Past meetups > [Meetup]
+Breadcrumbs::for('meetups.show_past', function ($trail, \App\Models\Meetup $meetup) {
+    $trail->parent('meetups.past');
+    $trail->push($meetup->date_start->format(__('date.datetime')), route('meetups.show', $meetup));
 });

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Models\Event;
+use App\Models\Meetup;
 
 class AddDetailFieldsToEvents extends Migration
 {
@@ -22,7 +22,7 @@ class AddDetailFieldsToEvents extends Migration
         });
 
         // clear all events afterwards so that the additional needed date is being fetched
-        Event::truncate();
+        Meetup::truncate();
     }
 
     /**

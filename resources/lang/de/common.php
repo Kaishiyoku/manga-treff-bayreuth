@@ -20,7 +20,7 @@ return [
     'login' => 'Login',
     'logout' => 'Logout',
     'home' => 'Startseite',
-    'events' => 'Events',
+    'meetups' => 'Treffen',
     'users' => 'Benutzer',
     'delete' => 'Löschen',
     'edit' => 'Ändern',
