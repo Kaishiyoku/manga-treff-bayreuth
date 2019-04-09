@@ -41,6 +41,7 @@ class Menus
         Menu::registerDefault([
             Menu::linkRoute('home.index', '<i class="fas fa-home"></i> ' . __('common.home')),
             Menu::linkRoute('events.upcoming', '<i class="fas fa-calendar"></i> ' . __('common.events'), [], [], ['events.past', 'events.show']),
+            Menu::linkRoute('home.discord', '<i class="fab fa-discord"></i> ' . __('common.discord.title')),
         ], ['class' => 'navbar-nav mr-auto']);
 
         Menu::register('auth_public', [
