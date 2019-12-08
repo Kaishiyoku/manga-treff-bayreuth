@@ -90,6 +90,7 @@ return [
     'not'               => 'Der gewählte Wert für :attribute ist ungültig.',
     'not_regex'            => ':attribute hat ein ungültiges Format.',
     'numeric'              => ':attribute muss eine Zahl sein.',
+    'password'             => 'Passwörter müssen mindestens 6 Zeichen lang sein und korrekt bestätigt werden.',
     'present'              => ':attribute muss vorhanden sein.',
     'regex'                => ':attribute Format ist ungültig.',
     'required'             => ':attribute muss ausgefüllt sein.',
