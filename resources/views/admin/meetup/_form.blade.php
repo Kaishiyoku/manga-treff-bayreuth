@@ -1,4 +1,46 @@
 <div class="form-group row">
+    {{ Form::label('name', __('validation.attributes.name'), ['class' => 'col-lg-2 col-form-label']) }}
+
+    <div class="col-lg-10">
+        {{ Form::text('name', old('name', $meetup->name), ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required' => true, 'disabled' => !$meetup->is_manually_added]) }}
+
+        @if ($errors->has('name'))
+            <div class="invalid-feedback">
+                {{ $errors->first('name') }}
+            </div>
+        @endif
+    </div>
+</div>
+
+<div class="form-group row">
+    {{ Form::label('attendees', __('validation.attributes.attendees'), ['class' => 'col-lg-2 col-form-label']) }}
+
+    <div class="col-lg-3">
+        {{ Form::text('attendees', old('attendees', $meetup->attendees), ['class' => 'form-control' . ($errors->has('attendees') ? ' is-invalid' : ''), 'disabled' => !$meetup->is_manually_added]) }}
+
+        @if ($errors->has('attendees'))
+            <div class="invalid-feedback">
+                {{ $errors->first('attendees') }}
+            </div>
+        @endif
+    </div>
+</div>
+
+<div class="form-group row">
+    {{ Form::label('meetup_type_external_id', __('validation.attributes.meetup_type_external_id'), ['class' => 'col-lg-2 col-form-label']) }}
+
+    <div class="col-lg-3">
+        {{ Form::select('meetup_type_external_id', $meetupTypes, old('meetup_type_external_id', $meetup->meetup_type_external_id), ['class' => 'form-control' . ($errors->has('meetup_type_external_id') ? ' is-invalid' : ''), 'disabled' => !$meetup->is_manually_added]) }}
+
+        @if ($errors->has('meetup_type_external_id'))
+            <div class="invalid-feedback">
+                {{ $errors->first('meetup_type_external_id') }}
+            </div>
+        @endif
+    </div>
+</div>
+
+<div class="form-group row">
     {{ Form::label('date_start', __('validation.attributes.date_start'), ['class' => 'col-lg-2 col-form-label']) }}
 
     <div class="col-lg-3">
@@ -16,7 +58,7 @@
     {{ Form::label('time_start', __('validation.attributes.time_start'), ['class' => 'col-lg-2 col-form-label']) }}
 
     <div class="col-lg-3">
-        {{ Form::text('time_start', old('time_start', $meetup->date_start->format(__('date.time'))), ['class' => 'form-control' . ($errors->has('time_start') ? ' is-invalid' : ''), 'required' => true]) }}
+        {{ Form::time('time_start', old('time_start', $meetup->date_start->format(__('date.time'))), ['class' => 'form-control' . ($errors->has('time_start') ? ' is-invalid' : ''), 'required' => true]) }}
 
         @if ($errors->has('time_start'))
             <div class="invalid-feedback">
@@ -46,7 +88,7 @@
     {{ Form::label('time_end', __('validation.attributes.time_end'), ['class' => 'col-lg-2 col-form-label']) }}
 
     <div class="col-lg-3">
-        {{ Form::text('time_end', old('time_end', $meetup->date_end->format(__('date.time'))), ['class' => 'form-control' . ($errors->has('time_end') ? ' is-invalid' : ''), 'required' => true]) }}
+        {{ Form::time('time_end', old('time_end', $meetup->date_end->format(__('date.time'))), ['class' => 'form-control' . ($errors->has('time_end') ? ' is-invalid' : ''), 'required' => true]) }}
 
         @if ($errors->has('time_end'))
             <div class="invalid-feedback">

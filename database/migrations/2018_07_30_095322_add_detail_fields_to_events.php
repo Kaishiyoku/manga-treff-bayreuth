@@ -22,7 +22,7 @@ class AddDetailFieldsToEvents extends Migration
         });
 
         // clear all events afterwards so that the additional needed date is being fetched
-        Meetup::truncate();
+        DB::table('events')->truncate();;
     }
 
     /**

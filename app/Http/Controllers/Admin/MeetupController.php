@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Meetup;
+use App\Models\MeetupType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class MeetupController extends Controller
 {
@@ -29,6 +31,49 @@ class MeetupController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $meetup = new Meetup();
+        $meetup->is_manually_added = true;
+
+        $meetup->date_start = now()->addHour()->setMinutes(0);
+        $meetup->date_end = $meetup->date_start->addHour();
+
+        $meetupTypes = $this->getMeetupTypes();
+
+        return view('admin.meetup.create', compact('meetup', 'meetupTypes'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate($this->getValidationRules());
+
+        $meetup = new Meetup();
+        $meetup->is_manually_added = true;
+        $meetup->contact_id = env('DEFAULT_CONTACT_ID');
+
+        $meetup->fill($request->only($this->getFillableFields()));
+
+        $meetup->date_start = Carbon::createFromFormat(__('date.datetime'), $request->get('date_start') . ' ' . $request->get('time_start'));
+        $meetup->date_end = Carbon::createFromFormat(__('date.datetime'), $request->get('date_end') . ' ' . $request->get('time_end'));
+        $meetup->save();
+
+        flash(__('meetup.admin.create.success'))->success();
+
+        return redirect()->route($this->redirectRoute);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param Meetup $meetup
@@ -36,7 +81,9 @@ class MeetupController extends Controller
      */
     public function edit(Meetup $meetup)
     {
-        return view('admin.meetup.edit', compact('meetup'));
+        $meetupTypes = $this->getMeetupTypes();
+
+        return view('admin.meetup.edit', compact('meetup', 'meetupTypes'));
     }
 
     /**
@@ -89,6 +136,10 @@ class MeetupController extends Controller
             'city',
             'intro',
             'description',
+            'contact_id',
+            'name',
+            'attendees',
+            'meetup_type_external_id',
         ];
     }
 
@@ -109,6 +160,13 @@ class MeetupController extends Controller
             'city' => 'required',
             'intro' => 'required',
             'description' => 'required',
+            'attendees' => 'required',
+            'meetup_type_external_id' => ['required', Rule::in(MeetupType::pluck('external_id'))],
         ];
+    }
+
+    private function getMeetupTypes()
+    {
+        return MeetupType::pluck('title', 'external_id');
     }
 }

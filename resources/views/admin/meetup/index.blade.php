@@ -3,6 +3,10 @@
 @section('content')
     <h1>@lang('meetup.admin.index.title')</h1>
 
+    <p>
+        {{ Html::linkRoute('admin.meetups.create', __('meetup.admin.index.new_meetup'), null, ['class' => 'btn btn-outline-primary']) }}
+    </p>
+
     @if ($meetups->get()->count() == 0)
         @include('shared._no_entries_yet')
     @else
@@ -13,18 +17,24 @@
                 <th>@lang('validation.attributes.date_start')</th>
                 <th>@lang('validation.attributes.date_end')</th>
                 <th>@lang('meetup.admin.index.animexx_event')</th>
+                <th>@lang('validation.attributes.is_manually_added')</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
                 @foreach ($meetups->get() as $meetup)
-                    <tr>
+                    <tr class="{{ $meetup->is_manually_added ? 'bg-info' : '' }}">
                         <td>{{ $meetup->name }}</td>
                         <td>{{ $meetup->date_start->format(__('date.datetime')) }}</td>
                         <td>{{ $meetup->date_end->format(__('date.datetime')) }}</td>
                         <td>
-                            {{ Html::link($meetup->getUrl(), $meetup->external_id) }}
+                            @if ($meetup->is_manually_added)
+                                /
+                            @else
+                                {{ Html::link($meetup->getUrl(), $meetup->external_id) }}
+                            @endif
                         </td>
+                        <td>{{ formatBoolean($meetup->is_manually_added) }}</td>
                         <td class="text-right">
                             @include('shared._delete_link', ['route' => ['admin.meetups.destroy', $meetup]])
 

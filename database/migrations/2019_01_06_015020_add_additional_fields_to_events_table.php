@@ -14,7 +14,7 @@ class AddAdditionalFieldsToEventsTable extends Migration
      */
     public function up()
     {
-        Meetup::truncate();
+        DB::table('events')->truncate();
 
         Schema::table('events', function (Blueprint $table) {
             $table->dropColumn('date');
@@ -30,7 +30,7 @@ class AddAdditionalFieldsToEventsTable extends Migration
             $table->string('state');
             $table->unsignedInteger('contact_id');
             $table->string('attendees');
-            $table->string('intro');
+            $table->text('intro');
             $table->string('main_image')->nullable();
             $table->string('logo_image')->nullable();
             $table->string('country');
@@ -51,7 +51,7 @@ class AddAdditionalFieldsToEventsTable extends Migration
      */
     public function down()
     {
-        Meetup::truncate();
+        DB::table('events')->truncate();
 
         Schema::table('events', function (Blueprint $table) {
             $table->dropForeign('meetups_event_type_external_id_foreign');

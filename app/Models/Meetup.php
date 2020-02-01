@@ -55,10 +55,14 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereZip($value)
  * @mixin \Eloquent
+ * @property int $is_manually_added
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereIsManuallyAdded($value)
+ * @property int $id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereId($value)
  */
 class Meetup extends Model
 {
-    protected $primaryKey = 'external_id';
+    protected $primaryKey = 'id';
 
     public $incrementing = false;
 
@@ -92,6 +96,7 @@ class Meetup extends Model
         'geo_zoom',
         'geo_type',
         'meetup_type_external_id',
+        'attendees',
     ];
 
     /**

@@ -38,7 +38,7 @@ Route::group(['middleware' => ['menus']], function () {
         Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/', 'Admin\HomeController@index')->name('home.index');
             Route::resource('users', 'Admin\UserController', ['except' => 'show']);
-            Route::resource('meetups', 'Admin\MeetupController', ['except' => ['create', 'store', 'show']]);
+            Route::resource('meetups', 'Admin\MeetupController', ['except' => ['show']]);
         });
     });
 });
