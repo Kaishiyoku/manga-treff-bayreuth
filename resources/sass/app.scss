@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i');
 @import 'bootstrap/bootstrap';
-@import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fontawesome";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-$fa-font-path: "../fonts";
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
 
-@import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-brands";
-@import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-light";
-@import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-regular";
-@import "../../node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-solid";
-
-@import "waves";
+@import 'waves';
 
 body {
   padding-bottom: 3rem;
@@ -46,14 +43,14 @@ footer {
     &.btn-delete {
       margin-top: -2px;
       padding: 0 7px 1px;
-      color: saturate(theme-color("danger"), 30%);
+      color: saturate(theme-color('danger'), 30%);
     }
   }
 
   &.btn-plain {
     &:hover, &:focus {
-      color: theme-color("primary");
-      border: 1px solid lighten(theme-color("primary"), 30%);
+      color: theme-color('primary');
+      border: 1px solid lighten(theme-color('primary'), 30%);
       background-color: transparent !important;
     }
   }
@@ -97,7 +94,7 @@ footer {
 }
 
 .border-primary-darker {
-  border-color: darken(theme-color("primary"), 10%) !important;
+  border-color: darken(theme-color('primary'), 10%) !important;
 }
 
 .shadow-md {

@@ -4,8 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use Kaishiyoku\Menu\Config\Config;
-use Kaishiyoku\Menu\Facades\Menu;
 
 class Menus
 {
@@ -36,28 +34,24 @@ class Menus
      */
     public function handle($request, Closure $next)
     {
-        Menu::setConfig(Config::forBootstrap4());
+        \LaravelMenu::register()
+            ->addClassNames('mr-auto')
+            ->link('home.index', '<i class="fas fa-home"></i> ' . __('common.home'), true)
+            ->link('meetups.upcoming,meetups.past,meetups.show', '<i class="fas fa-calendar"></i> ' . __('common.meetups'))
+            ->link('home.discord', '<i class="fab fa-discord"></i> ' . __('common.discord.title'), true);
 
-        Menu::registerDefault([
-            Menu::linkRoute('home.index', '<i class="fas fa-home"></i> ' . __('common.home')),
-            Menu::linkRoute('meetups.upcoming', '<i class="fas fa-calendar"></i> ' . __('common.meetups'), [], [], ['meetups.past', 'meetups.show']),
-            Menu::linkRoute('home.discord', '<i class="fab fa-discord"></i> ' . __('common.discord.title')),
-        ], ['class' => 'navbar-nav mr-auto']);
+        \LaravelMenu::register('auth_public')
+            ->link('login', '<i class="fas fa-sign-in-alt"></i> ' . __('common.login'))
+            ->link('register', '<i class="fas fa-user-plus"></i> ' . __('common.register'));
 
-        Menu::register('auth_public', [
-            Menu::linkRoute('login', '<i class="fas fa-sign-in-alt"></i> ' . __('common.login')),
-            Menu::linkRoute('register', '<i class="fas fa-user-plus"></i> ' . __('common.register')),
-        ], ['class' => 'navbar-nav']);
+        \LaravelMenu::register('auth_logged_in')
+            ->linkIf($this->isLoggedIn(), 'profile.index,profile.login_attempts,profile.active_sessions', '<i class="fas fa-user"></i> ' . __('common.profile'))
+            ->linkIf($this->isAdmin(), 'admin.home.index', '<i class="fas fa-unlock"></i> ' . __('common.administration'));
 
-        Menu::register('auth_logged_in', [
-            Menu::linkRoute('profile.index', '<i class="fas fa-user"></i> ' . __('common.profile'), [], [], ['profile.login_attempts', 'profile.active_sessions'], $this->auth->check()),
-            Menu::linkRoute('admin.home.index', '<i class="fas fa-unlock"></i> ' . __('common.administration'), [], [], [], $this->isAdmin())
-        ], ['class' => 'navbar-nav']);
-
-        Menu::register('admin', [
-            Menu::linkRoute('admin.users.index', '<i class="fas fa-users"></i> ' . __('common.users'), [], [], ['admin.users.create', 'admin.users.edit']),
-            Menu::linkRoute('admin.meetups.index', '<i class="fas fa-calendar"></i> ' . __('common.meetups'), [], [], ['admin.meetups.edit']),
-        ], ['class' => 'navbar-nav mr-auto']);
+        \LaravelMenu::register('admin')
+            ->addClassNames('mr-auto')
+            ->link('admin.users.index,admin.users.create,admin.users.edit', '<i class="fas fa-users"></i> ' . __('common.users'), true)
+            ->link('admin.meetups.index,admin.meetups.edit', '<i class="fas fa-calendar"></i> ' . __('common.meetups'), true);
 
         return $next($request);
     }
@@ -65,8 +59,16 @@ class Menus
     /**
      * @return bool
      */
+    private function isLoggedIn()
+    {
+        return $this->auth->check();
+    }
+
+    /**
+     * @return bool
+     */
     private function isAdmin()
     {
-        return $this->auth->check() && $this->auth->user()->is_admin;
+        return $this->isLoggedIn() && $this->auth->user()->is_admin;
     }
 }

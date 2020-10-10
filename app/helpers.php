@@ -1,5 +1,7 @@
 <?php
 
+use GrahamCampbell\Security\Facades\Security;
+
 if (!function_exists('getUrlForAnimexxMeetupSeries')) {
     function getUrlForAnimexxMeetupSeries($id)
     {
@@ -59,13 +61,10 @@ if (!function_exists('replaceNewLines')) {
     }
 }
 
-if (!function_exists('purifyHtml')) {
-    function purifyHtml($html)
+if (!function_exists('cleanHtml')) {
+    function cleanHtml($html)
     {
-        $config = HTMLPurifier_Config::createDefault();
-        $purifier = new HTMLPurifier($config);
-
-        return $purifier->purify($html);
+        return Security::clean($html);
     }
 }
 

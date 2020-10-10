@@ -23,7 +23,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            {!! Menu::render('admin') !!}
+            {!! LaravelMenu::render('admin') !!}
 
             @if (auth()->check())
                 @include('shared._logout_navbar')

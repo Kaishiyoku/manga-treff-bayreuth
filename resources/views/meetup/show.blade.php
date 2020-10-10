@@ -42,6 +42,6 @@
     <hr/>
 
     <div>
-        {!! purifyHtml($meetup->description) !!}
+        {!! cleanHtml($meetup->description) !!}
     </div>
 @endsection

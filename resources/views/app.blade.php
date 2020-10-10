@@ -23,14 +23,14 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            {!! Menu::render() !!}
+            {!! LaravelMenu::render() !!}
 
             @if (auth()->check())
-                {!! Menu::render('auth_logged_in') !!}
+                {!! LaravelMenu::render('auth_logged_in') !!}
 
                 @include('shared._logout_navbar')
             @else
-                {!! Menu::render('auth_public') !!}
+                {!! LaravelMenu::render('auth_public') !!}
             @endif
         </div>
     </div>
