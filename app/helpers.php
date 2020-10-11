@@ -1,6 +1,7 @@
 <?php
 
 use GrahamCampbell\Security\Facades\Security;
+use \Illuminate\Support\Facades\Http;
 
 if (!function_exists('getUrlForAnimexxMeetupSeries')) {
     function getUrlForAnimexxMeetupSeries($id)
@@ -47,10 +48,14 @@ if (!function_exists('fetchMeetupDescriptionFor')) {
 if (!function_exists('getExternalContent')) {
     function getExternalContent($url)
     {
-        $client = new \GuzzleHttp\Client();
-        $response = $client->get($url);
+        return Http::get($url)->body();
+    }
+}
 
-        return $response->getBody()->getContents();
+if (!function_exists('getExternalJson')) {
+    function getExternalJson($url)
+    {
+        return json_decode(Http::get($url)->body());
     }
 }
 
@@ -129,6 +134,6 @@ if (!function_exists('clearGoogleCalendar')) {
 if (!function_exists('fetchDiscordWidgetApiContent')) {
     function fetchDiscordWidgetApiContent()
     {
-        return json_decode(getExternalContent(env('DISCORD_WIDGET_API_URL')));
+        return getExternalJson(env('DISCORD_WIDGET_API_URL'));
     }
 }

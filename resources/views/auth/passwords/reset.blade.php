@@ -1,59 +1,71 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">@lang('auth.reset.title')</div>
+<main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
+    <div class="flex">
+        <div class="w-full">
+            <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
-                <div class="card-body">
-                    {{ Form::open(['route' => 'password.request', 'method' => 'post', 'role' => 'form']) }}
-                        {{ Form::hidden('token', $token) }}
+                <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
+                    {{ __('Reset Password') }}
+                </header>
 
-                        <div class="form-group row">
-                            {{ Form::label('email', __('validation.attributes.email'), ['class' => 'col-md-4 col-form-label text-md-right']) }}
+                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('password.update') }}">
+                    @csrf
 
-                            <div class="col-md-6">
-                                {{ Form::email('email', $email ?? old('email'), ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'required' => true, 'autofocus' => true]) }}
+                    <input type="hidden" name="token" value="{{ $token }}">
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                    <div class="flex flex-wrap">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                            {{ __('E-Mail Address') }}:
+                        </label>
 
-                        <div class="form-group row">
-                            {{ Form::label('password', __('validation.attributes.password'), ['class' => 'col-md-4 col-form-label text-md-right']) }}
+                        <input id="email" type="email"
+                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
+                            value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
-                            <div class="col-md-6">
-                                {{ Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'required' => true]) }}
+                        @error('email')
+                        <p class="text-red-500 text-xs italic mt-4">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                    </div>
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                    <div class="flex flex-wrap">
+                        <label for="password" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                            {{ __('Password') }}:
+                        </label>
 
-                        <div class="form-group row">
-                            {{ Form::label('password_confirmation', __('validation.attributes.password_confirmation'), ['class' => 'col-md-4 col-form-label text-md-right']) }}
+                        <input id="password" type="password"
+                            class="form-input w-full @error('password') border-red-500 @enderror" name="password"
+                            required autocomplete="new-password">
 
-                            <div class="col-md-6">
-                                {{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => true]) }}
-                            </div>
-                        </div>
+                        @error('password')
+                        <p class="text-red-500 text-xs italic mt-4">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                    </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                {{ Form::button(__('auth.reset.request.submit'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
-                            </div>
-                        </div>
-                    {{ Form::close() }}
-                </div>
-            </div>
+                    <div class="flex flex-wrap">
+                        <label for="password-confirm" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                            {{ __('Confirm Password') }}:
+                        </label>
+
+                        <input id="password-confirm" type="password" class="form-input w-full"
+                            name="password_confirmation" required autocomplete="new-password">
+                    </div>
+
+                    <div class="flex flex-wrap pb-8 sm:pb-10">
+                        <button type="submit"
+                        class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
+                            {{ __('Reset Password') }}
+                        </button>
+                    </div>
+                </form>
+
+            </section>
         </div>
     </div>
+</main>
 @endsection

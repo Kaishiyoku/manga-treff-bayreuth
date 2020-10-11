@@ -40,7 +40,7 @@
                             {{ Form::open(['route' => 'profile.destroy_session', 'method' => 'delete', 'role' => 'form']) }}
                                 {{ Form::hidden('id', $databaseSession->id) }}
 
-                                {{ Form::button('<i class="fas fa-sign-out" aria-hidden="true"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sn', 'data-confirm' => '', 'data-toggle' => 'tooltip', 'data-placement' => 'left', 'title' => __('profile.active_sessions.destroy')]) }}
+                                {{ Form::button('<i class="fas fa-sign-out" aria-hidden="true"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sn', 'data-confirm' => '']) }}
                             {{ Form::close() }}
                         </td>
                     </tr>

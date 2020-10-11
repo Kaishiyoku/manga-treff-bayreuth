@@ -32,6 +32,7 @@
         "doctrine/dbal": "^2.11",
         "facade/ignition": "^2.3",
         "fzaninotto/faker": "^1.9",
+        "laravel-frontend-presets/tailwindcss": "^4.3",
         "mockery/mockery": "^1.4",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.4"
