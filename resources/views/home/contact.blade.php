@@ -4,8 +4,6 @@
     <h1>{{ __('home.contact.title') }}</h1>
 
     {{ Form::open(['route' => 'home.send_contact_form', 'method' => 'post', 'role' => 'form']) }}
-        @captcha()
-
         <div class="form-group">
             {{ Form::label('email', __('validation.attributes.email'), ['class' => 'col-md-12 control-label']) }}
 

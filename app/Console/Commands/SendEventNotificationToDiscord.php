@@ -5,7 +5,10 @@ namespace App\Console\Commands;
 use App\Models\Meetup;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
-use RestCord\DiscordClient;
+use Illuminate\Support\Facades\Log;
+use Woeler\DiscordPhp\Exception\DiscordInvalidResponseException;
+use Woeler\DiscordPhp\Message\DiscordTextMessage;
+use Woeler\DiscordPhp\Webhook\DiscordWebhook;
 
 class SendEventNotificationToDiscord extends Command
 {
@@ -24,11 +27,6 @@ class SendEventNotificationToDiscord extends Command
     protected $description = 'Send an event notification to Discord';
 
     /**
-     * @var DiscordClient
-     */
-    private $discordClient;
-
-    /**
      * Create a new command instance.
      *
      * @return void
@@ -36,8 +34,6 @@ class SendEventNotificationToDiscord extends Command
     public function __construct()
     {
         parent::__construct();
-
-        $this->discordClient = new DiscordClient(['token' => env('DISCORD_BOT_TOKEN')]);
     }
 
     /**
@@ -53,10 +49,14 @@ class SendEventNotificationToDiscord extends Command
         if (!empty($nextUpcomingMeetup) && $diffInHours <= 24 && $diffInHours > 23) {
             $formattedDate = $nextUpcomingMeetup->date_start->format('d.m.Y H:i');
 
-            $this->discordClient->channel->createMessage([
-                'channel.id' => 476121162456367125,
-                'content' => "@everyone Nächstes Event am {$formattedDate}. Treffpunkt im Bahnhof",
-            ]);
+            try {
+                $message = (new DiscordTextMessage())->setContent("@everyone Nächstes Event am {$formattedDate}. Treffpunkt im Bahnhof");
+
+                $webhook = new DiscordWebhook(env('DISCORD_WEBHOOK_URL'));
+                $webhook->send($message);
+            } catch (DiscordInvalidResponseException $e) {
+                Log::error('Couldn\'t post to Discord. ' . $e->getMessage());
+            }
         }
     }
 }

@@ -64,7 +64,6 @@ class HomeController extends Controller
     public function sendContactForm(Request $request)
     {
         $validated = $request->validate([
-            'g-recaptcha-response' => 'required|captcha',
             'email' => 'required|email',
             'fullname' => 'required',
             'content' => 'required'
