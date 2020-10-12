@@ -1,5 +1,5 @@
 <div class="card mb-5">
-    <div class="flex items-center text-xl px-5 py-3 {{ isset($isHighlighted) && $isHighlighted ? 'bg-pink-600 text-white' : null }}">
+    <div class="flex items-center text-xl px-5 py-3 {{ isset($isHighlighted) && $isHighlighted ? 'bg-pink-600 text-white' : 'bg-gray-300' }}">
         <div class="flex-grow">{{ $meetup->date_start->format(__('date.datetime')) }}</div>
 
         <a href="{{ route('meetups.show', $meetup) }}" class="btn btn-outline-{{ isset($isHighlighted) && $isHighlighted ? 'white' : 'black' }} btn-sm">
