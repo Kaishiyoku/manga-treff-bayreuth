@@ -148,7 +148,7 @@ return [
         'first_name'                => 'Vorname',
         'last_name'                 => 'Nachname',
         'password'                  => 'Passwort',
-        'password_confirmation'     => 'Passwort-Bestätigung',
+        'password_confirmation'     => 'Passwort (Wiederholung)',
         'city'                      => 'Stadt',
         'country'                   => 'Land',
         'address'                   => 'Adresse',

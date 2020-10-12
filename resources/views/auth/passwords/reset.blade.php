@@ -1,71 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
-    <div class="flex">
-        <div class="w-full">
-            <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
+    <div class="mx-auto w-full max-w-sm bg-white shadow-md rounded text-left">
+        <div class="text-xl pb-4 text-gray-600 bg-gray-100 pt-4 pl-8">@lang('auth.reset.title')</div>
 
-                <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                    {{ __('Reset Password') }}
-                </header>
+        {{ Form::open(['route' => 'password.update', 'method' => 'post', 'role' => 'form', 'class' => 'px-8 pt-6 pb-8 mb-4']) }}
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
 
-                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('password.update') }}">
-                    @csrf
+        <div class="mb-4">
+            {{ Form::label('email', __('validation.attributes.email'), ['class' => 'label']) }}
 
-                    <input type="hidden" name="token" value="{{ $token }}">
+            {{ Form::email('email', old('email'), ['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'autofocus' => 'true', 'placeholder' => __('validation.attributes.email')]) }}
 
-                    <div class="flex flex-wrap">
-                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                            {{ __('E-Mail Address') }}:
-                        </label>
-
-                        <input id="email" type="email"
-                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
-                            value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                        @error('email')
-                        <p class="text-red-500 text-xs italic mt-4">
-                            {{ $message }}
-                        </p>
-                        @enderror
-                    </div>
-
-                    <div class="flex flex-wrap">
-                        <label for="password" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                            {{ __('Password') }}:
-                        </label>
-
-                        <input id="password" type="password"
-                            class="form-input w-full @error('password') border-red-500 @enderror" name="password"
-                            required autocomplete="new-password">
-
-                        @error('password')
-                        <p class="text-red-500 text-xs italic mt-4">
-                            {{ $message }}
-                        </p>
-                        @enderror
-                    </div>
-
-                    <div class="flex flex-wrap">
-                        <label for="password-confirm" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                            {{ __('Confirm Password') }}:
-                        </label>
-
-                        <input id="password-confirm" type="password" class="form-input w-full"
-                            name="password_confirmation" required autocomplete="new-password">
-                    </div>
-
-                    <div class="flex flex-wrap pb-8 sm:pb-10">
-                        <button type="submit"
-                        class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
-                            {{ __('Reset Password') }}
-                        </button>
-                    </div>
-                </form>
-
-            </section>
+            @if ($errors->has('email'))
+                <p class="invalid-feedback">{{ $errors->first('email') }}</p>
+            @endif
         </div>
+
+        <div class="mb-4">
+            {{ Form::label('password', __('validation.attributes.password'), ['class' => 'label']) }}
+
+            {{ Form::password('password', ['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.password')]) }}
+
+            @if ($errors->has('password'))
+                <p class="invalid-feedback">{{ $errors->first('password') }}</p>
+            @endif
+        </div>
+
+        <div class="mb-4">
+            {{ Form::label('password_confirmation', __('validation.attributes.password_confirmation'), ['class' => 'label']) }}
+
+            {{ Form::password('password_confirmation', ['class' => 'input' . ($errors->has('password_confirmation') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.password_confirmation')]) }}
+
+            @if ($errors->has('password_confirmation'))
+                <p class="invalid-feedback">{{ $errors->first('password_confirmation') }}</p>
+            @endif
+        </div>
+
+        <div class="flex items-center justify-between pt-4">
+            {{ Form::button(__('auth.reset.request.submit'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
+        </div>
+        {{ Form::close() }}
     </div>
-</main>
 @endsection

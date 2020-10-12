@@ -215,13 +215,13 @@ select.input {
 }
 
 .btn-outline-primary {
-    @apply text-pink-900 border border-pink-900;
+    @apply text-pink-600 border border-pink-600;
 }
 .btn-outline-primary:hover:not(:disabled) {
-    @apply text-white bg-pink-900;
+    @apply text-white bg-pink-600;
 }
 .btn-outline-primary:focus:not(:disabled) {
-    @apply shadow-outline-pink-900;
+    @apply shadow-outline-pink-600;
 }
 
 /* Cards

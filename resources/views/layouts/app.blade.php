@@ -16,46 +16,49 @@
 
     @include('shared._favicon')
 </head>
-<body class="bg-gray-100 h-screen antialiased leading-none font-sans">
+<body class="bg-gray-100">
     <div id="app">
-        <header class="bg-blue-900 py-6">
-            <div class="container mx-auto flex justify-between items-center px-6">
-                <div>
-                    <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+        <div class="mb-6 bg-pink-600 shadow">
+            <div class="container lg:px-20 mx-auto">
+                <div class="md:flex md:items-center">
+                    <div class="flex items-center py-3 md:py-0">
+                        <div class="text-white text-xl mr-2"><a href="{{ URL::route('home.index') }}">{{ config('app.name', 'Laravel') }}</a></div>
+                    </div>
+
+                    <div class="flex flex-grow justify-between">
+                        {!! \LaravelMenu::render() !!}
+
+                        <div class="flex">
+                            @if (auth()->check())
+                                {!! LaravelMenu::render('auth_logged_in') !!}
+
+                                @include('shared._logout_navbar')
+                            @else
+                                {!! LaravelMenu::render('auth_public') !!}
+                            @endif
+                        </div>
+                    </div>
                 </div>
-                <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
-                    {!! LaravelMenu::render() !!}
-
-                    @if (auth()->check())
-                        {!! LaravelMenu::render('auth_logged_in') !!}
-
-                        @include('shared._logout_navbar')
-                    @else
-                        {!! LaravelMenu::render('auth_public') !!}
-                    @endif
-                </nav>
             </div>
-        </header>
+        </div>
 
-        @include('flash::message')
+        <div class="container px-4 lg:px-20 mx-auto">
+            @include('flash::message')
 
-        @yield('breadcrumbs')
+            @yield('breadcrumbs')
 
-        @yield('content')
+            @yield('content')
+        </div>
     </div>
 
-    <footer class="small">
-        <div class="container">
-            v{{ env('APP_VERSION') }}
-            &#8226;
-            {{ Html::linkRoute('home.show_contact_form', __('common.contact')) }}
-            &#8226;
-            {{ Html::linkRoute('home.imprint', __('common.imprint')) }}
-            &#8226;
-            {{ Html::linkRoute('home.privacy_policy', __('common.privacy_policy')) }}
-        </div>
-    </footer>
+    <div class="container lg:px-20 mx-auto mt-20 text-gray-600 text-sm">
+        v{{ env('APP_VERSION') }}
+        &#8226;
+        {{ Html::linkRoute('home.show_contact_form', __('common.contact')) }}
+        &#8226;
+        {{ Html::linkRoute('home.imprint', __('common.imprint')) }}
+        &#8226;
+        {{ Html::linkRoute('home.privacy_policy', __('common.privacy_policy')) }}
+    </div>
 </body>
 </html>

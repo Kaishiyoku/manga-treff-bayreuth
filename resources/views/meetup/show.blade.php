@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('breadcrumbs')
     @if ($meetup->isUpcoming())

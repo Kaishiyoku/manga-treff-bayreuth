@@ -1,56 +1,33 @@
 @extends('layouts.app')
 
+@section('title', __('passwords.form.title'))
+
 @section('content')
-<main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
-    <div class="flex">
-        <div class="w-full">
+    <div class="mx-auto w-full max-w-sm bg-white shadow-md rounded text-left">
+        <div class="text-xl pb-4 text-gray-600 bg-gray-100 pt-4 pl-8">@lang('auth.reset.title')</div>
 
-            @if (session('status'))
-            <div class="text-sm text-green-700 bg-green-100 px-5 py-6 sm:rounded sm:border sm:border-green-400 sm:mb-6"
-                role="alert">
-                {{ session('status') }}
-            </div>
+        {{ Form::open(['url' => '/password/email', 'method' => 'post', 'role' => 'form', 'class' => 'px-8 pt-6 pb-8 mb-4']) }}
+        {{ Form::label('email', __('validation.attributes.email'), ['class' => 'label']) }}
+
+        <div class="mb-4">
+            {{ Form::email('email', old('email'), ['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'autofocus' => 'true', 'placeholder' => __('validation.attributes.email')]) }}
+
+            @if ($errors->has('email'))
+                <p class="invalid-feedback">{{ $errors->first('email') }}</p>
             @endif
-
-            <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
-                <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                    {{ __('Reset Password') }}
-                </header>
-
-                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('password.email') }}">
-                    @csrf
-
-                    <div class="flex flex-wrap">
-                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                            {{ __('E-Mail Address') }}:
-                        </label>
-
-                        <input id="email" type="email"
-                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
-                            value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                        @error('email')
-                        <p class="text-red-500 text-xs italic mt-4">
-                            {{ $message }}
-                        </p>
-                        @enderror
-                    </div>
-
-                    <div class="flex flex-wrap justify-center items-center space-y-6 pb-6 sm:pb-10 sm:space-y-0 sm:justify-between">
-                        <button type="submit"
-                        class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:w-auto sm:px-4 sm:order-1">
-                            {{ __('Send Password Reset Link') }}
-                        </button>
-
-                        <p class="mt-4 text-xs text-blue-500 hover:text-blue-700 whitespace-no-wrap no-underline hover:underline sm:text-sm sm:order-0 sm:m-0">
-                            <a class="text-blue-500 hover:text-blue-700 no-underline" href="{{ route('login') }}">
-                                {{ __('Back to login') }}
-                            </a>
-                        </p>
-                    </div>
-                </form>
-            </section>
         </div>
+
+        <div class="flex items-center justify-between pt-4">
+            {{ Form::button(__('auth.reset.submit'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
+        </div>
+        {{ Form::close() }}
     </div>
-</main>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#email').focus();
+        });
+    </script>
 @endsection
