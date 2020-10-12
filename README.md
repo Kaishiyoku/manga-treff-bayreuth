@@ -1,4 +1,4 @@
-Code of the website https://manga-treff-bayreuth.rocks
+Code of the website https://manga-treff-bayreuth.de
 
 Table of contents
 =================
