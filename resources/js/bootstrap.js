@@ -2,16 +2,37 @@ window._ = require('lodash');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
+ * zfor JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
 
-// try {
-//     window.Popper = require('popper.js').default;
-//     window.$ = window.jQuery = require('jquery');
+try {
+    window.$ = window.jQuery = require('jquery');
 
-//     require('bootstrap');
-// } catch (e) {}
+    $(document).ready(function () {
+        $('[data-submit]').each(function () {
+            const $this = $(this);
+
+            $this.click(function (event) {
+                event.preventDefault();
+
+                $($this.attr('data-submit')).submit();
+            });
+        });
+
+        $('[data-confirm]').click(function () {
+            let confirmationText = $(this).attr('data-confirm');
+
+            if (_.isEmpty(confirmationText) || confirmationText == 1) {
+                confirmationText = 'Are you sure?';
+            }
+
+            if (!confirm(confirmationText)) {
+                return false;
+            }
+        });
+    });
+} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

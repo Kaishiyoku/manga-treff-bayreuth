@@ -1,5 +1,285 @@
-@import "tailwindcss/base";
+@tailwind base;
 
-@import "tailwindcss/components";
+@tailwind components;
 
-@import "tailwindcss/utilities";
+@tailwind utilities;
+
+/* Navbar
+---------------------------------------------------------------------------- */
+.navbar-link {
+    @apply cursor-pointer transition-all duration-200 px-4 py-4 text-white text-opacity-50;
+}
+.navbar-link:hover {
+    @apply text-white bg-pink-900 bg-opacity-25;
+}
+
+.navbar-link-active {
+    @apply text-white;
+}
+
+/* Typograhpy
+---------------------------------------------------------------------------- */
+h1 {
+    @apply text-4xl mb-5;
+}
+h1 > .headline-info {
+    @apply text-gray-600 text-3xl;
+}
+
+h2 {
+    @apply text-3xl mt-3 mb-2;
+}
+
+.text-muted {
+    @apply text-gray-600;
+}
+
+.link {
+    @apply text-pink-900;
+}
+.link:hover {
+    @apply underline;
+}
+
+/* Dropdown
+---------------------------------------------------------------------------- */
+.dropdown {
+    @apply rounded-md bg-white shadow-xl py-1 overflow-auto;
+}
+
+.dropdown-item {
+    @apply text-left px-4 py-2 leading-5 text-gray-700 cursor-pointer transition-all duration-200;
+}
+.dropdown-item:hover {
+    @apply bg-gray-200 text-gray-900;
+}
+.dropdown-item:focus {
+    @apply outline-none bg-gray-100 text-gray-900;
+}
+
+.dropdown-item.dropdown-item-active {
+    @apply text-white bg-pink-500;
+}
+.dropdown-item.dropdown-item-active:hover {
+    @apply text-white bg-pink-700;
+}
+
+.dropdown-header {
+    @apply px-4 py-2 font-bold text-xs text-gray-800 uppercase tracking-wide;
+}
+
+/* Forms & input
+---------------------------------------------------------------------------- */
+.input:not(select) {
+    @apply py-2;
+}
+select.input {
+    padding-top: .5rem;
+    padding-bottom: .3rem;
+}
+.input {
+    @apply px-3 shadow border w-full text-gray-700 leading-tight transition-all duration-200;
+}
+.input:focus {
+    @apply outline-none shadow-outline-pink-900;
+}
+
+.input:not(.input-with-btn) {
+    @apply rounded;
+}
+
+.input-with-btn {
+    @apply rounded-l;
+}
+
+.has-error {
+    @apply border-red-900;
+}
+.invalid-feedback {
+    @apply text-red-900 text-xs mt-1;
+}
+
+.label {
+    @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+.label-checkbox {
+    @apply inline-flex items-center mt-3;
+}
+.checkbox {
+    @apply block h-5 w-5 bg-white appearance-none border border-gray-500 rounded outline-none transition-all duration-200 mr-2;
+}
+.checkbox:checked {
+    @apply bg-pink-900 border-pink-900;
+}
+.checkbox:checked:before {
+    @apply absolute h-5 w-5 text-white text-center;
+
+    margin-left: -1px;
+    margin-top: -1px;
+    line-height: 1.25rem;
+    font-family: "Font Awesome 5 Free";
+    font-size: .6rem;
+    font-weight: 900;
+    content: "\f00c";
+}
+.checkbox:focus {
+    @apply shadow-outline-pink-900;
+}
+
+/* Breadcrumbs
+---------------------------------------------------------------------------- */
+.breadcrumb {
+    @apply bg-gray-200 my-4 py-2 px-4 rounded;
+}
+.breadcrumb-item {
+    @apply inline-block text-gray-600;
+}
+.breadcrumb-item:not(:first-child):before {
+    @apply text-gray-400 pr-1;
+
+    content: '/';
+}
+.breadcrumb-item > a {
+    @apply link;
+}
+.breadcrumb-item > a:hover {
+    @apply underline;
+}
+
+/* Buttons
+---------------------------------------------------------------------------- */
+.btn {
+    @apply inline-block cursor-pointer shadow border transition-all duration-200;
+}
+.btn:not(.btn-sm):not(.btn-with-input) {
+    @apply py-2 px-4 font-bold;
+}
+.btn:not(.btn-with-input) {
+    @apply rounded;
+}
+.btn:focus {
+    @apply outline-none;
+}
+
+.btn:disabled {
+    @apply bg-opacity-75 cursor-not-allowed;
+}
+
+.btn-sm {
+    @apply px-2 text-sm;
+}
+
+.btn-with-input {
+    @apply pt-2 pb-1 px-4 font-bold rounded-r;
+}
+
+.btn-primary {
+    @apply bg-pink-900 border-pink-900 text-white;
+}
+.btn-primary:hover:not(:disabled) {
+    @apply bg-black;
+}
+.btn-primary:focus:not(:disabled) {
+    @apply shadow-outline-pink-900;
+}
+
+.btn-secondary {
+    @apply bg-teal-900 border-teal-900 text-white;
+}
+.btn-secondary:hover:not(:disabled) {
+    @apply bg-black;
+}
+.btn-secondary:focus:not(:disabled) {
+    @apply shadow-outline-teal-900;
+}
+
+.btn-success {
+    @apply bg-green-900 border-green-900 text-white;
+}
+.btn-success:hover:not(:disabled) {
+    @apply bg-green-500 border-green-500;
+}
+.btn-success:focus:not(:disabled) {
+    @apply shadow-outline-green-900;
+}
+
+.btn-danger {
+    @apply bg-red-900 border-red-900 text-white;
+}
+.btn-danger:hover:not(:disabled) {
+    @apply bg-red-500 border-red-500;
+}
+.btn-danger:focus:not(:disabled) {
+    @apply shadow-outline-red-900;
+}
+
+.btn-outline-primary {
+    @apply text-pink-900 border border-pink-900;
+}
+.btn-outline-primary:hover:not(:disabled) {
+    @apply text-white bg-pink-900;
+}
+.btn-outline-primary:focus:not(:disabled) {
+    @apply shadow-outline-pink-900;
+}
+
+/* Cards
+---------------------------------------------------------------------------- */
+.card {
+    @apply rounded overflow-hidden shadow-lg border border-gray-200 bg-white;
+}
+
+/* List items
+---------------------------------------------------------------------------- */
+.list-item {
+    @apply transition-all duration-300;
+}
+.list-item:nth-child(odd) {
+    @apply bg-gray-200 bg-opacity-75;
+}
+.list-item:hover,
+.list-item:nth-child(odd):hover {
+    @apply bg-pink-100 bg-opacity-50;
+}
+
+/* Tables
+---------------------------------------------------------------------------- */
+.table {
+    @apply w-full text-left;
+}
+.table th {
+    @apply bg-gray-100 font-bold text-xs text-gray-800 uppercase border-b-2 border-gray-200 py-3 px-3 tracking-wide align-middle;
+}
+.table td {
+    @apply border-b border-gray-200 py-4 px-3 align-middle;
+}
+.table-hover tr:hover {
+    @apply bg-gray-200 transition-colors duration-150 ease-out;
+}
+
+/* Alerts
+---------------------------------------------------------------------------- */
+.alert {
+    @apply p-4 my-4 border-l-4 rounded;
+}
+.alert-info {
+    @apply bg-blue-100 text-blue-800 border-blue-400;
+}
+.alert-success {
+    @apply bg-green-100 text-green-800 border-green-400;
+}
+.alert-warning {
+    @apply bg-yellow-100 text-yellow-800 border-yellow-400;
+}
+.alert-danger {
+    @apply bg-red-100 text-red-800 border-red-400;
+}
+
+/* Other
+---------------------------------------------------------------------------- */
+.prettyprint {
+    @apply overflow-auto;
+
+    border: 0 !important;
+}
