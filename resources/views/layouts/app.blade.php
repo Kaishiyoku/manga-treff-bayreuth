@@ -22,10 +22,10 @@
             <div class="container lg:px-20 mx-auto">
                 <div class="md:flex md:items-center">
                     <div class="flex items-center py-3 md:py-0">
-                        <div class="text-white text-xl mr-2"><a href="{{ URL::route('home.index') }}">{{ config('app.name', 'Laravel') }}</a></div>
+                        <div class="text-white text-xl mr-2 ml-2 md:ml-0"><a href="{{ URL::route('home.index') }}">{{ config('app.name', 'Laravel') }}</a></div>
                     </div>
 
-                    <div class="flex flex-grow justify-between">
+                    <div class="sm:flex sm:flex-grow sm:justify-between">
                         {!! \LaravelMenu::render() !!}
 
                         <div class="flex">
@@ -51,14 +51,14 @@
         </div>
     </div>
 
-    <div class="container lg:px-20 mx-auto mt-20 text-gray-600 text-sm">
+    <div class="container px-4 lg:px-20 mx-auto mt-20 mb-12 text-gray-600 text-sm">
         v{{ env('APP_VERSION') }}
         &#8226;
-        {{ Html::linkRoute('home.show_contact_form', __('common.contact')) }}
+        {{ Html::linkRoute('home.show_contact_form', __('common.contact'), null, ['class' => 'link']) }}
         &#8226;
-        {{ Html::linkRoute('home.imprint', __('common.imprint')) }}
+        {{ Html::linkRoute('home.imprint', __('common.imprint'), null, ['class' => 'link']) }}
         &#8226;
-        {{ Html::linkRoute('home.privacy_policy', __('common.privacy_policy')) }}
+        {{ Html::linkRoute('home.privacy_policy', __('common.privacy_policy'), null, ['class' => 'link']) }}
     </div>
 </body>
 </html>

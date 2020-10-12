@@ -1,1 +1,1 @@
-<small><i class="fas fa-external-link"></i></small>
+<i class="fas fa-external-link-alt text-xs"></i>

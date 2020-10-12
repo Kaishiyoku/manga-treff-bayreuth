@@ -45,8 +45,8 @@ class Menus
             ->link('register', '<i class="fas fa-user-plus"></i> ' . __('common.register'));
 
         \LaravelMenu::register('auth_logged_in')
-            ->linkIf($this->isLoggedIn(), 'profile.index,profile.login_attempts,profile.active_sessions', '<i class="fas fa-user"></i> ' . __('common.profile'))
-            ->linkIf($this->isAdmin(), 'admin.home.index', '<i class="fas fa-unlock"></i> ' . __('common.administration'));
+            ->linkIf($this->isLoggedIn(), 'profile.index,profile.login_attempts,profile.active_sessions', '<i class="fas fa-user"></i> <span class="sm:hidden">' . __('common.profile') . '</span>')
+            ->linkIf($this->isAdmin(), 'admin.home.index', '<i class="fas fa-tools"></i> <span class="sm:hidden">' . __('common.administration') . '</span>');
 
         \LaravelMenu::register('admin')
             ->addClassNames('mr-auto')

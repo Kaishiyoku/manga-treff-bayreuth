@@ -19,7 +19,8 @@ mix
     require('postcss-nested'),
     require('autoprefixer'),
   ])
-  .sass('resources/sass/fonts.scss', 'public/css');
+  .sass('resources/sass/fonts.scss', 'public/css')
+  .copyDirectory('resources/img', 'public/img');
 
 if (mix.inProduction()) {
   mix

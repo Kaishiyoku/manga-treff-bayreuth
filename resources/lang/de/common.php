@@ -26,7 +26,7 @@ return [
     'edit' => 'Ändern',
     'create' => 'Erstellen',
     'update' => 'Speichern',
-    'administration' => 'Administration',
+    'administration' => 'Admin',
     'register' => 'Registrieren',
     'profile' => 'Profil',
     'general' => 'Allgemein',

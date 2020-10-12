@@ -35,7 +35,7 @@ h2 {
 }
 
 .link {
-    @apply text-pink-900;
+    @apply text-pink-600;
 }
 .link:hover {
     @apply underline;
@@ -167,7 +167,7 @@ select.input {
 }
 
 .btn-sm {
-    @apply px-2 text-sm;
+    @apply px-2 py-1 text-sm;
 }
 
 .btn-with-input {
@@ -222,6 +222,26 @@ select.input {
 }
 .btn-outline-primary:focus:not(:disabled) {
     @apply shadow-outline-pink-600;
+}
+
+.btn-outline-white {
+    @apply text-white border border-white;
+}
+.btn-outline-white:hover:not(:disabled) {
+    @apply text-black bg-white;
+}
+.btn-outline-white:focus:not(:disabled) {
+    @apply shadow-outline-white;
+}
+
+.btn-outline-black {
+    @apply text-black border border-black;
+}
+.btn-outline-black:hover:not(:disabled) {
+    @apply text-white bg-black;
+}
+.btn-outline-black:focus:not(:disabled) {
+    @apply shadow-outline-black;
 }
 
 /* Cards

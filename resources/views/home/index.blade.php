@@ -1,22 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-8 pb-5">
-            <div class="row">
-                <div class="col-md-7">
-                    <p class="border border-gray rounded shadow-sm lead p-3">
-                        @lang('home.index.description')
-                    </p>
-
-                    @if ($nextUpcomingMeetup)
-                        <p class="lead">
-                            @lang('home.index.meetups.next_upcoming_at', ['date' => '<a href="' . $nextUpcomingMeetup->getUrl() . '">' . $nextUpcomingMeetup->date_start->format(__('date.short')) . '</a>'])
+    <div class="lg:flex lg:items-start lg:justify-between">
+        <div class="lg:w-12/20">
+            <div class="md:flex md:items-start">
+                <div>
+                    <div class="card p-4 text-xl mb-12">
+                        <p>
+                            @lang('home.index.description')
                         </p>
-                    @endif
 
-                    <div>
-                        <a class="btn btn-block btn-lg btn-outline-primary" href="{{ env('SHORT_EVENT_BASE_URL') }}">
+                        @if ($nextUpcomingMeetup)
+                            <p class="pt-5">
+                                @lang('home.index.meetups.next_upcoming_at', ['date' => '<a href="' . $nextUpcomingMeetup->getUrl() . '" class="link">' . $nextUpcomingMeetup->date_start->format(__('date.short')) . '</a>'])
+                            </p>
+                        @endif
+                    </div>
+
+                    <div class="flex flex-col text-center">
+                        <a class="btn btn-outline-primary text-xl" href="{{ env('SHORT_EVENT_BASE_URL') }}">
                             <i class="far fa-calendar"></i>
 
                             @lang('home.index.meetups.animexx_series')
@@ -24,11 +26,11 @@
                             @include('shared._external_icon')
                         </a>
 
-                        <div class="btn-text btn-block text-center">
+                        <div class="my-3">
                             @lang('common.or')
                         </div>
 
-                        <a class="btn btn-block btn-lg btn-outline-primary" href="{{ env('GOOGLE_CALENDAR_PUBLIC_URL') }}">
+                        <a class="btn btn-outline-primary text-xl" href="{{ env('GOOGLE_CALENDAR_PUBLIC_URL') }}">
                             <i class="far fa-calendar"></i>
 
                             @lang('home.index.meetups.google_calendar')
@@ -38,82 +40,69 @@
                     </div>
                 </div>
 
-                <div class="col-md-5 d-none d-md-block">
-                    <img src="{{ asset('img/drawing.png') }}" class="img-fluid"/>
-                </div>
+                <img src="{{ asset('img/drawing.png') }}" alt="Mascot" class="hidden md:block w-64"/>
             </div>
 
             @if ($nextUpcomingMeetup)
-                <h1 class="pt-5">@lang('home.index.meetups.next_upcoming')</h1>
+                <h1 class="pt-12">@lang('home.index.meetups.next_upcoming')</h1>
 
                 @include('home._meetup_card', ['meetup' => $nextUpcomingMeetup, 'isHighlighted' => true])
             @endif
         </div>
 
-        <div class="col-lg-4 pb-5">
-            <div class="card shadow-sm">
-                <h5 class="card-header bg-secondary text-white">
-                    <i class="fab fa-discord"></i>
+        <div class="card lg:w-7/20 lg:mt-0 mt-12">
+            <div class="flex items-center bg-teal-500 text-white text-xl px-5 py-3">
+                <i class="fab fa-discord mr-2"></i>
 
-                    <span>
-                        {{ __('common.discord.title') }}
-                    </span>
+                <div class="flex-grow">
+                    {{ __('common.discord.title') }}
+                </div>
 
-                    <a href="{{ $discordItem->instant_invite }}" class="btn btn-outline-light btn-xs float-right m-0">
-                        <i class="fas fa-arrow-right"></i>
+                <a href="{{ $discordItem->instant_invite }}" class="btn btn-outline-white btn-sm float-right m-0">
+                    <i class="fas fa-arrow-right"></i>
 
-                        {{ __('common.discord.connect') }}
+                    {{ __('common.discord.connect') }}
 
-                        @include('shared._external_icon')
-                    </a>
-                </h5>
+                    @include('shared._external_icon')
+                </a>
+            </div>
 
-                <div class="card-body">
-                    <div class="font-xs">
-                        <ul class="list-unstyled">
-                            @foreach (\Illuminate\Support\Arr::sort($discordItem->channels, function ($channel) { return $channel->position; }) as $channel)
-                                <li class="media my-1">
-                                    <div class="media-body">
-                                        {{ $channel->name }}
+            <div class="p-5 text-sm">
+                <div class="pb-5">
+                    @foreach (\Illuminate\Support\Arr::sort($discordItem->channels, function ($channel) { return $channel->position; }) as $channel)
+                        <div class="my-1">
+                            {{ $channel->name }}
 
-                                        @foreach ($getDiscordMembersInChannel($discordItem, $channel->id) as $member)
-                                            <div class="media mt-1 ml-3">
-                                                <img src="{{ $member->avatar_url }}" class="mr-3 rounded-circle" width="20px"/>
-                                                {{ $member->username }}
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </li>
+                            @foreach ($getDiscordMembersInChannel($discordItem, $channel->id) as $member)
+                                <div class="flex items-center my-1 ml-5">
+                                    <img src="{{ $member->avatar_url }}" alt="Avatar" class="mr-3 rounded-full w-5"/>
+                                    {{ $member->username }}
+                                </div>
                             @endforeach
-                        </ul>
+                        </div>
+                    @endforeach
+                </div>
 
-                        <p>
-                            {{ __('common.discord.members_online', ['count' => count($discordItem->members)]) }}
-                        </p>
+                <p>
+                    {{ __('common.discord.members_online', ['count' => count($discordItem->members)]) }}
+                </p>
 
-                        <ul class="list-unstyled">
-                            @foreach ($discordItem->members as $member)
-                                <li class="media my-1">
-                                    <img src="{{ $member->avatar_url }}" class="mr-3 rounded-circle" width="20px"/>
-                                    <div class="media-body text-muted">
-                                        {{ $member->username }}
-
-                                        @if (property_exists($member, 'game'))
-                                            <span class="text-muted-extra float-right d-md-none d-sm-inline d-xl-inline">
-                                        {{ $member->game->name }}
-                                    </span>
-                                        @endif
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <div class="pt-5">
+                    @foreach ($discordItem->members as $member)
+                        <div class="flex items-center my-1">
+                            <img src="{{ $member->avatar_url }}" class="mr-3 rounded-full w-5" alt="Avatar"/>
+                            <div class="flex-grow">{{ $member->username }}</div>
+                            @if (property_exists($member, 'game'))
+                                <div class="text-muted">
+                                    {{ $member->game->name }}
+                                </div>
+                            @endif
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="d-block d-md-none">
-        <img src="{{ asset('img/drawing.png') }}" class="img-fluid"/>
-    </div>
+    <img src="{{ asset('img/drawing.png') }}" alt="Mascot" class="md:hidden w-full mt-12"/>
 @endsection
