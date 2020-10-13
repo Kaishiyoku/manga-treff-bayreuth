@@ -1,65 +1,53 @@
-<div class="form-group row">
-    {{ Form::label('name', __('validation.attributes.name'), ['class' => 'col-lg-2 col-form-label']) }}
+<div class="mb-4">
+    {{ Form::label('name', __('validation.attributes.name'), ['class' => 'label']) }}
 
-    <div class="col-lg-3">
-        {{ Form::text('name', old('name', $user->name), ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required' => true]) }}
+    {{ Form::text('name', old('name', $user->name), ['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'required' => false, 'placeholder' => __('validation.attributes.name')]) }}
 
-        @if ($errors->has('name'))
-            <div class="invalid-feedback">
-                {{ $errors->first('name') }}
-            </div>
-        @endif
-    </div>
+    @if ($errors->has('name'))
+        <div class="invalid-feedback">
+            {{ $errors->first('name') }}
+        </div>
+    @endif
 </div>
 
-<div class="form-group row">
-    {{ Form::label('email', __('validation.attributes.email'), ['class' => 'col-lg-2 col-form-label']) }}
+<div class="mb-4">
+    {{ Form::label('email', __('validation.attributes.email'), ['class' => 'label']) }}
 
-    <div class="col-lg-3">
-        {{ Form::email('email', old('email', $user->email), ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'required' => true]) }}
+    {{ Form::email('email', old('email', $user->email), ['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.email')]) }}
 
-        @if ($errors->has('email'))
-            <div class="invalid-feedback">
-                {{ $errors->first('email') }}
-            </div>
-        @endif
-    </div>
+    @if ($errors->has('email'))
+        <div class="invalid-feedback">
+            {{ $errors->first('email') }}
+        </div>
+    @endif
 </div>
 
-<div class="form-group row">
-    {{ Form::label('is_admin', __('validation.attributes.is_admin'), ['class' => 'col-lg-2 col-form-label']) }}
+<div class="mb-4">
+    {{ Form::label('is_admin', __('validation.attributes.is_admin'), ['class' => 'label']) }}
 
-    <div class="col-lg-2">
-        {{ Form::select('is_admin', __('common.lists.boolean'), old('is_admin', $user->is_admin), ['class' => 'form-control' . ($errors->has('is_admin') ? ' is-invalid' : '')]) }}
+    {{ Form::select('is_admin', __('common.lists.boolean'), old('is_admin', $user->is_admin), ['class' => 'input' . ($errors->has('is_admin') ? ' has-error' : '')]) }}
 
-        @if ($errors->has('is_admin'))
-            <div class="invalid-feedback">
-                {{ $errors->first('is_admin') }}
-            </div>
-        @endif
-    </div>
+    @if ($errors->has('is_admin'))
+        <div class="invalid-feedback">
+            {{ $errors->first('is_admin') }}
+        </div>
+    @endif
 </div>
 
-<div class="form-group row">
-    {{ Form::label('password', __('validation.attributes.password'), ['class' => 'col-lg-2 col-form-label']) }}
+<div class="mb-4">
+    {{ Form::label('password', __('validation.attributes.password'), ['class' => 'label']) }}
 
-    <div class="col-lg-3">
-        {{ Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'required' => $isForCreate]) }}
+    {{ Form::password('password', ['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'required' => $isForCreate, 'placeholder' => __('validation.attributes.password')]) }}
 
-        @if (!$isForCreate)
-            <small class="form-text text-muted">@lang('user.admin.edit.password_help')</small>
-        @endif
+    @if (!$isForCreate)
+        <div class="text-sm text-muted pt-1">@lang('user.admin.edit.password_help')</div>
+    @endif
 
-        @if ($errors->has('password'))
-            <div class="invalid-feedback">
-                {{ $errors->first('password') }}
-            </div>
-        @endif
-    </div>
+    @if ($errors->has('password'))
+        <div class="invalid-feedback">
+            {{ $errors->first('password') }}
+        </div>
+    @endif
 </div>
 
-<div class="form-group row">
-    <div class="col-lg-10 ml-md-auto">
-        {{ Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn btn-primary']) }}
-    </div>
-</div>
+{{ Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn btn-primary']) }}

@@ -83,7 +83,9 @@ class LoginController extends Controller
         // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
 
-        $this->saveFailedLoginAttempt($loginAttempt, $user);
+        if ($user) {
+            $this->saveFailedLoginAttempt($loginAttempt, $user);
+        }
 
         return $this->sendFailedLoginResponse($request);
     }

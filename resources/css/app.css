@@ -12,8 +12,17 @@
 .navbar-link:hover {
     @apply text-white bg-pink-900 bg-opacity-25;
 }
-
 .navbar-link-active {
+    @apply text-white;
+}
+
+.nav-dark .navbar-link {
+    @apply cursor-pointer transition-all duration-200 px-4 py-4 text-white text-opacity-50;
+}
+.nav-dark .navbar-link:hover {
+    @apply text-white bg-gray-700 bg-opacity-25;
+}
+.nav-dark .navbar-link-active {
     @apply text-white;
 }
 
@@ -81,7 +90,7 @@ select.input {
     @apply px-3 shadow border w-full text-gray-700 leading-tight transition-all duration-200;
 }
 .input:focus {
-    @apply outline-none shadow-outline-pink-900;
+    @apply outline-none shadow-outline-pink-600;
 }
 
 .input:not(.input-with-btn) {
@@ -93,10 +102,10 @@ select.input {
 }
 
 .has-error {
-    @apply border-red-900;
+    @apply border-red-600;
 }
 .invalid-feedback {
-    @apply text-red-900 text-xs mt-1;
+    @apply text-red-600 text-xs mt-1;
 }
 
 .label {
@@ -175,43 +184,43 @@ select.input {
 }
 
 .btn-primary {
-    @apply bg-pink-900 border-pink-900 text-white;
+    @apply bg-pink-600 border-pink-700 text-white;
 }
 .btn-primary:hover:not(:disabled) {
     @apply bg-black;
 }
 .btn-primary:focus:not(:disabled) {
-    @apply shadow-outline-pink-900;
+    @apply shadow-outline-pink-600;
 }
 
 .btn-secondary {
-    @apply bg-teal-900 border-teal-900 text-white;
+    @apply bg-teal-600 border-teal-700 text-white;
 }
 .btn-secondary:hover:not(:disabled) {
     @apply bg-black;
 }
 .btn-secondary:focus:not(:disabled) {
-    @apply shadow-outline-teal-900;
-}
-
-.btn-success {
-    @apply bg-green-900 border-green-900 text-white;
-}
-.btn-success:hover:not(:disabled) {
-    @apply bg-green-500 border-green-500;
-}
-.btn-success:focus:not(:disabled) {
-    @apply shadow-outline-green-900;
+    @apply shadow-outline-teal-600;
 }
 
 .btn-danger {
-    @apply bg-red-900 border-red-900 text-white;
+    @apply bg-red-600 border-red-700 text-white;
 }
 .btn-danger:hover:not(:disabled) {
-    @apply bg-red-500 border-red-500;
+    @apply bg-red-800 border-red-900;
 }
 .btn-danger:focus:not(:disabled) {
-    @apply shadow-outline-red-900;
+    @apply shadow-outline-red-600;
+}
+
+.btn-black {
+    @apply bg-gray-800 border-gray-900 text-white;
+}
+.btn-black:hover:not(:disabled) {
+    @apply bg-gray-700 border-gray-800;
+}
+.btn-black:focus:not(:disabled) {
+    @apply shadow-outline-gray-900;
 }
 
 .btn-outline-primary {

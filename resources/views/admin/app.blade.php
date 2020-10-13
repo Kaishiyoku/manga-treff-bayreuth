@@ -2,58 +2,59 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ env('APP_NAME') }}</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     {!! Html::style('css/app.css') !!}
+    {!! Html::style('css/fonts.css') !!}
 
     {!! Html::script('js/app.js') !!}
 
-    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    @include('shared._favicon')
 </head>
-<body>
+<body class="bg-gray-100">
+<div id="app">
+    <div class="mb-6 bg-gray-900 shadow">
+        <div class="container lg:px-20 mx-auto">
+            <div class="md:flex md:items-center">
+                <div class="flex items-center py-3 md:py-0">
+                    <div class="text-white text-xl mr-2 ml-2 md:ml-0"><a href="{{ URL::route('home.index') }}">{{ config('app.name', 'Laravel') }}</a></div>
+                </div>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-    <div class="container">
-        <a class="navbar-brand" href="{{ route('home.index') }}">{{ env('APP_NAME') }}</a>
+                <div class="sm:flex sm:flex-grow sm:justify-between">
+                    {!! \LaravelMenu::render('admin') !!}
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            {!! LaravelMenu::render('admin') !!}
-
-            @if (auth()->check())
-                @include('shared._logout_navbar')
-            @endif
+                    @if (auth()->check())
+                        <div class="flex nav-dark">
+                            @include('shared._logout_navbar')
+                        </div>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
-</nav>
 
-<div class="container">
-    @include('flash::message')
+    <div class="container px-4 lg:px-20 mx-auto">
+        @include('flash::message')
 
-    @yield('content')
+        @yield('breadcrumbs')
+
+        @yield('content')
+    </div>
 </div>
 
-<footer class="small">
-    <div class="container">
-        v{{ env('APP_VERSION') }}
-        &#8226;
-        {{ Html::linkRoute('home.show_contact_form', __('common.contact')) }}
-        &#8226;
-        {{ Html::linkRoute('home.imprint', __('common.imprint')) }}
-        &#8226;
-        {{ Html::linkRoute('home.privacy_policy', __('common.privacy_policy')) }}
-
-        @if (auth()->guest())
-            &#8226;
-            {{ Html::linkRoute('login', __('common.login')) }}
-        @endif
-    </div>
-</footer>
-
+<div class="container px-4 lg:px-20 mx-auto mt-20 mb-12 text-gray-600 text-sm">
+    v{{ env('APP_VERSION') }}
+    &#8226;
+    {{ Html::linkRoute('home.show_contact_form', __('common.contact'), null, ['class' => 'link']) }}
+    &#8226;
+    {{ Html::linkRoute('home.imprint', __('common.imprint'), null, ['class' => 'link']) }}
+    &#8226;
+    {{ Html::linkRoute('home.privacy_policy', __('common.privacy_policy'), null, ['class' => 'link']) }}
+</div>
 </body>
 </html>

@@ -49,7 +49,7 @@ class Menus
             ->linkIf($this->isAdmin(), 'admin.home.index', '<i class="fas fa-tools"></i> <span class="sm:hidden md:inline-block">' . __('common.administration') . '</span>');
 
         \LaravelMenu::register('admin')
-            ->addClassNames('mr-auto')
+            ->addClassNames('mr-auto nav-dark')
             ->link('admin.users.index,admin.users.create,admin.users.edit', '<i class="fas fa-users"></i> ' . __('common.users'), true)
             ->link('admin.meetups.index,admin.meetups.edit', '<i class="fas fa-calendar"></i> ' . __('common.meetups'), true);
 
