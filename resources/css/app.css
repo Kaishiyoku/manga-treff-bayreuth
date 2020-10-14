@@ -119,7 +119,7 @@ select.input {
     @apply block h-5 w-5 bg-white appearance-none border border-gray-500 rounded outline-none transition-all duration-200 mr-2;
 }
 .checkbox:checked {
-    @apply bg-pink-900 border-pink-900;
+    @apply bg-pink-600 border-pink-600;
 }
 .checkbox:checked:before {
     @apply absolute h-5 w-5 text-white text-center;
@@ -133,7 +133,7 @@ select.input {
     content: "\f00c";
 }
 .checkbox:focus {
-    @apply shadow-outline-pink-900;
+    @apply shadow-outline-pink-600;
 }
 
 /* Breadcrumbs
@@ -187,7 +187,7 @@ select.input {
     @apply bg-pink-600 border-pink-700 text-white;
 }
 .btn-primary:hover:not(:disabled) {
-    @apply bg-black;
+    @apply bg-black border-black;
 }
 .btn-primary:focus:not(:disabled) {
     @apply shadow-outline-pink-600;
@@ -207,7 +207,7 @@ select.input {
     @apply bg-red-600 border-red-700 text-white;
 }
 .btn-danger:hover:not(:disabled) {
-    @apply bg-red-800 border-red-900;
+    @apply bg-black border-black;
 }
 .btn-danger:focus:not(:disabled) {
     @apply shadow-outline-red-600;
@@ -217,10 +217,10 @@ select.input {
     @apply bg-gray-800 border-gray-900 text-white;
 }
 .btn-black:hover:not(:disabled) {
-    @apply bg-gray-700 border-gray-800;
+    @apply bg-black border-black;
 }
 .btn-black:focus:not(:disabled) {
-    @apply shadow-outline-gray-900;
+    @apply shadow-outline-gray-800;
 }
 
 .btn-outline-primary {
