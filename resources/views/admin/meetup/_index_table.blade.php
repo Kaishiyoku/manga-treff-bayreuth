@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             @foreach ($meetups->get() as $meetup)
-                <tr class="{{ $meetup->is_manually_added ? 'bg-info' : '' }}">
+                <tr class="border-l-8 {{ $meetup->is_manually_added ? 'border-teal-500' : 'border-transparent' }}">
                     <td>{{ $meetup->name }}</td>
                     <td>{{ $meetup->date_start->format(__('date.datetime')) }}</td>
                     <td>{{ $meetup->date_end->format(__('date.datetime')) }}</td>

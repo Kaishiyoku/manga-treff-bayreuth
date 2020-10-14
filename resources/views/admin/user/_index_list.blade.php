@@ -1,6 +1,6 @@
 @foreach ($users->get() as $user)
     <div class="card mb-5">
-        <div class="text-xl px-3 pt-3">
+        <div class="text-xl p-3">
             {{ $user->name }}
         </div>
 
