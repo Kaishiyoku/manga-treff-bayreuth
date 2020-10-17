@@ -36,7 +36,7 @@ class Menus
     {
         \LaravelMenu::register()
             ->addClassNames('mr-auto')
-            ->link('home.index', '<i class="fas fa-home"></i> ' . __('common.home'), true)
+            ->link('home.index', '<i class="fas fa-home"></i> <span class="md:hidden lg:inline-block">' . __('common.home') . '</span>', true)
             ->link('meetups.upcoming,meetups.past,meetups.show', '<i class="fas fa-calendar"></i> ' . __('common.meetups'))
             ->link('home.discord', '<i class="fab fa-discord"></i> ' . __('common.discord.title'), true);
 
@@ -45,7 +45,7 @@ class Menus
             ->link('register', '<i class="fas fa-user-plus"></i> ' . __('common.register'));
 
         \LaravelMenu::register('auth_logged_in')
-            ->linkIf($this->isLoggedIn(), 'profile.index,profile.login_attempts,profile.active_sessions', '<i class="fas fa-user"></i> <span class="sm:hidden md:inline-block">' . __('common.profile') . '</span>')
+            ->linkIf($this->isLoggedIn(), 'profile.index,profile.login_attempts,profile.active_sessions', '<i class="fas fa-user"></i> <span class="sm:hidden lg:inline-block">' . __('common.profile') . '</span>')
             ->linkIf($this->isAdmin(), 'admin.home.index', '<i class="fas fa-tools"></i> <span class="sm:hidden md:inline-block">' . __('common.administration') . '</span>');
 
         \LaravelMenu::register('admin')
