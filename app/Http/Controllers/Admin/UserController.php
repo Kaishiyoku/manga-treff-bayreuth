@@ -124,6 +124,8 @@ class UserController extends Controller
         } else if ($user->is_admin) {
             flash()->error(__('user.admin.destroy.administrators_cannot_be_deleted'));
         } else {
+            $user->loginAttempts()->delete();
+            $user->databaseSessions()->delete();
             $user->delete();
 
             flash()->success(__('user.admin.destroy.success'));
