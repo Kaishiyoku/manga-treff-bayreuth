@@ -6,10 +6,10 @@
         <div class="w-full">
 
             @if (session('resent'))
-            <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100  px-3 py-4 mb-4"
-                role="alert">
-                {{ __('A fresh verification link has been sent to your email address.') }}
-            </div>
+                <div class="alert alert-success"
+                    role="alert">
+                    {{ __('A fresh verification link has been sent to your email address.') }}
+                </div>
             @endif
 
             <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
@@ -24,7 +24,7 @@
 
                     <p>
                         {{ __('If you did not receive the email') }}, <a
-                            class="text-blue-500 hover:text-blue-700 no-underline hover:underline cursor-pointer"
+                            class="link"
                             onclick="event.preventDefault(); document.getElementById('resend-verification-form').submit();">{{ __('click here to request another') }}</a>.
                     </p>
 

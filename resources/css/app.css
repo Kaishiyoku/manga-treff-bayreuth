@@ -44,7 +44,7 @@ h2 {
 }
 
 .link {
-    @apply text-pink-600;
+    @apply text-pink-600 cursor-pointer;
 }
 .link:hover {
     @apply underline;

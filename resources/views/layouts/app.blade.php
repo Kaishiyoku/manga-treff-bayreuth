@@ -43,6 +43,12 @@
         </div>
 
         <div class="container px-4 lg:px-20 mx-auto">
+            @if (session('verified'))
+                <div class="alert alert-success">
+                    @lang('Your email address has been verified.')
+                </div>
+            @endif
+
             @include('flash::message')
 
             @yield('breadcrumbs')

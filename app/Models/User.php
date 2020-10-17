@@ -43,7 +43,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read int|null $login_attempts_count
  * @property-read int|null $notifications_count
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
