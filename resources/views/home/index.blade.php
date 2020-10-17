@@ -7,16 +7,18 @@
         <div class="lg:w-12/20">
             <div class="md:flex md:items-start">
                 <div>
-                    <div class="card p-4 text-xl mb-12">
-                        <p>
-                            @lang('home.index.description')
-                        </p>
-
-                        @if ($nextUpcomingMeetup)
-                            <p class="pt-5">
-                                @lang('home.index.meetups.next_upcoming_at', ['date' => '<a href="' . $nextUpcomingMeetup->getUrl() . '" class="link">' . $nextUpcomingMeetup->date_start->format(__('date.short')) . '</a>'])
+                    <div class="card text-xl mb-12">
+                        <div class="border-t-4 border-pink-500 p-4">
+                            <p>
+                                @lang('home.index.description')
                             </p>
-                        @endif
+
+                            @if ($nextUpcomingMeetup)
+                                <p class="pt-5">
+                                    @lang('home.index.meetups.next_upcoming_at', ['date' => '<a href="' . $nextUpcomingMeetup->getUrl() . '" class="link">' . $nextUpcomingMeetup->date_start->format(__('date.short')) . '</a>'])
+                                </p>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="flex flex-col text-center">
