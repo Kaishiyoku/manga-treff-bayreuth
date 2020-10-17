@@ -65,7 +65,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.user.edit', compact('user'));
+        $isEmailVerified = $user->hasVerifiedEmail();
+
+        return view('admin.user.edit', compact('user', 'isEmailVerified'));
     }
 
     /**
@@ -83,6 +85,8 @@ class UserController extends Controller
 
         $request->validate($rules);
 
+        $isEmailVerified = $request->get('is_email_verified');
+
         $user->is_admin = $request->get('is_admin');
 
         $user->fill($request->only($this->getFillableFields()));
@@ -91,7 +95,15 @@ class UserController extends Controller
             $user->password = Hash::make($request->get('password'));
         }
 
+        if (!$isEmailVerified) {
+            $user->is_email_verified = null;
+        }
+
         $user->save();
+
+        if ($isEmailVerified) {
+            $user->markEmailAsVerified();
+        }
 
         flash()->success(__('user.admin.edit.success'));
 
@@ -159,7 +171,8 @@ class UserController extends Controller
             'name' => 'required|max:255|unique:users,name',
             'email' => 'required|email|max:255|unique:users,email',
             'password' => $passwordValidationRules,
-            'is_admin' => 'boolean'
+            'is_admin' => 'boolean',
+            'is_email_verified' => 'sometimes|boolean',
         ];
     }
 }

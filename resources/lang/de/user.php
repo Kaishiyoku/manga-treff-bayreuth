@@ -20,5 +20,6 @@ return [
             'administrators_cannot_be_deleted' => 'Administratoren können nicht gelöscht werden.',
             'success' => 'Benutzer gelöscht.',
         ],
+        'is_email_verified' => 'Verifiziert',
     ],
 ];

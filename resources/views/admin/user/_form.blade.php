@@ -34,6 +34,20 @@
     @endif
 </div>
 
+@if (!$isForCreate)
+    <div class="mb-4">
+        {{ Form::label('is_email_verified', __('user.admin.is_email_verified'), ['class' => 'label']) }}
+
+        {{ Form::select('is_email_verified', __('common.lists.boolean'), old('is_email_verified', $isEmailVerified ?? null), ['class' => 'input' . ($errors->has('is_email_verified') ? ' has-error' : '')]) }}
+
+        @if ($errors->has('is_email_verified'))
+            <div class="invalid-feedback">
+                {{ $errors->first('is_admin') }}
+            </div>
+        @endif
+    </div>
+@endif
+
 <div class="mb-4">
     {{ Form::label('password', __('validation.attributes.password'), ['class' => 'label']) }}
 

@@ -199,5 +199,6 @@ return [
         'attendees'                 => 'Eventgröße',
         'meetup_type_external_id'   => 'Typ',
         'is_manually_added'         => 'Eigenes Event',
+        'email_verified_at'         => 'Verifiziert am',
     ],
 ];

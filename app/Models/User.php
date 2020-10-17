@@ -75,6 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'is_admin' => 'boolean',
+        'email_verified_at' => 'datetime',
     ];
 
     public function loginAttempts()
