@@ -17,9 +17,9 @@
             @lang('validation.attributes.address'): {{ $meetup->getMeetupLocation() }}
         </div>
 
-        <div class="flex justify-between mt-5">
-            <div>
-                <a href="{{ route('meetups.show', $meetup) }}" class="btn btn-sm btn-black">
+        <div class="sm:flex sm:justify-between mt-5">
+            <div class="mb-3 md:mb-0">
+                <a href="{{ route('meetups.show', $meetup) }}" class="btn btn-sm btn-black w-full sm:w-auto">
                     <i class="fas fa-info"></i>
 
                     @lang('common.details')
@@ -27,13 +27,13 @@
             </div>
 
             <div>
-                <a href="https://www.google.com/maps/search/?api=1&query={{ $meetup->getMeetupLocation() }}" class="btn btn-sm btn-outline-black">
+                <a href="https://www.google.com/maps/search/?api=1&query={{ $meetup->getMeetupLocation() }}" class="btn btn-sm btn-outline-black mb-3 w-full sm:w-auto">
                     <i class="fas fa-map-marker-alt"></i>
 
                     @lang('home.index.meetups.show_in_google_maps')
                 </a>
 
-                <a href="{{ $meetup->getUrl() }}" class="btn btn-sm btn-outline-black">
+                <a href="{{ $meetup->getUrl() }}" class="btn btn-sm btn-outline-black mb-3 w-full sm:w-auto">
                     <i class="far fa-calendar"></i>
 
                     @lang('common.animexx_event')
