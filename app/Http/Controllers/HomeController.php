@@ -20,7 +20,7 @@ class HomeController extends Controller
             });
         };
 
-        $nextUpcomingMeetup = Meetup::where('date_start', '>=', Carbon::today())->orderBy('date_start')->first();
+        $nextUpcomingMeetup = Meetup::where('is_manually_added', false)->where('date_start', '>=', Carbon::today())->orderBy('date_start')->first();
 
         return view('home.index', compact('nextUpcomingMeetup', 'discordItem', 'getDiscordMembersInChannel'));
     }

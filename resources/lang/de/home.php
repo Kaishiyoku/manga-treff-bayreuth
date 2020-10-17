@@ -9,7 +9,7 @@ return [
             'upcoming' => 'Kommende Treffen',
             'past' => 'Vergangene Treffen',
             'none' => 'Keine.',
-            'next_upcoming_at' => 'Das nächstes Treffen findet am :date statt.',
+            'next_upcoming_at' => 'Das nächste Treffen findet am :date statt.',
             'show_in_google_maps' => 'In Google Maps anzeigen',
             'next_upcoming' => 'Nächstes Treffen',
         ],

@@ -25,7 +25,7 @@ class MeetupController extends Controller
      */
     public function index()
     {
-        $upcomingMeetups = Meetup::upcoming()->orderBy('date_start', 'desc');
+        $upcomingMeetups = Meetup::upcoming()->orderBy('date_start', 'asc');
         $pastMeetups = Meetup::past()->orderBy('date_start', 'desc');
 
         return view('admin.meetup.index', compact('upcomingMeetups', 'pastMeetups'));
