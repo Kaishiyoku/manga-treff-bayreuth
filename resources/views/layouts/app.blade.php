@@ -51,7 +51,9 @@
 
             @include('flash::message')
 
-            @yield('breadcrumbs')
+            <div class="pb-5">
+                @yield('breadcrumbs')
+            </div>
 
             @yield('content')
         </div>

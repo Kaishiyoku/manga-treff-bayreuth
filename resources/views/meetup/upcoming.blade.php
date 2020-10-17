@@ -9,5 +9,9 @@
         <a href="{{ route('meetups.past') }}" class="link">@lang('home.index.meetups.past')</a>
     </div>
 
+    @if ($firstUpcomingMeetup)
+        @include('home._meetup_card', ['meetup' => $firstUpcomingMeetup, 'classNames' => 'bg-pink-600 text-white'])
+    @endif
+
     @include('home._meetup_list', ['meetups' => $upcomingMeetups, 'isNextMeetupHighlighted' => true])
 @endsection

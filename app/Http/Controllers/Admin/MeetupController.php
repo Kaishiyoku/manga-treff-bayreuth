@@ -25,9 +25,10 @@ class MeetupController extends Controller
      */
     public function index()
     {
-        $meetups = Meetup::orderBy('date_start', 'desc');
+        $upcomingMeetups = Meetup::upcoming()->orderBy('date_start', 'desc');
+        $pastMeetups = Meetup::past()->orderBy('date_start', 'desc');
 
-        return view('admin.meetup.index', compact('meetups'));
+        return view('admin.meetup.index', compact('upcomingMeetups', 'pastMeetups'));
     }
 
     /**
@@ -56,11 +57,11 @@ class MeetupController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate($this->getValidationRules());
+        $request->validate($this->getValidationRules());
 
         $meetup = new Meetup();
         $meetup->is_manually_added = true;
-        $meetup->contact_id = config('config.default_contact_id');
+        $meetup->contact_id = config('site.default_contact_id');
 
         $meetup->fill($request->only($this->getFillableFields()));
 
@@ -149,6 +150,7 @@ class MeetupController extends Controller
     protected function getValidationRules()
     {
         return [
+            'name' => ['required', 'string'],
             'date_start' => ['required', 'date_format:' . __('date.short')],
             'date_end' => ['required', 'date_format:' . __('date.short')],
             'time_start' => ['required', 'date_format:' . __('date.time')],

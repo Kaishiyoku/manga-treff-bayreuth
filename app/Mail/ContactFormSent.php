@@ -37,7 +37,7 @@ class ContactFormSent extends Mailable
     public function build()
     {
         return $this
-            ->subject(__('home.contact.subject', ['name' => config('config.app_name')]))
+            ->subject(__('home.contact.subject', ['name' => config('site.app_name')]))
             ->view('emails.contact.sent')
             ->text('emails.contact.sent')
             ->with([

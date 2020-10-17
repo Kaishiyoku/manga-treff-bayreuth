@@ -1,14 +1,12 @@
 <?php
 
 return [
-    'show' => [
-        'title' => 'Treffen am :date'
-    ],
     'admin' => [
         'index' => [
             'title' => 'Treffen',
             'new_meetup' => 'Neues Treffen',
             'animexx_event' => 'Animexx Event',
+            'is_manually_added' => 'Eigenes erstelltes Event'
         ],
         'create' => [
             'title' => 'Treffen erstellen',

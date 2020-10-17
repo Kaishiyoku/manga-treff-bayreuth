@@ -11,7 +11,7 @@
         {{ __('profile.active_sessions.current_session_info') }}
     </div>
 
-    @if ($databaseSessions->count() == 0)
+    @if ($databaseSessions->count() === 0)
         @include('shared._no_entries_yet')
     @else
         <div class="card">

@@ -7,7 +7,7 @@
         @lang('profile.login_attempts.the_last_logins_are_shown')
     </div>
 
-    @if ($loginAttempts->count() == 0)
+    @if ($loginAttempts->count() === 0)
         @include('shared._no_entries_yet')
     @else
         <div class="card">

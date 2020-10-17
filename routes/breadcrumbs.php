@@ -18,11 +18,11 @@ Breadcrumbs::for('meetups.past', function ($trail) {
 // Upcoming meetups > [Meetup]
 Breadcrumbs::for('meetups.show_upcoming', function ($trail, \App\Models\Meetup $meetup) {
     $trail->parent('meetups.upcoming');
-    $trail->push($meetup->date_start->format(__('date.datetime')), route('meetups.show', $meetup));
+    $trail->push($meetup->name . ' – ' . $meetup->date_start->format(__('date.datetime')), route('meetups.show', $meetup));
 });
 
 // Past meetups > [Meetup]
 Breadcrumbs::for('meetups.show_past', function ($trail, \App\Models\Meetup $meetup) {
     $trail->parent('meetups.past');
-    $trail->push($meetup->date_start->format(__('date.datetime')), route('meetups.show', $meetup));
+    $trail->push($meetup->name . ' – ' . $meetup->date_start->format(__('date.datetime')), route('meetups.show', $meetup));
 });

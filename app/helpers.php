@@ -2,8 +2,10 @@
 
 use App\Models\VisitorNotice;
 use GrahamCampbell\Security\Facades\Security;
+use Illuminate\Support\Carbon;
 use \Illuminate\Support\Facades\Http;
 use Bueltge\Marksimple\Marksimple;
+use \Spatie\GoogleCalendar\Event as GoogleEvent;
 
 if (!function_exists('getUrlForAnimexxMeetupSeries')) {
     function getUrlForAnimexxMeetupSeries($id)
@@ -112,7 +114,7 @@ if (!function_exists('convertEncoding')) {
 if (!function_exists('storeGoogleEventFor')) {
     function storeGoogleEventFor(\App\Models\Meetup $meetup)
     {
-        $googleEvent = new \Spatie\GoogleCalendar\Event();
+        $googleEvent = new GoogleEvent();
         $googleEvent->name = $meetup->name;
         $googleEvent->location = $meetup->getMeetupLocation();
         $googleEvent->description = convertEncoding($meetup->description);
@@ -125,7 +127,9 @@ if (!function_exists('storeGoogleEventFor')) {
 if (!function_exists('clearGoogleCalendar')) {
     function clearGoogleCalendar()
     {
-        $googleEvents = \Spatie\GoogleCalendar\Event::get(\Illuminate\Support\Carbon::create(1990, 1, 1, 0, 0, 0));
+        $minDate = Carbon::create(1990, 1, 1, 0, 0, 0);
+
+        $googleEvents = GoogleEvent::get(null, null, ['timeMin' => $minDate->toISOString()]);
 
         foreach ($googleEvents as $googleEvent) {
             $googleEvent->delete();

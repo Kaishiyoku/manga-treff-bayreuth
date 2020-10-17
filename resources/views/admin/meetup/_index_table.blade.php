@@ -6,7 +6,6 @@
                 <th>@lang('validation.attributes.date_start')</th>
                 <th>@lang('validation.attributes.date_end')</th>
                 <th>@lang('meetup.admin.index.animexx_event')</th>
-                <th>@lang('validation.attributes.is_manually_added')</th>
                 <th></th>
             </tr>
         </thead>
@@ -23,7 +22,6 @@
                             {{ Html::link($meetup->getUrl(), $meetup->external_id, ['class' => 'link']) }}
                         @endif
                     </td>
-                    <td>{{ formatBoolean($meetup->is_manually_added) }}</td>
                     <td class="text-right">
                         @include('shared._delete_link', ['route' => ['admin.meetups.destroy', $meetup]])
 

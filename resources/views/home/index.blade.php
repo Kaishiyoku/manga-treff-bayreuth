@@ -50,7 +50,7 @@
             @if ($nextUpcomingMeetup)
                 <h1 class="pt-12">@lang('home.index.meetups.next_upcoming')</h1>
 
-                @include('home._meetup_card', ['meetup' => $nextUpcomingMeetup, 'isHighlighted' => true])
+                @include('home._meetup_card', ['meetup' => $nextUpcomingMeetup, 'classNames' => 'bg-pink-600 text-white'])
             @endif
         </div>
 
