@@ -38,6 +38,9 @@ return [
     'admin' => [
         'index' => [
             'title' => 'Administration',
+            'todays_number_of_site_visits' => 'Heutige eindeutige Seitenaufrufe',
+            'date' => 'Datum',
+            'number_of_site_visits' => 'Anzahl Seitenaufrufe',
         ],
     ],
 ];
