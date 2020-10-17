@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('shared._visitor_notices')
+
     <h1>@lang('home.index.meetups.upcoming')</h1>
 
     <div class="mb-5">

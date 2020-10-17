@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\VisitorNotice;
 use GrahamCampbell\Security\Facades\Security;
 use \Illuminate\Support\Facades\Http;
+use Bueltge\Marksimple\Marksimple;
 
 if (!function_exists('getUrlForAnimexxMeetupSeries')) {
     function getUrlForAnimexxMeetupSeries($id)
@@ -135,5 +137,28 @@ if (!function_exists('fetchDiscordWidgetApiContent')) {
     function fetchDiscordWidgetApiContent()
     {
         return getExternalJson(config('site.discord_widget_api_url'));
+    }
+}
+
+if (!function_exists('parseMarkdown')) {
+    function parseMarkdown(string $content): string
+    {
+        $markSimple = new Marksimple();
+        $markSimple->removeRule('header');
+        $markSimple->removeRule('ul');
+        $markSimple->removeRule('cleanuplist');
+        $markSimple->removeRule('pre');
+        $markSimple->removeRule('cleanuppre');
+        $markSimple->removeRule('githubpre');
+        $markSimple->removeRule('code');
+
+        return cleanHtml($markSimple->parse($content));
+    }
+}
+
+if (!function_exists('visitorNoticesForToday')) {
+    function visitorNoticesForToday()
+    {
+        return VisitorNotice::today();
     }
 }

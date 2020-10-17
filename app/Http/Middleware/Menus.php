@@ -26,6 +26,22 @@ class Menus
     }
 
     /**
+     * @return bool
+     */
+    private function isLoggedIn()
+    {
+        return $this->auth->check();
+    }
+
+    /**
+     * @return bool
+     */
+    private function isAdmin()
+    {
+        return $this->isLoggedIn() && $this->auth->user()->is_admin;
+    }
+
+    /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -51,24 +67,9 @@ class Menus
         \LaravelMenu::register('admin')
             ->addClassNames('mr-auto nav-dark')
             ->link('admin.users.index,admin.users.create,admin.users.edit', '<i class="fas fa-users"></i> ' . __('common.users'), true)
-            ->link('admin.meetups.index,admin.meetups.edit', '<i class="fas fa-calendar"></i> ' . __('common.meetups'), true);
+            ->link('admin.meetups.index,admin.meetups.create,admin.meetups.edit', '<i class="fas fa-calendar"></i> ' . __('common.meetups'), true)
+            ->link('admin.visitor_notices.index,admin.visitor_notices.create,admin.visitor_notices.edit', '<i class="fas fa-info-circle"></i> ' . __('common.visitor_notices'), true);
 
         return $next($request);
-    }
-
-    /**
-     * @return bool
-     */
-    private function isLoggedIn()
-    {
-        return $this->auth->check();
-    }
-
-    /**
-     * @return bool
-     */
-    private function isAdmin()
-    {
-        return $this->isLoggedIn() && $this->auth->user()->is_admin;
     }
 }

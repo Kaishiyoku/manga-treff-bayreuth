@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\MeetupController as AdminMeetupController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\VisitorNoticeController as AdminVisitorNoticeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MeetupController;
 use App\Http\Controllers\ProfileController;
@@ -46,5 +47,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('/', [AdminHomeController::class, 'index'])->name('home.index');
         Route::resource('users', AdminUserController::class, ['except' => 'show']);
         Route::resource('meetups', AdminMeetupController::class, ['except' => ['show']]);
+        Route::resource('visitor_notices', AdminVisitorNoticeController::class);
     });
 });

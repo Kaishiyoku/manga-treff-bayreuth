@@ -41,4 +41,6 @@ return [
         'members_online' => ':count Mitglieder online'
     ],
     'animexx_event' => 'Animexx',
+    'visitor_notices' => 'Hinweise',
+    'show' => 'Details',
 ];

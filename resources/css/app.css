@@ -116,6 +116,12 @@ select.input {
     @apply block text-gray-700 text-sm font-bold mb-2;
 }
 
+.label-required:after {
+    @apply text-gray-600;
+
+    content: ' *';
+}
+
 .label-checkbox {
     @apply inline-flex items-center mt-3;
 }

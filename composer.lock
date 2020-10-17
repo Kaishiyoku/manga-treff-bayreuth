@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c59ce2b1b3e931e4baef09c303c0cec5",
+    "content-hash": "c3c60f9752a41ac5b8385a7c1b3b6879",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -109,6 +109,55 @@
                 }
             ],
             "time": "2020-08-18T23:57:15+00:00"
+        },
+        {
+            "name": "bueltge/marksimple",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bueltge/marksimple.git",
+                "reference": "c5c7b1d811c4f605a7b59eab4de8ce08e93e760c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bueltge/marksimple/zipball/c5c7b1d811c4f605a7b59eab4de8ce08e93e760c",
+                "reference": "c5c7b1d811c4f605a7b59eab4de8ce08e93e760c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "antecedent/patchwork": "^2.1",
+                "codedungeon/phpunit-result-printer": "^0",
+                "dg/composer-cleaner": "^2",
+                "inpsyde/php-coding-standards": "@stable",
+                "phpunit/phpunit": "^6.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bueltge\\Marksimple\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank Bültge",
+                    "email": "frank@bueltge.de"
+                }
+            ],
+            "description": "A simple Markdown parser for PHP.",
+            "keywords": [
+                "markdown",
+                "parser",
+                "php"
+            ],
+            "time": "2018-12-10T21:06:08+00:00"
         },
         {
             "name": "cjstroud/classnames-php",

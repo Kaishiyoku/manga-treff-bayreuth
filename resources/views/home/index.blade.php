@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('shared._visitor_notices')
+
     <div class="lg:flex lg:items-start lg:justify-between">
         <div class="lg:w-12/20">
             <div class="md:flex md:items-start">
