@@ -1,5 +1,5 @@
 @if ($location->default)
-    <em>@lang('common.unknown')</em>
+    <span class="italic">@lang('common.unknown')</span>
 @else
     {{ $location->country }},
     {{ $location->state_name }},

@@ -3,9 +3,9 @@
 @section('content')
     <h1>{{ __('profile.active_sessions.title') }}</h1>
 
-    <p class="lead">
+    <div class="italic">
         {{ __('profile.active_sessions.here_are_all_your_sessions_displayed') }}
-    </p>
+    </div>
 
     <div class="alert alert-info">
         {{ __('profile.active_sessions.current_session_info') }}
@@ -14,8 +14,8 @@
     @if ($databaseSessions->count() == 0)
         @include('shared._no_entries_yet')
     @else
-        <div class="table-responsive">
-            <table class="table table-striped">
+        <div class="card">
+            <table class="table">
                 <thead>
                 <tr>
                     <th width="15%">{{ __('validation.attributes.ip_address') }}</th>
@@ -40,7 +40,7 @@
                             {{ Form::open(['route' => 'profile.destroy_session', 'method' => 'delete', 'role' => 'form']) }}
                                 {{ Form::hidden('id', $databaseSession->id) }}
 
-                                {{ Form::button('<i class="fas fa-sign-out" aria-hidden="true"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sn', 'data-confirm' => '']) }}
+                                {{ Form::button('<i class="fas fa-sign-out-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger', 'data-confirm' => '']) }}
                             {{ Form::close() }}
                         </td>
                     </tr>
