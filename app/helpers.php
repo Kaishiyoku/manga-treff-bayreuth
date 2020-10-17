@@ -163,6 +163,6 @@ if (!function_exists('parseMarkdown')) {
 if (!function_exists('visitorNoticesForToday')) {
     function visitorNoticesForToday()
     {
-        return VisitorNotice::today();
+        return VisitorNotice::today()->orderBy('starting_at')->orderBy('ending_at');
     }
 }
