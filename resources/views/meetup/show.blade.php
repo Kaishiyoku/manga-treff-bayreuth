@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('breadcrumbs')
+    @include('shared._visitor_notices')
+
     @if ($meetup->isUpcoming())
         {{ Breadcrumbs::render('meetups.show_upcoming', $meetup) }}
     @else
@@ -9,8 +11,6 @@
 @endsection
 
 @section('content')
-    @include('shared._visitor_notices')
-
     <h1>@lang('meetup.show.title', ['date' => $meetup->date_start->format(__('date.datetime'))])</h1>
 
     <div class="mb-5 text-sm">
