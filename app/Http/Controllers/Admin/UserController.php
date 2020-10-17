@@ -96,7 +96,7 @@ class UserController extends Controller
         }
 
         if (!$isEmailVerified) {
-            $user->is_email_verified = null;
+            $user->email_verified_at = null;
         }
 
         $user->save();
@@ -142,7 +142,7 @@ class UserController extends Controller
         return [
             'name',
             'email',
-            'is_admin'
+            'is_admin',
         ];
     }
 
