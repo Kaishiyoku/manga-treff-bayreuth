@@ -49,7 +49,7 @@ class CrawlAnimexxEvents extends BaseCommand
         $this->logInfo('Crawling events...this will take some time.');
         $this->line('');
 
-        $json = getDataForAnimexxMeetupSeries(env('ANIMEXX_EVENT_SERIES_ID'));
+        $json = getDataForAnimexxMeetupSeries(config('site.animexx_event_series_id'));
 
         $meetups = collect();
 
@@ -68,7 +68,7 @@ class CrawlAnimexxEvents extends BaseCommand
 
             $meetup = new Meetup();
             $meetup->external_id = $animexxEvent->id;
-            $meetup->address = $animexxEvent->address ?? env('ANIMEXX_EVENT_DEFAULT_ADDRESS');
+            $meetup->address = $animexxEvent->address ?? config('site.animexx_event_default_address');
             $meetup->name = $animexxEvent->name;
 
             $meetup->date_start = new Carbon($animexxEvent->dateStart->date, $animexxEvent->dateStart->timezone);
@@ -79,8 +79,8 @@ class CrawlAnimexxEvents extends BaseCommand
                     return explode(':', $str);
                 };
 
-                $meetup->date_start = $meetup->date_start->setTime(...$getDefaultTime(env('ANIMEXX_EVENT_DEFAULT_START_TIME')));
-                $meetup->date_end = $meetup->date_start->setTime(...$getDefaultTime(env('ANIMEXX_EVENT_DEFAULT_END_TIME')));
+                $meetup->date_start = $meetup->date_start->setTime(...$getDefaultTime(config('site.animexx_event_default_start_time')));
+                $meetup->date_end = $meetup->date_start->setTime(...$getDefaultTime(config('site.animexx_event_default_end_time')));
             }
 
             $meetup->zip = $animexxEvent->zip;

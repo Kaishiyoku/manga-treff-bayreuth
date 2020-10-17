@@ -58,7 +58,7 @@
     </div>
 
     <div class="container px-4 lg:px-20 mx-auto mt-20 mb-12 text-gray-600 text-sm">
-        v{{ env('APP_VERSION') }}
+        v{{ config('config.app_version') }}
         &#8226;
         {{ Html::linkRoute('home.show_contact_form', __('common.contact'), null, ['class' => 'link']) }}
         &#8226;

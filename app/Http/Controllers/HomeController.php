@@ -69,7 +69,7 @@ class HomeController extends Controller
             'content' => 'required'
         ]);
 
-        Mail::to(env('APP_ADMIN_EMAIL'))->send(new ContactFormSent($validated['email'], $validated['fullname'], $validated['content']));
+        Mail::to(config('site.app_admin_email'))->send(new ContactFormSent($validated['email'], $validated['fullname'], $validated['content']));
 
         flash()->success(__('home.contact.success'));
 

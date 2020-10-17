@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="flex flex-col text-center">
-                        <a class="btn btn-outline-primary text-xl" href="{{ env('SHORT_EVENT_BASE_URL') }}">
+                        <a class="btn btn-outline-primary text-xl" href="{{ config('site.short_event_base_url') }}">
                             <i class="far fa-calendar"></i>
 
                             @lang('home.index.meetups.animexx_series')
@@ -30,7 +30,7 @@
                             @lang('common.or')
                         </div>
 
-                        <a class="btn btn-outline-primary text-xl" href="{{ env('GOOGLE_CALENDAR_PUBLIC_URL') }}">
+                        <a class="btn btn-outline-primary text-xl" href="{{ config('site.google_calendar_public_url') }}">
                             <i class="far fa-calendar"></i>
 
                             @lang('home.index.meetups.google_calendar')

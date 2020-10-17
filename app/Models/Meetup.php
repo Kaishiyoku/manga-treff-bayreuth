@@ -148,7 +148,7 @@ class Meetup extends Model
 
     public function getUrl()
     {
-        return env('ANIMEXX_EVENT_BASE_URL') . '/' . $this->external_id;
+        return config('site.animexx_event_base_url') . '/' . $this->external_id;
     }
 
     public function getMeetupLocation()

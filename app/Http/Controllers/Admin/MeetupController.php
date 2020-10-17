@@ -60,7 +60,7 @@ class MeetupController extends Controller
 
         $meetup = new Meetup();
         $meetup->is_manually_added = true;
-        $meetup->contact_id = env('DEFAULT_CONTACT_ID');
+        $meetup->contact_id = config('config.default_contact_id');
 
         $meetup->fill($request->only($this->getFillableFields()));
 

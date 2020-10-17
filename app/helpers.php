@@ -19,7 +19,7 @@ if (!function_exists('getUrlForAnimexxMeetupSeries')) {
             ],
         ]);
 
-        return env('ANIMEXX_EVENT_BASE_URL_JSON') . '?' . $httpQueryString;
+        return config('site.animexx_event_base_url_json') . '?' . $httpQueryString;
     }
 }
 
@@ -134,6 +134,6 @@ if (!function_exists('clearGoogleCalendar')) {
 if (!function_exists('fetchDiscordWidgetApiContent')) {
     function fetchDiscordWidgetApiContent()
     {
-        return getExternalJson(env('DISCORD_WIDGET_API_URL'));
+        return getExternalJson(config('site.discord_widget_api_url'));
     }
 }

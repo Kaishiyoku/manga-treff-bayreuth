@@ -52,7 +52,7 @@ class SendEventNotificationToDiscord extends Command
             try {
                 $message = (new DiscordTextMessage())->setContent("@everyone Nächstes Event am {$formattedDate}. Treffpunkt im Bahnhof");
 
-                $webhook = new DiscordWebhook(env('DISCORD_WEBHOOK_URL'));
+                $webhook = new DiscordWebhook(config('site.discord_webhook_url'));
                 $webhook->send($message);
             } catch (DiscordInvalidResponseException $e) {
                 Log::error('Couldn\'t post to Discord. ' . $e->getMessage());
