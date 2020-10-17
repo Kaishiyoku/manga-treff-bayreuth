@@ -25,7 +25,10 @@
                         @endif
                     </td>
                     <td>
-                        @include('shared._delete_link', ['route' => ['admin.users.destroy', $user->id]])
+                        @if ($user->id !== auth()->user()->id && !$user->is_admin)
+                            @include('shared._delete_link', ['route' => ['admin.users.destroy', $user->id]])
+                        @endif
+
                         {{ Html::linkRoute('admin.users.edit', __('common.edit'), $user, ['class' => 'btn btn-sm btn-black']) }}
                     </td>
                 </tr>
