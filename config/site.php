@@ -27,4 +27,6 @@ return [
 
     'google_calendar_public_url' => env('GOOGLE_CALENDAR_PUBLIC_URL'),
 
+    'google_analytics_tracking_id' => env('GOOGLE_ANALYTICS_TRACKING_ID'),
+
 ];
