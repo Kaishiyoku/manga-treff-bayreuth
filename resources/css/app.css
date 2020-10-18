@@ -38,6 +38,9 @@ h1 > .headline-info {
 h2 {
     @apply text-3xl mt-3 mb-2;
 }
+h2 > .headline-info {
+    @apply text-gray-600 text-2xl;
+}
 
 h3 {
     @apply text-2xl mt-3 mb-2;

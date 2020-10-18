@@ -38,9 +38,15 @@ return [
     'admin' => [
         'index' => [
             'title' => 'Administration',
-            'todays_number_of_site_visits' => 'Heutige eindeutige Seitenaufrufe',
+            'unverified_users' => [
+                'title' => 'Noch nicht verifizierte Benutzer',
+            ],
+            'site_visits' => [
+                'title' => 'Seitenbesucher',
+                'todays_number_of_site_visits' => 'Heutige eindeutige Seitenaufrufe',
+                'number_of_site_visits' => 'Anzahl Seitenaufrufe',
+            ],
             'date' => 'Datum',
-            'number_of_site_visits' => 'Anzahl Seitenaufrufe',
         ],
     ],
 ];
