@@ -1,4 +1,7 @@
-window._ = require('lodash');
+import HandyCollapse from 'handy-collapse';
+import _ from 'lodash';
+
+window._ = _;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -30,6 +33,10 @@ try {
             if (!confirm(confirmationText)) {
                 return false;
             }
+        });
+
+        new HandyCollapse({
+            closeOthers: false,
         });
     });
 } catch (e) {}
