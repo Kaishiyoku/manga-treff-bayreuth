@@ -14,11 +14,11 @@ class CreateEventTypesTable extends Migration
     public function up()
     {
         Schema::create('event_types', function (Blueprint $table) {
-            $table->unsignedInteger('external_id');
+            $table->unsignedBigInteger('external_id');
             $table->string('title')->unique();
             $table->text('description')->nullable();
             $table->string('color');
-            $table->integer('parent_id');
+            $table->unsignedBigInteger('parent_id');
 
             $table->primary('external_id');
         });

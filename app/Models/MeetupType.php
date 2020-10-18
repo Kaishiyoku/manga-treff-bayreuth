@@ -13,16 +13,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $color
  * @property int $parent_id
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Meetup[] $meetups
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MeetupType newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MeetupType newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MeetupType query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MeetupType whereColor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MeetupType whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MeetupType whereExternalId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MeetupType whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MeetupType whereTitle($value)
- * @mixin \Eloquent
  * @property-read int|null $meetups_count
+ * @method static \Illuminate\Database\Eloquent\Builder|MeetupType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MeetupType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MeetupType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereExternalId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereTitle($value)
+ * @mixin \Eloquent
  */
 class MeetupType extends Model
 {

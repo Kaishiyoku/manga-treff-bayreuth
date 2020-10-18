@@ -14,9 +14,9 @@ class CreateLoginAttemptsTable extends Migration
     public function up()
     {
         Schema::create('login_attempts', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
+            $table->unsignedBigInteger('user_id');
             $table->enum('status', ['success', 'failure']);
-            $table->timestamp('login_at')->useCurrent = true;
+            $table->timestamp('login_at')->useCurrent();
             $table->string('ip_address', 45)->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');

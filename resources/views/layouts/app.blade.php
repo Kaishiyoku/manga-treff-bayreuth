@@ -43,6 +43,13 @@
         </div>
 
         <div class="container px-4 lg:px-20 mx-auto">
+            @if (session('resent'))
+                <div class="alert alert-success"
+                     role="alert">
+                    {{ __('A fresh verification link has been sent to your email address.') }}
+                </div>
+            @endif
+
             @if (session('verified'))
                 <div class="alert alert-success">
                     @lang('Your email address has been verified.')

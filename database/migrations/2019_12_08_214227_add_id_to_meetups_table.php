@@ -18,7 +18,7 @@ class AddIdToMeetupsTable extends Migration
         Schema::table('meetups', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedInteger('external_id')->nullable(true)->change();
+            $table->unsignedBigInteger('external_id')->nullable()->change();
 
             $table->index('external_id');
         });

@@ -8,11 +8,11 @@ use Illuminate\Support\Carbon;
 /**
  * App\Models\Meetup
  *
- * @property int $external_id
+ * @property int|null $external_id
  * @property string $address
  * @property string $name
- * @property \Illuminate\Support\Carbon $date_start
- * @property \Illuminate\Support\Carbon $date_end
+ * @property Carbon $date_start
+ * @property Carbon $date_end
  * @property string $zip
  * @property string $city
  * @property string $state
@@ -22,43 +22,45 @@ use Illuminate\Support\Carbon;
  * @property string|null $main_image
  * @property string|null $logo_image
  * @property string $country
- * @property float $geo_lat
- * @property float $geo_long
- * @property int $geo_zoom
- * @property int $geo_type
+ * @property float|null $geo_lat
+ * @property float|null $geo_long
+ * @property int|null $geo_zoom
+ * @property int|null $geo_type
  * @property int $meetup_type_external_id
  * @property string $description
- * @property-read \App\Models\MeetupType $meetupType
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup past()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup upcoming()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereAttendees($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereContactId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereCountry($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereDateEnd($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereDateStart($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereExternalId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereGeoLat($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereGeoLong($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereGeoType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereGeoZoom($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereIntro($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereLogoImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereMainImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereMeetupTypeExternalId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereZip($value)
- * @mixin \Eloquent
  * @property int $is_manually_added
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereIsManuallyAdded($value)
  * @property int $id
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Meetup whereId($value)
+ * @property-read \App\Models\MeetupType $meetupType
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MeetupUserRegistration[] $userRegistrations
+ * @property-read int|null $user_registrations_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup past()
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup upcoming()
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereAttendees($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereContactId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereDateEnd($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereDateStart($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereExternalId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereGeoLat($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereGeoLong($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereGeoType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereGeoZoom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereIntro($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereIsManuallyAdded($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereLogoImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereMainImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereMeetupTypeExternalId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereZip($value)
+ * @mixin \Eloquent
  */
 class Meetup extends Model
 {
@@ -136,11 +138,6 @@ class Meetup extends Model
         return $query->where('date_end', '<', Carbon::now()->endOfDay());
     }
 
-    public function meetupType()
-    {
-        return $this->belongsTo(MeetupType::class);
-    }
-
     public function isUpcoming()
     {
         return $this->date_start >= Carbon::today()->startOfDay();
@@ -153,11 +150,25 @@ class Meetup extends Model
 
     public function getUrl()
     {
+        if ($this->is_manually_added) {
+            return null;
+        }
+
         return config('site.animexx_event_base_url') . '/' . $this->external_id;
     }
 
     public function getMeetupLocation()
     {
         return $this->country . ', ' . $this->state . ', ' . $this->zip . ' ' . $this->city . ', ' . $this->address;
+    }
+
+    public function meetupType()
+    {
+        return $this->belongsTo(MeetupType::class);
+    }
+
+    public function userRegistrations()
+    {
+        return $this->hasMany(MeetupUserRegistration::class);
     }
 }

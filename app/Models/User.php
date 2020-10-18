@@ -44,6 +44,8 @@ use Illuminate\Notifications\Notifiable;
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MeetupUserRegistration[] $meetupRegistrations
+ * @property-read int|null $meetup_registrations_count
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -99,5 +101,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function databaseSessions()
     {
         return $this->hasMany(DBSession::class);
+    }
+
+    public function meetupRegistrations()
+    {
+        return $this->hasMany(MeetupUserRegistration::class);
     }
 }

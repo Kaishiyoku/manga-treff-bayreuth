@@ -28,7 +28,7 @@ class AddAdditionalFieldsToEventsTable extends Migration
             $table->string('zip');
             $table->string('city');
             $table->string('state');
-            $table->unsignedInteger('contact_id');
+            $table->unsignedBigInteger('contact_id');
             $table->string('attendees');
             $table->text('intro');
             $table->string('main_image')->nullable();
@@ -38,7 +38,7 @@ class AddAdditionalFieldsToEventsTable extends Migration
             $table->float('geo_long');
             $table->integer('geo_zoom');
             $table->integer('geo_type');
-            $table->unsignedInteger('event_type_external_id');
+            $table->unsignedBigInteger('event_type_external_id');
 
             $table->foreign('event_type_external_id')->references('external_id')->on('event_types');
         });

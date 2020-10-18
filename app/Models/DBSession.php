@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Traits\Shortcode;
-use App\Models\Traits\Slug;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -15,16 +13,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $user_agent
  * @property string $payload
  * @property int $last_activity
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession whereIpAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession whereLastActivity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession wherePayload($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession whereUserAgent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DBSession newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DBSession newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DBSession query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DBSession whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DBSession whereIpAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DBSession whereLastActivity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DBSession wherePayload($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DBSession whereUserAgent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DBSession whereUserId($value)
  * @mixin \Eloquent
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DBSession query()
  */
 class DBSession extends Model
 {

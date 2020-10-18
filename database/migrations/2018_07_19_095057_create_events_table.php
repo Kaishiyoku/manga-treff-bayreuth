@@ -14,7 +14,7 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->unsignedInteger('external_id');
+            $table->unsignedBigInteger('external_id');
             $table->string('title');
             $table->timestamps();
 

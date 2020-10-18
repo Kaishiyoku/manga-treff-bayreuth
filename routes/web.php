@@ -40,6 +40,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/profile/password/change', [ProfileController::class, 'editPassword'])->name('profile.edit_password');
     Route::put('/profile/password/change', [ProfileController::class, 'updatePassword'])->name('profile.update_password');
 
+    Route::put('/meetups/{meetup}/register/toggle', [MeetupController::class, 'toggleRegistration'])->name('meetups.toggle_registration');
+    Route::put('/meetups/{meetupUserRegistration}/register/update', [MeetupController::class, 'updateRegistration'])->name('meetups.update_registration');
+
     ////////////////////
     // Administrators //
     ////////////////////

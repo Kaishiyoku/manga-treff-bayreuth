@@ -45,17 +45,33 @@
 
                     @include('shared._external_icon')
                 </a>
+
+                <a href="#registrations" class="btn btn-outline-black btn-sm">
+                    <i class="fas fa-user-friends"></i>
+
+                    @if ($meetup->is_manually_added)
+                        {{ trans_choice('meetup.show.registration.title', $meetupUserRegistrations->count()) }}
+                    @else
+                        @lang('meetup.show.registration.title_alternative')
+                    @endif
+                </a>
             </div>
 
             <hr/>
 
-            <div class="mt-4 prose max-w-none">
+            <div class="mt-5 mb-5 prose max-w-none">
                 @if ($meetup->is_manually_added)
                     {!! parseMarkdown(cleanHtml($meetup->description)) !!}
                 @else
                     {!! cleanHtml($meetup->description) !!}
                 @endif
             </div>
+
+            <hr/>
+
+            <a id="registrations"></a>
+
+            @include('meetup._registrations')
         </div>
     </div>
 @endsection

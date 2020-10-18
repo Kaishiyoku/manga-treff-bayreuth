@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Traits\Shortcode;
-use App\Models\Traits\Slug;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -11,17 +9,17 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $user_id
  * @property string $status
- * @property \Carbon\Carbon $login_at
+ * @property \Illuminate\Support\Carbon $login_at
  * @property string|null $ip_address
  * @property-read \App\Models\User $user
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt whereIpAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt whereLoginAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LoginAttempt newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoginAttempt newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoginAttempt query()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoginAttempt whereIpAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LoginAttempt whereLoginAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LoginAttempt whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LoginAttempt whereUserId($value)
  * @mixin \Eloquent
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\LoginAttempt query()
  */
 class LoginAttempt extends Model
 {

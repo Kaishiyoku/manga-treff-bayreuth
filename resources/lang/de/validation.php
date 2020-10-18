@@ -202,5 +202,6 @@ return [
         'email_verified_at'         => 'Verifiziert am',
         'starting_at'               => 'Beginn',
         'ending_at'                 => 'Ende',
+        'comment'                   => 'Kommentar',
     ],
 ];
