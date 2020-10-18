@@ -17,6 +17,14 @@
             @lang('validation.attributes.address'): {{ $meetup->getMeetupLocation() }}
         </div>
 
+        <div class="mt-5">
+            @if ($meetup->is_manually_added)
+                {!! parseMarkdown(cleanHtml($meetup->intro)) !!}
+            @else
+                {!! cleanHtml($meetup->intro) !!}
+            @endif
+        </div>
+
         <div class="sm:flex sm:justify-between mt-5">
             <div class="mb-3 md:mb-0">
                 <a href="{{ route('meetups.show', $meetup) }}" class="btn btn-sm btn-black w-full sm:w-auto">

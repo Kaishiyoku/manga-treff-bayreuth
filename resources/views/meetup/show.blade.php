@@ -50,7 +50,11 @@
             <hr/>
 
             <div class="mt-4 prose max-w-none">
-                {!! cleanHtml($meetup->description) !!}
+                @if ($meetup->is_manually_added)
+                    {!! parseMarkdown(cleanHtml($meetup->description)) !!}
+                @else
+                    {!! cleanHtml($meetup->description) !!}
+                @endif
             </div>
         </div>
     </div>
