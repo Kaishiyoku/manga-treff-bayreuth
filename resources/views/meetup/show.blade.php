@@ -38,13 +38,15 @@
                     @lang('home.index.meetups.show_in_google_maps')
                 </a>
 
-                <a href="{{ $meetup->getUrl() }}" class="btn btn-outline-black btn-sm">
-                    <i class="far fa-calendar"></i>
+                @if (!$meetup->is_manually_added)
+                    <a href="{{ $meetup->getUrl() }}" class="btn btn-outline-black btn-sm">
+                        <i class="far fa-calendar"></i>
 
-                    @lang('common.animexx_event')
+                        @lang('common.animexx_event')
 
-                    @include('shared._external_icon')
-                </a>
+                        @include('shared._external_icon')
+                    </a>
+                @endif
 
                 <a href="#registrations" class="btn btn-outline-black btn-sm">
                     <i class="fas fa-user-friends"></i>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 /**
  * App\Models\Meetup
@@ -61,6 +62,8 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereZip($value)
  * @mixin \Eloquent
+ * @property string|null $slug
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereSlug($value)
  */
 class Meetup extends Model
 {
@@ -121,6 +124,20 @@ class Meetup extends Model
     ];
 
     /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::saving(function (Meetup $meetup) {
+            $meetup->slug = Str::slug($meetup->name);
+
+            return $meetup;
+        });
+    }
+
+    /**
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -154,7 +171,7 @@ class Meetup extends Model
             return null;
         }
 
-        return config('site.animexx_event_base_url') . '/' . $this->external_id;
+        return config('site.animexx_event_base_url') . '/' . $this->external_id . '/' . $this->slug;
     }
 
     public function getMeetupLocation()

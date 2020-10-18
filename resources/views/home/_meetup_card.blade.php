@@ -41,13 +41,15 @@
                     @lang('home.index.meetups.show_in_google_maps')
                 </a>
 
-                <a href="{{ $meetup->getUrl() }}" class="btn btn-sm btn-outline-black mb-3 w-full sm:w-auto">
-                    <i class="far fa-calendar"></i>
+                @if (!$meetup->is_manually_added)
+                    <a href="{{ $meetup->getUrl() }}" class="btn btn-sm btn-outline-black mb-3 w-full sm:w-auto">
+                        <i class="far fa-calendar"></i>
 
-                    @lang('common.animexx_event')
+                        @lang('common.animexx_event')
 
-                    @include('shared._external_icon')
-                </a>
+                        @include('shared._external_icon')
+                    </a>
+                @endif
             </div>
         </div>
     </div>

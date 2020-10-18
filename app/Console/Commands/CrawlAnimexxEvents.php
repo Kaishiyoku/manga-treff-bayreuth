@@ -70,6 +70,7 @@ class CrawlAnimexxEvents extends BaseCommand
             $meetup->external_id = $animexxEvent->id;
             $meetup->address = $animexxEvent->address ?? config('site.animexx_event_default_address');
             $meetup->name = $animexxEvent->name;
+            $meetup->slug = $animexxEvent->slug;
 
             $meetup->date_start = new Carbon($animexxEvent->dateStart->date, $animexxEvent->dateStart->timezone);
             $meetup->date_end = new Carbon($animexxEvent->dateEnd->date, $animexxEvent->dateEnd->timezone);
