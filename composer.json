@@ -23,6 +23,7 @@
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.2",
         "spatie/laravel-google-calendar": "^3.1",
+        "symfony/css-selector": "^5.1",
         "symfony/dom-crawler": "^5.1",
         "torann/geoip": "^3.0",
         "woeler/phpdiscord": "^2.0"

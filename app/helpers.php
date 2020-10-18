@@ -1,11 +1,15 @@
 <?php
 
+use App\Models\Meetup;
 use App\Models\VisitorNotice;
 use GrahamCampbell\Security\Facades\Security;
 use Illuminate\Support\Carbon;
 use \Illuminate\Support\Facades\Http;
 use Bueltge\Marksimple\Marksimple;
+use Illuminate\Support\Str;
 use \Spatie\GoogleCalendar\Event as GoogleEvent;
+use Symfony\Component\CssSelector\CssSelectorConverter;
+use Symfony\Component\DomCrawler\Crawler;
 
 if (!function_exists('getUrlForAnimexxMeetupSeries')) {
     function getUrlForAnimexxMeetupSeries($id)
@@ -34,18 +38,47 @@ if (!function_exists('getDataForAnimexxMeetupSeries')) {
     }
 }
 
-if (!function_exists('fetchMeetupDescriptionFor')) {
-    function fetchMeetupDescriptionFor($id)
+if (!function_exists('getAnimexxUrlForEvent')) {
+    function getAnimexxUrlForEvent($id)
     {
-        $crawler = new \Symfony\Component\DomCrawler\Crawler(getExternalContent('https://www.animexx.de/events/' . $id));
+        return 'https://www.animexx.de/events/' . $id;
+    }
+}
 
-        $descriptions = $crawler->filter('.tabs-panel')->each(function (\Symfony\Component\DomCrawler\Crawler $node) {
+if (!function_exists('fetchMeetupDescriptionFor')) {
+    function fetchMeetupDescriptionFor($html)
+    {
+        $crawler = new Crawler($html);
+
+        $descriptions = $crawler->filter('.tabs-panel')->each(function (Crawler $node) {
             return $node->html();
         });
 
         return array_reduce($descriptions, function ($accum, $description) {
             return $accum . $description;
         }, '');
+    }
+}
+
+if (!function_exists('fetchMeetupUserRegistrationsFor')) {
+    function fetchMeetupUserRegistrationsFor($html)
+    {
+        $crawler = new Crawler($html);
+        $cssSelector = new CssSelectorConverter();
+
+        $users = $crawler
+            ->filterXPath($cssSelector->toXPath('#event-participants > .reveal-content .user.username'))
+            ->each(function (Crawler $node) {
+                preg_match('/\?id=\d+/', $node->html(), $matches);
+                [$firstMatch] = $matches;
+
+                $id = (int) Str::substr($firstMatch, 4);
+                $name = $node->text();
+
+                return compact('id', 'name');
+            });
+
+        return collect($users);
     }
 }
 
@@ -112,7 +145,7 @@ if (!function_exists('convertEncoding')) {
 }
 
 if (!function_exists('storeGoogleEventFor')) {
-    function storeGoogleEventFor(\App\Models\Meetup $meetup)
+    function storeGoogleEventFor(Meetup $meetup)
     {
         $googleEvent = new GoogleEvent();
         $googleEvent->name = $meetup->name;
@@ -164,5 +197,12 @@ if (!function_exists('visitorNoticesForToday')) {
     function visitorNoticesForToday()
     {
         return VisitorNotice::today()->orderBy('starting_at')->orderBy('ending_at');
+    }
+}
+
+if (!function_exists('getAnimexxUserProfileUrlFor')) {
+    function getAnimexxUserProfileUrlFor($id)
+    {
+        return 'https://www.animexx.de/mitglieder/steckbrief.php?id=' . $id;
     }
 }

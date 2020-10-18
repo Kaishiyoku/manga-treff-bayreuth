@@ -118,9 +118,15 @@ class Meetup extends Model
         //
     ];
 
-    protected $dates = [
-        'date_start',
-        'date_end'
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'date_start' => 'datetime',
+        'date_end' => 'datetime',
+        'animexx_data' => 'array',
     ];
 
     /**

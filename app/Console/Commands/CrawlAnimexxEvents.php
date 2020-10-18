@@ -87,7 +87,7 @@ class CrawlAnimexxEvents extends BaseCommand
             $meetup->zip = $animexxEvent->zip;
             $meetup->city = $animexxEvent->city;
             $meetup->state = $animexxEvent->state;
-            $meetup->contact_id = (int) filter_var($animexxEvent->contact, FILTER_SANITIZE_NUMBER_INT);;
+            $meetup->contact_id = (int) filter_var($animexxEvent->contact, FILTER_SANITIZE_NUMBER_INT);
             $meetup->attendees = $animexxEvent->attendees;
             $meetup->intro = $animexxEvent->intro;
             $meetup->main_image = $animexxEvent->mainImage;
@@ -102,11 +102,22 @@ class CrawlAnimexxEvents extends BaseCommand
             $meetups->push($meetup);
         }
 
-
         $this->logInfo('Number of events: ' . count($meetups));
         $this->line('');
 
         $this->insertMeetups($meetups);
+
+        Meetup::whereIsManuallyAdded(false)->each(function (Meetup $meetup) {
+            $html = getExternalContent(getAnimexxUrlForEvent($meetup->external_id));
+            $userRegistrations = fetchMeetupUserRegistrationsFor($html);
+
+            $animexx_data = $meetup->animexx_data;
+            $animexx_data['user_registrations'] = $userRegistrations->toArray();
+
+            $meetup->animexx_data = $animexx_data;
+
+            $meetup->save();
+        });
 
         $timeElapsedInSeconds = microtime(true) - $start;
 
@@ -127,7 +138,9 @@ class CrawlAnimexxEvents extends BaseCommand
         $this->line('');
 
         foreach ($newMeetups as $i => $meetup) {
-            $meetup->description = fetchMeetupDescriptionFor($meetup->external_id);
+            $html = getExternalContent(getAnimexxUrlForEvent($meetup->external_id));
+
+            $meetup->description = fetchMeetupDescriptionFor($html);
 
             $meetup->save();
 

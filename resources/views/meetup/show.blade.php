@@ -51,11 +51,7 @@
                 <a href="#registrations" class="btn btn-outline-black btn-sm">
                     <i class="fas fa-user-friends"></i>
 
-                    @if ($meetup->is_manually_added)
-                        {{ trans_choice('meetup.show.registration.title', $meetupUserRegistrations->count()) }}
-                    @else
-                        @lang('meetup.show.registration.title_alternative')
-                    @endif
+                    {{ trans_choice('meetup.show.registration.title', $meetup->is_manually_added ? $meetupUserRegistrations->count() : count($meetup->animexx_data['user_registrations'])) }}
                 </a>
             </div>
 

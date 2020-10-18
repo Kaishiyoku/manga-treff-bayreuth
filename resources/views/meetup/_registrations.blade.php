@@ -1,8 +1,8 @@
-@if ($meetup->is_manually_added)
-    <div class="text-2xl mt-5">
-        {{ trans_choice('meetup.show.registration.title', $meetupUserRegistrations->count()) }}
-    </div>
+<div class="text-2xl mt-5">
+    {{ trans_choice('meetup.show.registration.title', $meetup->is_manually_added ? $meetupUserRegistrations->count() : count($meetup->animexx_data['user_registrations'])) }}
+</div>
 
+@if ($meetup->is_manually_added)
     <div>
         @foreach ($meetupUserRegistrations as $meetupUserRegistration)
             <div class="py-2">
@@ -23,8 +23,16 @@
 
     @include('meetup._edit_registration')
 @else
-    <div class="text-2xl mt-5">
-        @lang('meetup.show.registration.title_alternative')
+    <div>
+        @foreach ($meetup->animexx_data['user_registrations'] as $animexxMeetupRegistration)
+            <div class="py-2">
+                <a href="{{ getAnimexxUserProfileUrlFor($animexxMeetupRegistration['id']) }}" class="link">
+                    {{ $animexxMeetupRegistration['name'] }}
+
+                    @include('shared._external_icon')
+                </a>
+            </div>
+        @endforeach
     </div>
 
     <div class="alert alert-info mt-5">

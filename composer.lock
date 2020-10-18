@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3c60f9752a41ac5b8385a7c1b3b6879",
+    "content-hash": "56b4710ae95331d891a162ecbdb8d895",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -252,7 +252,7 @@
             "keywords": [
                 "laravel"
             ],
-            "abandoned": true,
+            "abandoned": "diglactic/laravel-breadcrumbs",
             "time": "2019-12-30T22:50:51+00:00"
         },
         {
