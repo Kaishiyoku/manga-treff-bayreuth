@@ -82,4 +82,14 @@ class HomeController extends Controller
 
         return redirect($discordItem->instant_invite);
     }
+
+    public function animexx()
+    {
+        return redirect(config('site.short_event_base_url'));
+    }
+
+    public function calendar()
+    {
+        return redirect(config('site.google_calendar_public_url'));
+    }
 }

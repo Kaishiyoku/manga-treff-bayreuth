@@ -25,6 +25,8 @@ Route::redirect('/events/past', '/meetups/past', 302);
 Auth::routes(['verify' => true]);
 
 Route::get('/discord', [HomeController::class, 'discord'])->name('home.discord');
+Route::get('/animexx', [HomeController::class, 'animexx'])->name('home.animexx');
+Route::get('/calendar', [HomeController::class, 'calendar'])->name('home.calendar');
 
 /////////////////////
 // Logged on users //

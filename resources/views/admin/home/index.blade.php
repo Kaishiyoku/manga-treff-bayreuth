@@ -56,4 +56,33 @@
             </tbody>
         </table>
     </div>
+
+    <h2>@lang('home.admin.index.page_clicks.title')</h2>
+
+    <div class="card">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="w-40">@lang('home.admin.index.date')</th>
+                    <th>@lang('home.admin.index.page_clicks.route')</th>
+                    <th>@lang('home.admin.index.page_clicks.number_of_clicks')</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pageClicks as $date => $pageClickContainer)
+                    <tr>
+                        <td colspan="3">{{ \Carbon\Carbon::parse($date)->format(__('date.date')) }}</td>
+                    </tr>
+
+                    @foreach ($pageClickContainer->groupBy('route') as $route => $pageClicks)
+                        <tr>
+                            <td></td>
+                            <td>{{ $route }}</td>
+                            <td>{{ $pageClicks->count() }}</td>
+                        </tr>
+                    @endforeach
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection

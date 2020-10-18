@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\Menus;
+use App\Http\Middleware\PageClickLogger;
 use App\Http\Middleware\SiteVisitLogger;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -41,6 +42,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             Menus::class,
             SiteVisitLogger::class,
+            PageClickLogger::class,
         ],
 
         'api' => [

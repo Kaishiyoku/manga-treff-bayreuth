@@ -1,4 +1,4 @@
-@if (auth()->user()->hasVerifiedEmail() && $meetup->isUpcoming() && $ownMeetupRegistration)
+@if (auth()->check() && auth()->user()->hasVerifiedEmail() && $meetup->isUpcoming() && $ownMeetupRegistration)
     <div class="text-xl mt-5 mb-2">
         <button class="link" data-hc-control="meetup-update-form">
             @lang('meetup.show.registration.edit.title')

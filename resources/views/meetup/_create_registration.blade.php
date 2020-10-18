@@ -1,4 +1,4 @@
-@if ($meetup->isUpcoming() && !$ownMeetupRegistration)
+@if (auth()->check() && $meetup->isUpcoming() && !$ownMeetupRegistration)
     <div class="text-xl mt-5 mb-2">
         @if (auth()->user()->hasVerifiedEmail())
             <button class="link" data-hc-control="meetup-registration-form">

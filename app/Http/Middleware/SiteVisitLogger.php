@@ -19,7 +19,7 @@ class SiteVisitLogger
     {
         SiteVisit::firstOrCreate([
             'ip' => $request->ip(),
-            'visited_at' => now()->toDateString()
+            'visited_at' => now()->toDateString(),
         ]);
 
         return $next($request);

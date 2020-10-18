@@ -64,6 +64,8 @@ use Illuminate\Support\Str;
  * @mixin \Eloquent
  * @property string|null $slug
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereSlug($value)
+ * @property array|null $animexx_data
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereAnimexxData($value)
  */
 class Meetup extends Model
 {

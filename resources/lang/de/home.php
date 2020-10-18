@@ -42,9 +42,14 @@ return [
                 'title' => 'Noch nicht verifizierte Benutzer',
             ],
             'site_visits' => [
-                'title' => 'Seitenbesucher',
+                'title' => 'Seitenbesucher der letzten 30 Tage',
                 'todays_number_of_site_visits' => 'Heutige eindeutige Seitenaufrufe',
                 'number_of_site_visits' => 'Anzahl Seitenaufrufe',
+            ],
+            'page_clicks' => [
+                'title' => 'Seitenaufrufe der letzten 30 Tage',
+                'route' => 'Route',
+                'number_of_clicks' => 'Anzahl Klicks',
             ],
             'date' => 'Datum',
         ],

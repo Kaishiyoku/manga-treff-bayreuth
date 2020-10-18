@@ -29,4 +29,6 @@ return [
 
     'google_analytics_tracking_id' => env('GOOGLE_ANALYTICS_TRACKING_ID'),
 
+    'page_click_tracking_routes' => explode(',', env('PAGE_CLICK_TRACKING_ROUTES')),
+
 ];
