@@ -90,6 +90,8 @@ h3 {
     @apply py-2;
 }
 select.input {
+    @apply bg-white;
+
     padding-top: .5rem;
     padding-bottom: .3rem;
 }
