@@ -13,7 +13,7 @@
 <div class="mb-4">
     {{ Form::label('attendees', __('validation.attributes.attendees'), ['class' => 'label']) }}
 
-    {{ Form::text('attendees', old('attendees', $meetup->attendees), ['class' => 'input' . ($errors->has('attendees') ? ' has-error' : ''), 'disabled' => !$meetup->is_manually_added, 'palceholder' => __('validation.attributes.attendees')]) }}
+    {{ Form::text('attendees', old('attendees', $meetup->attendees), ['class' => 'input' . ($errors->has('attendees') ? ' has-error' : ''), 'disabled' => !$meetup->is_manually_added, 'placeholder' => __('validation.attributes.attendees')]) }}
 
     @if ($errors->has('attendees'))
         <div class="invalid-feedback">
@@ -37,7 +37,7 @@
 <div class="mb-4">
     {{ Form::label('date_start', __('validation.attributes.date_start'), ['class' => 'label']) }}
 
-    {{ Form::text('date_start', old('date_start', $meetup->date_start->format(__('date.short'))), ['class' => 'input' . ($errors->has('date_start') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.date_start')]) }}
+    {{ Form::date('date_start', old('date_start', $meetup->date_start->format(__('date.short'))), ['class' => 'input' . ($errors->has('date_start') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.date_start')]) }}
 
     @if ($errors->has('date_start'))
         <div class="invalid-feedback">
@@ -61,7 +61,7 @@
 <div class="mb-4">
     {{ Form::label('date_end', __('validation.attributes.date_end'), ['class' => 'label']) }}
 
-    {{ Form::text('date_end', old('date_end', $meetup->date_end->format(__('date.short'))), ['class' => 'input' . ($errors->has('date_end') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.date_end')]) }}
+    {{ Form::date('date_end', old('date_end', $meetup->date_end->format(__('date.short'))), ['class' => 'input' . ($errors->has('date_end') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.date_end')]) }}
 
     @if ($errors->has('date_end'))
         <div class="invalid-feedback">
