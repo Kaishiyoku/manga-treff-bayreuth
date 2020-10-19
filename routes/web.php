@@ -41,6 +41,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/profile/email/confirm/{token}', [ProfileController::class, 'confirmNewEmail'])->name('profile.confirm_new_email');
     Route::get('/profile/password/change', [ProfileController::class, 'editPassword'])->name('profile.edit_password');
     Route::put('/profile/password/change', [ProfileController::class, 'updatePassword'])->name('profile.update_password');
+    Route::get('/profile/delete', [ProfileController::class, 'showDeleteAccountConfirmation'])->name('profile.show_delete_account_confirmation');
+    Route::delete('/profile/delete', [ProfileController::class, 'deleteAccount'])->name('profile.delete');
 
     Route::put('/meetups/{meetup}/register/toggle', [MeetupController::class, 'toggleRegistration'])->name('meetups.toggle_registration');
     Route::put('/meetups/{meetupUserRegistration}/register/update', [MeetupController::class, 'updateRegistration'])->name('meetups.update_registration');

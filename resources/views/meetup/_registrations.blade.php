@@ -5,9 +5,13 @@
 @if ($meetup->is_manually_added)
     <div>
         @foreach ($meetupUserRegistrations as $meetupUserRegistration)
-            <div class="py-2">
+            <div class="py-1">
                 <div>
-                    {{ $meetupUserRegistration->user->name }}
+                    @if ($meetupUserRegistration->user->trashed())
+                        <span class="italic text-muted">@lang('common.deleted_user')</span>
+                    @else
+                        {{ $meetupUserRegistration->user->name }}
+                    @endif
                 </div>
 
                 @if ($meetupUserRegistration->comment)
@@ -25,7 +29,7 @@
 @else
     <div>
         @foreach ($meetup->animexx_data['user_registrations'] as $animexxMeetupRegistration)
-            <div class="py-2">
+            <div class="py-1">
                 <a href="{{ getAnimexxUserProfileUrlFor($animexxMeetupRegistration['id']) }}" class="link">
                     {{ $animexxMeetupRegistration['name'] }}
 

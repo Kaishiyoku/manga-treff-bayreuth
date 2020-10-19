@@ -43,4 +43,6 @@ return [
     'animexx_event' => 'Animexx',
     'visitor_notices' => 'Hinweise',
     'show' => 'Details',
+    'cancel' => 'Abbrechen',
+    'deleted_user' => 'Gelöschter Nutzer',
 ];

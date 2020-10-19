@@ -41,4 +41,10 @@ return [
             'new_email_address' => 'Neue E-Mail-Adresse: :email',
         ],
     ],
+    'delete_account' => [
+        'title' => 'Account löschen',
+        'confirmation_text' => 'Willst du deinen Account wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden.',
+        'submit' => 'Account unwiderruflich löschen',
+        'success' => 'Dein Account wurde gelöscht und du wurdest automatisch ausgeloggt.',
+    ],
 ];

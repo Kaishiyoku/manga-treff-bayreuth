@@ -43,7 +43,6 @@ return [
             ],
             'site_visits' => [
                 'title' => 'Seitenbesucher der letzten 30 Tage',
-                'todays_number_of_site_visits' => 'Heutige eindeutige Seitenaufrufe',
                 'number_of_site_visits' => 'Anzahl Seitenaufrufe',
             ],
             'page_clicks' => [

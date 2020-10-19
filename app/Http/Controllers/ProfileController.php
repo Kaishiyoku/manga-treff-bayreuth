@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\EmailChanged;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
+use Ramsey\Uuid\Uuid;
 
 class ProfileController extends Controller
 {
@@ -165,6 +167,32 @@ class ProfileController extends Controller
         flash()->success(__('profile.confirm_new_email.success'));
 
         return redirect()->route('login');
+    }
+
+    public function showDeleteAccountConfirmation()
+    {
+        return view('profile.delete_account_confirmation');
+    }
+
+    /**
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteAccount(Request $request)
+    {
+        $user = auth()->user();
+
+        $user->email_verified_at = null;
+        $user->save();
+
+        $user->databaseSessions()->delete();
+        $user->delete();
+
+        $this->logoutUser($request);
+
+        flash()->success(__('profile.delete_account.success'));
+
+        return redirect()->to(RouteServiceProvider::HOME);
     }
 
     /**

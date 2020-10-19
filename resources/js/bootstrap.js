@@ -27,7 +27,7 @@ try {
             let confirmationText = $(this).attr('data-confirm');
 
             if (_.isEmpty(confirmationText) || confirmationText == 1) {
-                confirmationText = 'Are you sure?';
+                confirmationText = window.CONFIG.confirmationText || 'Are you sure?';
             }
 
             if (!confirm(confirmationText)) {

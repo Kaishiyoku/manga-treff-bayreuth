@@ -34,10 +34,6 @@
 
     <h2>@lang('home.admin.index.site_visits.title')</h2>
 
-    <div>
-        @lang('home.admin.index.site_visits.todays_number_of_site_visits'): {{ $siteVisits->get(now()->toDateString())->count() }}
-    </div>
-
     <div class="card mt-5">
         <table class="table table-hover">
             <thead>

@@ -151,7 +151,7 @@ class Meetup extends Model
      */
     public function scopeUpcoming($query)
     {
-        return $query->where('date_start', '>=', Carbon::today()->startOfDay());
+        return $query->where('date_start', '>=', today()->startOfDay());
     }
 
     /**
@@ -160,17 +160,22 @@ class Meetup extends Model
      */
     public function scopePast($query)
     {
-        return $query->where('date_end', '<', Carbon::now()->endOfDay());
+        return $query->where('date_end', '<', now()->endOfDay());
     }
 
     public function isUpcoming()
     {
-        return $this->date_start >= Carbon::today()->startOfDay();
+        return $this->date_start >= today()->startOfDay();
     }
 
     public function isPast()
     {
-        return $this->date_end < Carbon::now()->endOfDay();
+        return $this->date_end < now()->endOfDay();
+    }
+
+    public function canUsersRegister()
+    {
+        return $this->date_start >= now();
     }
 
     public function getUrl()

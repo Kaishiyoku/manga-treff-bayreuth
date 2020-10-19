@@ -15,8 +15,12 @@
         {!! Html::decode(Html::linkRoute('profile.login_attempts', '<i class="fas fa-shield-alt"></i> ' . __('profile.login_attempts.title'), null, ['class' => 'link'])) !!}
     </div>
 
-    <div class="text-lg">
+    <div class="text-lg mb-2">
         {!! Html::decode(Html::linkRoute('profile.active_sessions', '<i class="fas fa-desktop" aria-hidden="true"></i> ' . __('profile.active_sessions.title'), null, ['class' => 'link'])) !!}
+    </div>
+
+    <div class="text-lg">
+        {!! Html::decode(Html::linkRoute('profile.show_delete_account_confirmation', '<i class="fas fa-user-times"></i> ' . __('profile.delete_account.title'), null, ['class' => 'link'])) !!}
     </div>
 
     <h2>{{ __('profile.index.options') }}</h2>

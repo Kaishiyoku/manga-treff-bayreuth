@@ -15,6 +15,8 @@
     {!! Html::script('js/app.js') !!}
 
     @include('shared._favicon')
+
+    @include('shared._javascript_config')
 </head>
 <body class="bg-gray-100">
     <div id="app">

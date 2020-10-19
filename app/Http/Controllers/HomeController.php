@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ContactFormSent;
 use App\Models\Meetup;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
@@ -73,7 +74,7 @@ class HomeController extends Controller
 
         flash()->success(__('home.contact.success'));
 
-        return redirect('/');
+        return redirect()->to(RouteServiceProvider::HOME);
     }
 
     public function discord()

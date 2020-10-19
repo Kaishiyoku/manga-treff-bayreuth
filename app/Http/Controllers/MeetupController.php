@@ -26,7 +26,13 @@ class MeetupController extends Controller
 
     public function show(Meetup $meetup)
     {
-        $meetupUserRegistrations = $meetup->userRegistrations()->orderBy('created_at', 'asc')->get();
+        $meetupUserRegistrations = $meetup
+            ->userRegistrations()
+            ->orderBy('created_at', 'asc')
+            ->with('user', function ($query) {
+                $query->withTrashed();
+            })
+            ->get();
 
         $ownMeetupRegistration = $meetupUserRegistrations->filter(function (MeetupUserRegistration $meetupUserRegistration) {
             return $meetupUserRegistration->user_id === auth()->user()->id;
@@ -37,7 +43,7 @@ class MeetupController extends Controller
 
     public function toggleRegistration(Request $request, Meetup $meetup)
     {
-        if ($meetup->isPast()) {
+        if (!$meetup->canUsersRegister()) {
             return abort(422);
         }
 
@@ -63,7 +69,7 @@ class MeetupController extends Controller
 
     public function updateRegistration(Request $request, MeetupUserRegistration $meetupUserRegistration)
     {
-        if ($meetupUserRegistration->meetup->isPast()) {
+        if (!$meetupUserRegistration->meetup->canUsersRegister()) {
             return abort(422);
         }
 
