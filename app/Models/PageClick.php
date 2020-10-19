@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|PageClick whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PageClick whereVisitedAt($value)
  * @mixin \Eloquent
+ * @property string $route
+ * @method static \Illuminate\Database\Eloquent\Builder|PageClick whereRoute($value)
  */
 class PageClick extends Model
 {
