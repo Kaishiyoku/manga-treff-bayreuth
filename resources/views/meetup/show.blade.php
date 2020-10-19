@@ -39,7 +39,7 @@
                 </a>
 
                 @if (!$meetup->is_manually_added)
-                    <a href="{{ $meetup->getUrl() }}" class="btn btn-outline-black btn-sm">
+                    <a href="{{ $meetup->getUrl() }}" class="btn btn-outline-black btn-sm mb-3">
                         <i class="far fa-calendar"></i>
 
                         @lang('common.animexx_event')
@@ -48,7 +48,7 @@
                     </a>
                 @endif
 
-                <a href="#registrations" class="btn btn-outline-black btn-sm">
+                <a href="#registrations" class="btn btn-outline-black btn-sm mb-3">
                     <i class="fas fa-user-friends"></i>
 
                     {{ trans_choice('meetup.show.registration.title', $meetup->is_manually_added ? $meetupUserRegistrations->count() : count($meetup->animexx_data['user_registrations'])) }}
