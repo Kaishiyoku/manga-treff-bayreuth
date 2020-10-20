@@ -1,12 +1,11 @@
 <?php
 
-use App\Models\Meetup;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Str;
 
-class AddSlugToMeetupsTable extends Migration
+class AddSlugToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,15 +14,15 @@ class AddSlugToMeetupsTable extends Migration
      */
     public function up()
     {
-        Schema::table('meetups', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->string('slug')->nullable()->after('name');
         });
 
-        Meetup::all()->each(function (Meetup $meetup) {
-            $meetup->update();
+        User::withTrashed()->get()->each(function (User $user) {
+            $user->update();
         });
 
-        Schema::table('meetups', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->string('slug')->unique()->change();
         });
     }
@@ -35,8 +34,9 @@ class AddSlugToMeetupsTable extends Migration
      */
     public function down()
     {
-        Schema::table('meetups', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('slug');
+            $table->dropUnique('users_name_unique');
         });
     }
 }

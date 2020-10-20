@@ -20,7 +20,7 @@
 
         <div class="p-5">
             <div class="mb-5 text-sm">
-                @lang('validation.attributes.category'): {{ $meetup->meetupType->title }}
+                @lang('validation.attributes.category'): {{ $meetup->meetupType->name }}
 
                 <br/>
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,8 +27,20 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MeetupType extends Model
 {
+    use Sluggable;
+
+    /**
+     * The primary key for the model.
+     *
+     * @var string
+     */
     protected $primaryKey = 'external_id';
 
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
     public $incrementing = false;
 
     /**
@@ -52,10 +65,6 @@ class MeetupType extends Model
      * @var array
      */
     protected $hidden = [
-        //
-    ];
-
-    protected $dates = [
         //
     ];
 

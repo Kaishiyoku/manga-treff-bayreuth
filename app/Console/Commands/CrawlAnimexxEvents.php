@@ -59,7 +59,7 @@ class CrawlAnimexxEvents extends BaseCommand
             if ($meetupType == null) {
                 $meetupType = new MeetupType();
                 $meetupType->external_id = $animexxEvent->type->id;
-                $meetupType->title = $animexxEvent->type->title;
+                $meetupType->name = $animexxEvent->type->title;
                 $meetupType->description = $animexxEvent->type->description;
                 $meetupType->color = $animexxEvent->type->color;
                 $meetupType->parent_id = $animexxEvent->type->parent;

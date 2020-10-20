@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
 
 /**
  * App\Models\Meetup
@@ -69,6 +69,8 @@ use Illuminate\Support\Str;
  */
 class Meetup extends Model
 {
+    use Sluggable;
+
     protected $primaryKey = 'id';
 
     public $incrementing = false;
@@ -130,20 +132,6 @@ class Meetup extends Model
         'date_end' => 'datetime',
         'animexx_data' => 'array',
     ];
-
-    /**
-     * The "booted" method of the model.
-     *
-     * @return void
-     */
-    protected static function booted()
-    {
-        static::saving(function (Meetup $meetup) {
-            $meetup->slug = Str::slug($meetup->name);
-
-            return $meetup;
-        });
-    }
 
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query
