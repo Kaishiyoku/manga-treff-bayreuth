@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  * App\Models\MeetupType
  *
  * @property int $external_id
- * @property string $title
+ * @property string $name
+ * @property string|null $slug
  * @property string|null $description
  * @property string $color
  * @property int $parent_id
@@ -21,8 +22,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereColor($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereExternalId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MeetupType whereSlug($value)
  * @mixin \Eloquent
  */
 class MeetupType extends Model

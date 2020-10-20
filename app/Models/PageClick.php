@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $ip
  * @property int|null $user_id
+ * @property string $route
  * @property string $uri
  * @property \Illuminate\Support\Carbon $visited_at
  * @property-read \App\Models\User|null $user
@@ -18,12 +19,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|PageClick query()
  * @method static \Illuminate\Database\Eloquent\Builder|PageClick whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PageClick whereIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageClick whereRoute($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PageClick whereUri($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PageClick whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PageClick whereVisitedAt($value)
  * @mixin \Eloquent
- * @property string $route
- * @method static \Illuminate\Database\Eloquent\Builder|PageClick whereRoute($value)
  */
 class PageClick extends Model
 {

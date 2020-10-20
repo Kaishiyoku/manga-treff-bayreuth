@@ -12,6 +12,7 @@ use Illuminate\Support\Carbon;
  * @property int|null $external_id
  * @property string $address
  * @property string $name
+ * @property string|null $slug
  * @property Carbon $date_start
  * @property Carbon $date_end
  * @property string $zip
@@ -31,6 +32,7 @@ use Illuminate\Support\Carbon;
  * @property string $description
  * @property int $is_manually_added
  * @property int $id
+ * @property array|null $animexx_data
  * @property-read \App\Models\MeetupType $meetupType
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MeetupUserRegistration[] $userRegistrations
  * @property-read int|null $user_registrations_count
@@ -40,6 +42,7 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup query()
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup upcoming()
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereAnimexxData($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereAttendees($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereContactId($value)
@@ -59,13 +62,10 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereMainImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereMeetupTypeExternalId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereZip($value)
  * @mixin \Eloquent
- * @property string|null $slug
- * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereSlug($value)
- * @property array|null $animexx_data
- * @method static \Illuminate\Database\Eloquent\Builder|Meetup whereAnimexxData($value)
  */
 class Meetup extends Model
 {
