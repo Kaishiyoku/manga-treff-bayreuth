@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\VisitorNoticeController as AdminVisitorNoticeCont
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MeetupController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
@@ -28,6 +29,8 @@ Route::get('/discord', [HomeController::class, 'discord'])->name('home.discord')
 Route::get('/animexx', [HomeController::class, 'animexx'])->name('home.animexx');
 Route::get('/calendar', [HomeController::class, 'calendar'])->name('home.calendar');
 
+Route::resource('users', UserController::class)->only(['show']);
+
 /////////////////////
 // Logged on users //
 /////////////////////
@@ -43,6 +46,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::put('/profile/password/change', [ProfileController::class, 'updatePassword'])->name('profile.update_password');
     Route::get('/profile/delete', [ProfileController::class, 'showDeleteAccountConfirmation'])->name('profile.show_delete_account_confirmation');
     Route::delete('/profile/delete', [ProfileController::class, 'deleteAccount'])->name('profile.delete');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::put('/meetups/{meetup}/register/toggle', [MeetupController::class, 'toggleRegistration'])->name('meetups.toggle_registration');
     Route::put('/meetups/{meetupUserRegistration}/register/update', [MeetupController::class, 'updateRegistration'])->name('meetups.update_registration');

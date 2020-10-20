@@ -28,6 +28,10 @@
             <h2>{{ __('profile.index.options') }}</h2>
 
             <p class="text-lg mb-2">
+                {!! Html::decode(Html::linkRoute('profile.edit', '<i class="fas fa-user-edit"></i> ' . __('profile.edit.title'), null, ['class' => 'link'])) !!}
+            </p>
+
+            <p class="text-lg mb-2">
                 {!! Html::decode(Html::linkRoute('profile.edit_email', '<i class="fas fa-envelope" aria-hidden="true"></i> ' . __('profile.edit_email.title'), null, ['class' => 'link'])) !!}
             </p>
 

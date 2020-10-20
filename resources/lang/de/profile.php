@@ -49,4 +49,7 @@ return [
         'submit' => 'Account unwiderruflich löschen',
         'success' => 'Dein Account wurde gelöscht und du wurdest automatisch ausgeloggt.',
     ],
+    'edit' => [
+        'title' => 'Profil anpassen',
+    ],
 ];

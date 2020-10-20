@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'show' => [
+        'title' => 'Profil von :name',
+        'about_me_empty' => ':name hat noch nichts über sich geschrieben.',
+    ],
     'admin' => [
         'index' => [
             'title' => 'Benutzer',

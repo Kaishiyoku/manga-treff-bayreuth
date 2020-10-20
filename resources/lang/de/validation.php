@@ -203,5 +203,6 @@ return [
         'starting_at'               => 'Beginn',
         'ending_at'                 => 'Ende',
         'comment'                   => 'Kommentar',
+        'about_me'                  => 'Über mich',
     ],
 ];

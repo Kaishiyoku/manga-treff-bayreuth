@@ -173,6 +173,29 @@ class ProfileController extends Controller
         return view('profile.delete_account_confirmation');
     }
 
+    public function edit()
+    {
+        $user = auth()->user();
+
+        return view('profile.edit', compact('user'));
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->validate([
+            'about_me' => ['string', 'max:5000'],
+        ]);
+
+        $user = auth()->user();
+
+        $user->fill($data);
+        $user->save();
+
+        flash()->success('Profil gespeichert.');
+
+        return redirect()->route('profile.index');
+    }
+
     /**
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
