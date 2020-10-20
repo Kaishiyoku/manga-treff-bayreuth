@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
-use Ramsey\Uuid\Uuid;
 
 class ProfileController extends Controller
 {

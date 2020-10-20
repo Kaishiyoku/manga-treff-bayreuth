@@ -5,6 +5,8 @@ return [
         'title' => 'Profil',
         'registered_at' => 'Registriert am',
         'options' => 'Optionen',
+        'visited_meetups' => 'Teilgenommene Treffen',
+        'no_visited_meetups_yet' => 'Du hast noch an keinem Treffen teilgenommen.',
     ],
     'login_attempts' => [
         'title' => 'Login-Versuche',
