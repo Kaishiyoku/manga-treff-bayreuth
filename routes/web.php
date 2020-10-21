@@ -29,7 +29,7 @@ Route::get('/discord', [HomeController::class, 'discord'])->name('home.discord')
 Route::get('/animexx', [HomeController::class, 'animexx'])->name('home.animexx');
 Route::get('/calendar', [HomeController::class, 'calendar'])->name('home.calendar');
 
-Route::resource('users', UserController::class)->only(['show']);
+Route::resource('users', UserController::class)->only(['index', 'show']);
 
 /////////////////////
 // Logged on users //

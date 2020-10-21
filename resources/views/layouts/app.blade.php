@@ -76,6 +76,8 @@
         {{ Html::linkRoute('home.imprint', __('common.imprint'), null, ['class' => 'link']) }}
         &#8226;
         {{ Html::linkRoute('home.privacy_policy', __('common.privacy_policy'), null, ['class' => 'link']) }}
+        &#8226;
+        {{ Html::linkRoute('users.index', __('user.index.title'), null, ['class' => 'link']) }}
     </div>
 
     @include('shared._google_analytics')
