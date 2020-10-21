@@ -42,11 +42,23 @@
 
         @if ($errors->has('is_email_verified'))
             <div class="invalid-feedback">
-                {{ $errors->first('is_admin') }}
+                {{ $errors->first('is_email_verified') }}
             </div>
         @endif
     </div>
 @endif
+
+<div class="mb-4">
+    {{ Form::label('is_member', __('validation.attributes.is_member'), ['class' => 'label']) }}
+
+    {{ Form::select('is_member', __('common.lists.boolean'), old('is_member', $user->is_member), ['class' => 'input' . ($errors->has('is_member') ? ' has-error' : '')]) }}
+
+    @if ($errors->has('is_member'))
+        <div class="invalid-feedback">
+            {{ $errors->first('is_member') }}
+        </div>
+    @endif
+</div>
 
 <div class="mb-4">
     {{ Form::label('password', __('validation.attributes.password'), ['class' => 'label']) }}

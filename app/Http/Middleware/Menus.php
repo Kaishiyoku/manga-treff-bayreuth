@@ -54,6 +54,7 @@ class Menus
             ->addClassNames('mr-auto')
             ->link('home.index', '<i class="fas fa-home"></i> <span class="md:hidden lg:inline-block">' . __('common.home') . '</span>', true)
             ->link('meetups.upcoming,meetups.past,meetups.show', '<i class="fas fa-calendar"></i> ' . __('common.meetups'))
+            ->link('users.members', '<i class="fas fa-user-friends"></i> ' . __('user.member.title'))
             ->link('home.discord', '<i class="fab fa-discord"></i> ' . __('common.discord.title') . ' <i class="fas fa-external-link-alt text-xs"></i>', true);
 
         \LaravelMenu::register('auth_public')

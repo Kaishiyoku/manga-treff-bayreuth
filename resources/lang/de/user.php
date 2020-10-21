@@ -4,6 +4,9 @@ return [
     'index' => [
         'title' => 'Benutzerliste',
     ],
+    'member' => [
+        'title' => 'Mitglieder',
+    ],
     'show' => [
         'title' => 'Profil von :name',
         'about_me_empty' => ':name hat noch nichts über sich geschrieben.',

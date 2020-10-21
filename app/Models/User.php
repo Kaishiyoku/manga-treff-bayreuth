@@ -23,6 +23,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string|null $about_me
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property bool $is_member
  * @property bool $is_admin
  * @property string|null $new_email
  * @property string|null $new_email_token
@@ -35,6 +36,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read int|null $meetup_registrations_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @method static Builder|User members()
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
  * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
@@ -47,6 +49,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static Builder|User whereEmailVerifiedAt($value)
  * @method static Builder|User whereId($value)
  * @method static Builder|User whereIsAdmin($value)
+ * @method static Builder|User whereIsMember($value)
  * @method static Builder|User whereName($value)
  * @method static Builder|User whereNewEmail($value)
  * @method static Builder|User whereNewEmailToken($value)
@@ -72,6 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'about_me',
+        'is_member',
     ];
 
     /**
@@ -91,6 +95,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'is_admin' => 'boolean',
+        'is_member' => 'boolean',
         'email_verified_at' => 'datetime',
     ];
 
@@ -103,6 +108,17 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeUnverified(Builder $query)
     {
         return $query->whereNull('email_verified_at');
+    }
+
+    /**
+     * Scope a query to only include member users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeMembers(Builder $query)
+    {
+        return $query->whereIsMember(true);
     }
 
     public function loginAttempts()

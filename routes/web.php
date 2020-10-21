@@ -31,6 +31,8 @@ Route::get('/calendar', [HomeController::class, 'calendar'])->name('home.calenda
 
 Route::resource('users', UserController::class)->only(['index', 'show']);
 
+Route::get('/members', [UserController::class, 'members'])->name('users.members');
+
 /////////////////////
 // Logged on users //
 /////////////////////

@@ -18,6 +18,13 @@ class UserController extends Controller
         return view('user.index', compact('users'));
     }
 
+    public function members()
+    {
+        $userMembers = User::members()->orderBy('name')->get();
+
+        return view('user.member', compact('userMembers'));
+    }
+
     /**
      * Display the specified resource.
      *

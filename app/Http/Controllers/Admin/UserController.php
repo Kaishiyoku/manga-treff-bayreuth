@@ -49,6 +49,7 @@ class UserController extends Controller
         $request->validate($this->getValidationRulesForCreate());
 
         $user = new User($request->only($this->getFillableFields()));
+        $user->is_admin = $request->get('is_admin');
         $user->password = Hash::make($request->get('password'));
         $user->save();
 
@@ -142,7 +143,7 @@ class UserController extends Controller
         return [
             'name',
             'email',
-            'is_admin',
+            'is_member',
         ];
     }
 
@@ -174,6 +175,7 @@ class UserController extends Controller
             'email' => 'required|email|max:255|unique:users,email',
             'password' => $passwordValidationRules,
             'is_admin' => 'boolean',
+            'is_member' => 'boolean',
             'is_email_verified' => 'sometimes|boolean',
         ];
     }

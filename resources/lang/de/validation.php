@@ -204,5 +204,6 @@ return [
         'ending_at'                 => 'Ende',
         'comment'                   => 'Kommentar',
         'about_me'                  => 'Über mich',
+        'is_member'                 => 'Mitglied',
     ],
 ];
