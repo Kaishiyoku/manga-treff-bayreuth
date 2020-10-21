@@ -127,7 +127,7 @@ if (!function_exists('formatBoolean')) {
 if (!function_exists('translateLoginAttemptStatus')) {
     function translateLoginAttemptStatus($status)
     {
-        return __('common.lists.login_attempt_status.' . $status);
+        return __('common.login_attempt_status.' . $status);
     }
 }
 
@@ -207,6 +207,16 @@ if (!function_exists('getBooleanInputList')) {
         return [
             0 => __('common.no'),
             1 => __('common.yes'),
+        ];
+    }
+}
+
+if (!function_exists('getLoginAttemptStatusInputList')) {
+    function getLoginAttemptStatusInputList()
+    {
+        return [
+            'success' => __('common.login_attempt_status.success'),
+            'failure' => __('common.login_attempt_status.failure'),
         ];
     }
 }

@@ -1,12 +1,6 @@
 <?php
 
 return [
-    'lists' => [
-        'login_attempt_status' => [
-            'success' => 'Erfolg',
-            'failure' => 'Fehlschlag',
-        ],
-    ],
     'read_more' => 'Weiterlesen',
     'details' => 'Details',
     'imprint' => 'Impressum',
@@ -43,4 +37,8 @@ return [
     'deleted_user' => 'Gelöschter Nutzer',
     'yes' => 'Ja',
     'no' => 'Nein',
+    'login_attempt_status' => [
+        'success' => 'Erfolg',
+        'failure' => 'Fehlschlag',
+    ],
 ];
