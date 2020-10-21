@@ -2,10 +2,6 @@
 
 return [
     'lists' => [
-        'boolean' => [
-            0 => 'Nein',
-            1 => 'Ja',
-        ],
         'login_attempt_status' => [
             'success' => 'Erfolg',
             'failure' => 'Fehlschlag',
@@ -45,4 +41,6 @@ return [
     'show' => 'Details',
     'cancel' => 'Abbrechen',
     'deleted_user' => 'Gelöschter Nutzer',
+    'yes' => 'Ja',
+    'no' => 'Nein',
 ];

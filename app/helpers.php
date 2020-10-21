@@ -120,13 +120,7 @@ if (!function_exists('truncateHtml')) {
 if (!function_exists('formatBoolean')) {
     function formatBoolean($bool)
     {
-        if ($bool == true || $bool == 1) {
-            $str = __('common.lists.boolean.1');
-        } else {
-            $str = __('common.lists.boolean.0');
-        }
-
-        return $str;
+        return $bool == true || $bool == 1 ? __('common.yes') : __('common.no');
     }
 }
 
@@ -204,5 +198,15 @@ if (!function_exists('getAnimexxUserProfileUrlFor')) {
     function getAnimexxUserProfileUrlFor($id)
     {
         return 'https://www.animexx.de/mitglieder/steckbrief.php?id=' . $id;
+    }
+}
+
+if (!function_exists('getBooleanInputList')) {
+    function getBooleanInputList()
+    {
+        return [
+            0 => __('common.no'),
+            1 => __('common.yes'),
+        ];
     }
 }

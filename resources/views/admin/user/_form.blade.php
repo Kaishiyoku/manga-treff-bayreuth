@@ -25,7 +25,7 @@
 <div class="mb-4">
     {{ Form::label('is_admin', __('validation.attributes.is_admin'), ['class' => 'label']) }}
 
-    {{ Form::select('is_admin', __('common.lists.boolean'), old('is_admin', $user->is_admin), ['class' => 'input' . ($errors->has('is_admin') ? ' has-error' : '')]) }}
+    {{ Form::select('is_admin', getBooleanInputList(), old('is_admin', $user->is_admin), ['class' => 'input' . ($errors->has('is_admin') ? ' has-error' : '')]) }}
 
     @if ($errors->has('is_admin'))
         <div class="invalid-feedback">
@@ -38,7 +38,7 @@
     <div class="mb-4">
         {{ Form::label('is_email_verified', __('user.admin.is_email_verified'), ['class' => 'label']) }}
 
-        {{ Form::select('is_email_verified', __('common.lists.boolean'), old('is_email_verified', $isEmailVerified ?? null), ['class' => 'input' . ($errors->has('is_email_verified') ? ' has-error' : '')]) }}
+        {{ Form::select('is_email_verified', getBooleanInputList(), old('is_email_verified', $isEmailVerified ?? null), ['class' => 'input' . ($errors->has('is_email_verified') ? ' has-error' : '')]) }}
 
         @if ($errors->has('is_email_verified'))
             <div class="invalid-feedback">
@@ -51,7 +51,7 @@
 <div class="mb-4">
     {{ Form::label('is_member', __('validation.attributes.is_member'), ['class' => 'label']) }}
 
-    {{ Form::select('is_member', __('common.lists.boolean'), old('is_member', $user->is_member), ['class' => 'input' . ($errors->has('is_member') ? ' has-error' : '')]) }}
+    {{ Form::select('is_member', getBooleanInputList(), old('is_member', $user->is_member), ['class' => 'input' . ($errors->has('is_member') ? ' has-error' : '')]) }}
 
     @if ($errors->has('is_member'))
         <div class="invalid-feedback">
