@@ -1,7 +1,7 @@
 <div class="mb-4">
-    {{ Form::label('title', __('validation.attributes.title'), ['class' => 'label']) }}
+    {{ html()->label(__('validation.attributes.title'), 'title')->class('label') }}
 
-    {{ Form::text('title', old('name', $visitorNotice->title), ['class' => 'input' . ($errors->has('title') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.title')]) }}
+    {{ html()->text('title', old('name', $visitorNotice->title))->attributes(['class' => 'input' . ($errors->has('title') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.title')]) }}
 
     @if ($errors->has('title'))
         <div class="invalid-feedback">
@@ -11,9 +11,9 @@
 </div>
 
 <div class="mb-4">
-    {{ Form::label('content', __('validation.attributes.content'), ['class' => 'label label-required']) }}
+    {{ html()->label(__('validation.attributes.content'), 'content')->class('label label-required') }}
 
-    {{ Form::textarea('content', old('content', $visitorNotice->content), ['class' => 'input' . ($errors->has('content') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.content')]) }}
+    {{ html()->textarea('content', old('content', $visitorNotice->content))->attributes(['class' => 'input' . ($errors->has('content') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.content')]) }}
 
     @if ($errors->has('content'))
         <div class="invalid-feedback">
@@ -23,9 +23,9 @@
 </div>
 
 <div class="mb-4">
-    {{ Form::label('starting_at', __('validation.attributes.starting_at'), ['class' => 'label label-required']) }}
+    {{ html()->label(__('validation.attributes.starting_at'), 'starting_at')->class('label label-required') }}
 
-    {{ Form::date('starting_at', old('starting_at', $visitorNotice->starting_at), ['class' => 'input' . ($errors->has('starting_at') ? ' has-error' : ''), 'required' => true]) }}
+    {{ html()->date('starting_at', old('starting_at', $visitorNotice->starting_at))->attributes(['class' => 'input' . ($errors->has('starting_at') ? ' has-error' : ''), 'required' => true]) }}
 
     @if ($errors->has('starting_at'))
         <div class="invalid-feedback">
@@ -35,9 +35,9 @@
 </div>
 
 <div class="mb-4">
-    {{ Form::label('ending_at', __('validation.attributes.ending_at'), ['class' => 'label label-required']) }}
+    {{ html()->label(__('validation.attributes.ending_at'), 'ending_at')->class('label label-required') }}
 
-    {{ Form::date('ending_at', old('ending_at', $visitorNotice->ending_at), ['class' => 'input' . ($errors->has('ending_at') ? ' has-error' : ''), 'required' => true]) }}
+    {{ html()->date('ending_at', old('ending_at', $visitorNotice->ending_at))->attributes(['class' => 'input' . ($errors->has('ending_at') ? ' has-error' : ''), 'required' => true]) }}
 
     @if ($errors->has('ending_at'))
         <div class="invalid-feedback">
@@ -46,4 +46,4 @@
     @endif
 </div>
 
-{{ Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn btn-primary']) }}
+{{ html()->button($submitTitle, 'submit')->class('btn btn-primary') }}

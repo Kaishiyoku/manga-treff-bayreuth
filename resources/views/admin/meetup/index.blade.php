@@ -4,7 +4,7 @@
     <h1>@lang('meetup.admin.index.title')</h1>
 
     <div class="pb-5">
-        {{ Html::linkRoute('admin.meetups.create', __('meetup.admin.index.new_meetup'), null, ['class' => 'btn btn-primary']) }}
+        {{ html()->a(route('admin.meetups.create'), __('meetup.admin.index.new_meetup'))->class('btn btn-primary') }}
     </div>
 
     <div class="text-right">

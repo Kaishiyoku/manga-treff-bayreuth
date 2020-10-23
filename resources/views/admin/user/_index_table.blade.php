@@ -29,7 +29,7 @@
                             @include('shared._delete_link', ['route' => ['admin.users.destroy', $user->id]])
                         @endif
 
-                        {{ Html::linkRoute('admin.users.edit', __('common.edit'), $user, ['class' => 'btn btn-sm btn-black']) }}
+                        {{ html()->a(route('admin.users.edit'), __('common.edit'))->class('btn btn-sm btn-black') }}
                     </td>
                 </tr>
             @endforeach

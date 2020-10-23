@@ -3,7 +3,7 @@
 @section('content')
     <h1>@lang('visitor_notice.admin.create.title')</h1>
 
-    {{ Form::open(['route' => 'admin.visitor_notices.store', 'method' => 'post', 'role' => 'form']) }}
+    {{ html()->form('post', route('admin.visitor_notices.store'))->open() }}
         @include('admin.visitor_notice._form', ['submitTitle' => __('common.create'), 'isForCreate' => true])
-    {{ Form::close() }}
+    {{ html()->form()->close() }}
 @endsection

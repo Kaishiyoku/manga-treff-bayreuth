@@ -9,10 +9,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    {!! Html::style('css/app.css') !!}
-    {!! Html::style('css/fonts.css') !!}
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset('css/fonts.css') }}">
 
-    {!! Html::script('js/app.js') !!}
+    <script src="{{ asset('js/app.js') }}"></script>
 
     @include('shared._favicon')
 
@@ -71,13 +71,13 @@
     <div class="container px-4 lg:px-20 mx-auto mt-20 mb-12 text-gray-600 text-sm">
         v{{ config('site.app_version') }}
         &#8226;
-        {{ Html::linkRoute('home.show_contact_form', __('common.contact'), null, ['class' => 'link']) }}
+        {{ html()->a(route('home.show_contact_form'), __('common.contact'))->class('link') }}
         &#8226;
-        {{ Html::linkRoute('home.imprint', __('common.imprint'), null, ['class' => 'link']) }}
+        {{ html()->a(route('home.imprint'), __('common.imprint'))->class('link') }}
         &#8226;
-        {{ Html::linkRoute('home.privacy_policy', __('common.privacy_policy'), null, ['class' => 'link']) }}
+        {{ html()->a(route('home.privacy_policy'), __('common.privacy_policy'))->class('link') }}
         &#8226;
-        {{ Html::linkRoute('users.index', __('user.index.title'), null, ['class' => 'link']) }}
+        {{ html()->a(route('users.index'), __('user.index.title'))->class('link') }}
     </div>
 
     @include('shared._google_analytics')

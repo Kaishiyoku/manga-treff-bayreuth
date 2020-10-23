@@ -37,11 +37,11 @@
                             {{ (new \Carbon\Carbon(date("Y-m-d H:i:s", $databaseSession->last_activity)))->format(__('date.short')) }}
                         </td>
                         <td>
-                            {{ Form::open(['route' => 'profile.destroy_session', 'method' => 'delete', 'role' => 'form']) }}
-                                {{ Form::hidden('id', $databaseSession->id) }}
+                            {{ html()->form('delete', route('profile.destroy_session'))->open() }}
+                                {{ html()->hidden('id', $databaseSession->id) }}
 
-                                {{ Form::button('<i class="fas fa-sign-out-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger', 'data-confirm' => '']) }}
-                            {{ Form::close() }}
+                                {{ html()->button('<i class="fas fa-sign-out-alt"></i>', 'submit')->attributes(['class' => 'btn btn-sm btn-danger', 'data-confirm' => '']) }}
+                            {{ html()->form()->close() }}
                         </td>
                     </tr>
                 @endforeach

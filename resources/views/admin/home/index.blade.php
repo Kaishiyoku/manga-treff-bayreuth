@@ -22,7 +22,7 @@
                 <tbody>
                     @foreach ($unverifiedUsers as $unverifiedUser)
                         <tr>
-                            <td>{{ Html::linkRoute('admin.users.edit', $unverifiedUser->name, $unverifiedUser, ['class' => 'link']) }}</td>
+                            <td>{{ html()->a(route('admin.users.edit'), $unverifiedUser->name)->class('link') }}</td>
                             <td>{{ $unverifiedUser->email }}</td>
                             <td class="hidden md:table-cell">{{ $unverifiedUser->created_at->format(__('date.datetime')) }}</td>
                         </tr>

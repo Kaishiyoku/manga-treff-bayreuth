@@ -4,7 +4,7 @@
     <h1>@lang('user.admin.index.title')</h1>
 
     <div class="pb-5">
-        {{ Html::linkRoute('admin.users.create', __('user.admin.index.new_user'), [], ['class' => 'btn btn-primary']) }}
+        {{ html()->a(route('admin.users.create'), __('user.admin.index.new_user'))->class('btn btn-primary') }}
     </div>
 
     @if ($users->get()->count() === 0)

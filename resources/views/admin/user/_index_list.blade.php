@@ -30,7 +30,7 @@
 
             <div class="mt-5">
                 @include('shared._delete_link', ['route' => ['admin.users.destroy', $user->id]])
-                {{ Html::linkRoute('admin.users.edit', __('common.edit'), $user, ['class' => 'btn btn-sm btn-black']) }}
+                {{ html()->a(route('admin.users.edit'), __('common.edit'))->class('btn btn-sm btn-black') }}
             </div>
         </div>
     </div>

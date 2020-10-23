@@ -13,7 +13,7 @@
 
     <div class="pb-5">
         @include('shared._delete_link', ['route' => ['admin.visitor_notices.destroy', $visitorNotice]])
-        {{ Html::linkRoute('admin.visitor_notices.edit', __('common.edit'), $visitorNotice, ['class' => 'btn btn-sm btn-black']) }}
+        {{ html()->a(route('admin.visitor_notices.edit'), __('common.edit'))->class('btn btn-sm btn-black') }}
     </div>
 
     @include('shared._visitor_notice')

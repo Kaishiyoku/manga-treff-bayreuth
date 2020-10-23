@@ -6,7 +6,7 @@
     <div>
         @foreach ($userMembers as $userMember)
             <div class="mb-1">
-                {{ Html::linkRoute('users.show', $userMember->name, $userMember, ['class' => 'link']) }}
+                {{ html()->a(route('users.show', $userMember), $userMember->name)->class('link') }}
             </div>
         @endforeach
     </div>

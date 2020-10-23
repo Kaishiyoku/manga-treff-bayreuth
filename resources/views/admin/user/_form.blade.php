@@ -1,7 +1,7 @@
 <div class="mb-4">
-    {{ Form::label('name', __('validation.attributes.name'), ['class' => 'label']) }}
+    {{ html()->label(__('validation.attributes.name'), 'name')->class('label') }}
 
-    {{ Form::text('name', old('name', $user->name), ['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'required' => false, 'placeholder' => __('validation.attributes.name')]) }}
+    {{ html()->text('name', old('name', $user->name))->attributes(['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'required' => false, 'placeholder' => __('validation.attributes.name')]) }}
 
     @if ($errors->has('name'))
         <div class="invalid-feedback">
@@ -11,9 +11,9 @@
 </div>
 
 <div class="mb-4">
-    {{ Form::label('email', __('validation.attributes.email'), ['class' => 'label']) }}
+    {{ html()->label(__('validation.attributes.email'), 'email')->class('label') }}
 
-    {{ Form::email('email', old('email', $user->email), ['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.email')]) }}
+    {{ html()->email('email', old('email', $user->email))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.email')]) }}
 
     @if ($errors->has('email'))
         <div class="invalid-feedback">
@@ -23,9 +23,9 @@
 </div>
 
 <div class="mb-4">
-    {{ Form::label('is_admin', __('validation.attributes.is_admin'), ['class' => 'label']) }}
+    {{ html()->label(__('validation.attributes.is_admin'), 'is_admin')->class('label') }}
 
-    {{ Form::select('is_admin', getBooleanInputList(), old('is_admin', $user->is_admin), ['class' => 'input' . ($errors->has('is_admin') ? ' has-error' : '')]) }}
+    {{ html()->select('is_admin', getBooleanInputList(), old('is_admin', $user->is_admin))->class('input' . ($errors->has('is_admin') ? ' has-error' : '')) }}
 
     @if ($errors->has('is_admin'))
         <div class="invalid-feedback">
@@ -36,9 +36,9 @@
 
 @if (!$isForCreate)
     <div class="mb-4">
-        {{ Form::label('is_email_verified', __('user.admin.is_email_verified'), ['class' => 'label']) }}
+        {{ html()->label(__('user.admin.is_email_verified'), 'is_email_verified')->class('label') }}
 
-        {{ Form::select('is_email_verified', getBooleanInputList(), old('is_email_verified', $isEmailVerified ?? null), ['class' => 'input' . ($errors->has('is_email_verified') ? ' has-error' : '')]) }}
+        {{ html()->select('is_email_verified', getBooleanInputList(), old('is_email_verified', $isEmailVerified ?? null))->class('input' . ($errors->has('is_email_verified') ? ' has-error' : '')) }}
 
         @if ($errors->has('is_email_verified'))
             <div class="invalid-feedback">
@@ -49,9 +49,9 @@
 @endif
 
 <div class="mb-4">
-    {{ Form::label('is_member', __('validation.attributes.is_member'), ['class' => 'label']) }}
+    {{ html()->label(__('validation.attributes.is_member'), 'is_member')->class('label') }}
 
-    {{ Form::select('is_member', getBooleanInputList(), old('is_member', $user->is_member), ['class' => 'input' . ($errors->has('is_member') ? ' has-error' : '')]) }}
+    {{ html()->select('is_member', getBooleanInputList(), old('is_member', $user->is_member))->class('input' . ($errors->has('is_member') ? ' has-error' : '')) }}
 
     @if ($errors->has('is_member'))
         <div class="invalid-feedback">
@@ -61,9 +61,9 @@
 </div>
 
 <div class="mb-4">
-    {{ Form::label('password', __('validation.attributes.password'), ['class' => 'label']) }}
+    {{ html()->label(__('validation.attributes.password'), 'password')->class('label') }}
 
-    {{ Form::password('password', ['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'required' => $isForCreate, 'placeholder' => __('validation.attributes.password')]) }}
+    {{ html()->password('password')->attributes(['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'required' => $isForCreate, 'placeholder' => __('validation.attributes.password')]) }}
 
     @if (!$isForCreate)
         <div class="text-sm text-muted pt-1">@lang('user.admin.edit.password_help')</div>
@@ -76,4 +76,4 @@
     @endif
 </div>
 
-{{ Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn btn-primary']) }}
+{{ html()->button($submitTitle, 'submit')->class('btn btn-primary') }}

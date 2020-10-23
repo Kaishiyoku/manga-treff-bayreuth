@@ -6,21 +6,21 @@
     <div class="mx-auto w-full max-w-sm bg-white shadow-md rounded text-left">
         <div class="text-xl pb-4 text-gray-600 bg-gray-100 pt-4 pl-8">@lang('auth.reset.title')</div>
 
-        {{ Form::open(['url' => '/password/email', 'method' => 'post', 'role' => 'form', 'class' => 'px-8 pt-6 pb-8 mb-4']) }}
-        {{ Form::label('email', __('validation.attributes.email'), ['class' => 'label']) }}
+        {{ html()->form('post', url('/password/email'))->class('px-8 pt-6 pb-8 mb-4')->open() }}
+            {{ html()->label(__('validation.attributes.email'), 'email')->class('label') }}
 
-        <div class="mb-4">
-            {{ Form::email('email', old('email'), ['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'autofocus' => 'true', 'placeholder' => __('validation.attributes.email')]) }}
+            <div class="mb-4">
+                {{ html()->email('email', old('email'))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'autofocus' => 'true', 'placeholder' => __('validation.attributes.email')]) }}
 
-            @if ($errors->has('email'))
-                <p class="invalid-feedback">{{ $errors->first('email') }}</p>
-            @endif
-        </div>
+                @if ($errors->has('email'))
+                    <p class="invalid-feedback">{{ $errors->first('email') }}</p>
+                @endif
+            </div>
 
-        <div class="flex items-center justify-between pt-4">
-            {{ Form::button(__('auth.reset.submit'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
-        </div>
-        {{ Form::close() }}
+            <div class="flex items-center justify-between pt-4">
+                {{ html()->button(__('auth.reset.submit'), 'submit')->class('btn btn-primary') }}
+            </div>
+        {{ html()->form()->close() }}
     </div>
 @endsection
 

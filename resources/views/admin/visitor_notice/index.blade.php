@@ -4,7 +4,7 @@
     <h1>@lang('visitor_notice.admin.index.title')</h1>
 
     <div class="pb-5">
-        {{ Html::linkRoute('admin.visitor_notices.create', __('visitor_notice.admin.index.new_visitor_notice'), [], ['class' => 'btn btn-primary']) }}
+        {{ html()->a(route('admin.visitor_notices.create'), __('visitor_notice.admin.index.new_visitor_notice'))->class('btn btn-primary') }}
     </div>
 
     @if ($visitorNotices->get()->count() === 0)
@@ -30,8 +30,9 @@
                             <td>{{ $visitorNotice->ending_at->format(__('date.date')) }}</td>
                             <td class="text-right">
                                 @include('shared._delete_link', ['route' => ['admin.visitor_notices.destroy', $visitorNotice]])
-                                {{ Html::linkRoute('admin.visitor_notices.edit', __('common.edit'), $visitorNotice, ['class' => 'btn btn-sm btn-black']) }}
-                                {{ Html::linkRoute('admin.visitor_notices.show', __('common.show'), $visitorNotice, ['class' => 'btn btn-sm btn-black']) }}
+
+                                {{ html()->a(route('admin.visitor_notices.edit'), __('common.edit'))->class('btn btn-sm btn-black') }}
+                                {{ html()->a(route('admin.visitor_notices.show'), __('common.show'))->class('btn btn-sm btn-black') }}
                             </td>
                         </tr>
                     @endforeach

@@ -9,5 +9,5 @@
 </p>
 
 <p>
-    {{ Html::linkRoute('profile.confirm_new_email', null, [$newEmailToken]) }}
+    {{ html()->a(route('profile.confirm_new_email', $newEmailToken)) }}
 </p>

@@ -8,7 +8,7 @@
             <div>
                 @foreach ($userChunk as $user)
                     <div class="mb-1">
-                        {{ Html::linkRoute('users.show', $user->name, $user, ['class' => 'link']) }}
+                        {{ html()->a(route('users.show', $user), $user->name)->class('link') }}
                     </div>
                 @endforeach
             </div>

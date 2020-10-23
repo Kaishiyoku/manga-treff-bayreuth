@@ -41,4 +41,5 @@ return [
         'success' => 'Erfolg',
         'failure' => 'Fehlschlag',
     ],
+    'at' => 'am',
 ];

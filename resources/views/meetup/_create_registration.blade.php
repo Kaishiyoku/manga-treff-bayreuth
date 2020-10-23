@@ -10,9 +10,9 @@
     </div>
 
     @if (auth()->user()->hasVerifiedEmail())
-        {{ Form::open(['route' => ['meetups.toggle_registration', $meetup], 'method' => 'put', 'role' => 'form', 'data-hc-content' => 'meetup-registration-form', 'class' => classNames(['is-active' => $errors->count() > 0])]) }}
+        {{ html()->form('put', route('meetups.toggle_registration', $meetup))->attributes(['data-hc-content' => 'meetup-registration-form', 'class' => classNames(['is-active' => $errors->count() > 0])])->open() }}
             <div class="mb-4">
-                {{ Form::textarea('comment', old('comment'), ['class' => 'input' . ($errors->has('comment') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.comment'), 'rows' => 5]) }}
+                {{ html()->textarea('comment', old('comment'))->attributes(['class' => 'input' . ($errors->has('comment') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.comment'), 'rows' => 5]) }}
 
                 @if ($errors->has('comment'))
                     <div class="invalid-feedback">
@@ -21,8 +21,8 @@
                 @endif
             </div>
 
-            {{ Form::button(__('meetup.show.registration.register'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
-        {{ Form::close() }}
+            {{ html()->button(__('meetup.show.registration.register'), 'submit')->class('btn btn-primary') }}
+        {{ html()->form()->close() }}
     @else
         <div class="alert alert-info">
             @lang('meetup.show.registration.email_not_verified')

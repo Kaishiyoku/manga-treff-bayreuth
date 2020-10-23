@@ -3,7 +3,7 @@
 @section('content')
     <h1>@lang('meetup.admin.create.title')</h1>
 
-    {{ Form::open(['route' => 'admin.meetups.store', 'method' => 'post', 'role' => 'form']) }}
+    {{ html()->form('post', route('admin.meetups.store'))->open() }}
         @include('admin.meetup._form', ['submitTitle' => __('common.update'), 'isForCreate' => true])
-    {{ Form::close() }}
+    {{ html()->form()->close() }}
 @endsection

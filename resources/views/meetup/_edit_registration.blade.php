@@ -6,9 +6,9 @@
     </div>
 
     <div data-hc-content="meetup-update-form" class="{{ classNames(['is-active' => $errors->count() > 0]) }}">
-        {{ Form::open(['route' => ['meetups.update_registration', $ownMeetupRegistration], 'method' => 'put', 'role' => 'form']) }}
+        {{ html()->form('put', route('meetups.update_registration', $ownMeetupRegistration))->open() }}
             <div class="mb-4">
-                {{ Form::textarea('comment', old('comment', $ownMeetupRegistration->comment), ['class' => 'input' . ($errors->has('comment') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.comment'), 'rows' => 5]) }}
+                {{ html()->textarea('comment', old('comment', $ownMeetupRegistration->comment))->attributes(['class' => 'input' . ($errors->has('comment') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.comment'), 'rows' => 5]) }}
 
                 @if ($errors->has('comment'))
                     <div class="invalid-feedback">
@@ -17,11 +17,11 @@
                 @endif
             </div>
 
-            {{ Form::button(__('common.update'), ['type' => 'submit', 'class' => 'btn btn-black']) }}
-        {{ Form::close() }}
+            {{ html()->button(__('common.update'), 'submit')->class('btn btn-black') }}
+        {{ html()->form()->close() }}
 
-        {{ Form::open(['route' => ['meetups.toggle_registration', $meetup], 'method' => 'put', 'role' => 'form', 'class' => 'mt-5']) }}
-            {{ Form::button(__('meetup.show.registration.unregister'), ['type' => 'submit', 'class' => 'btn btn-danger', 'data-confirm' => __('meetup.show.registration.edit.unregister_confirm')]) }}
-        {{ Form::close() }}
+        {{ html()->form('put', route('meetups.toggle_registration', $meetup))->class('mt-5')->open() }}
+            {{ html()->button(__('meetup.show.registration.unregister'), 'submit')->attributes(['class' => 'btn btn-danger', 'data-confirm' => __('meetup.show.registration.edit.unregister_confirm')]) }}
+        {{ html()->form()->close() }}
     </div>
 @endif

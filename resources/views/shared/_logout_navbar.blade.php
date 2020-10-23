@@ -3,5 +3,4 @@
     @lang('common.logout')
 </a>
 
-{{ Form::open(['route' => 'logout', 'method' => 'post', 'id' => 'logout-form', 'style' => 'display: none;']) }}
-{{ Form::close() }}
+{{ html()->form('post', route('logout'))->attributes(['id' => 'logout-form', 'style' => 'display: none;']) }}

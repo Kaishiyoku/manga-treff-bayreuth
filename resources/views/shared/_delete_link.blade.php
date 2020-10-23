@@ -1,3 +1,3 @@
-{{ Form::open(['route' => $route, 'method' => 'delete', 'role' => 'form', 'class' => 'inline']) }}
-    {{ Form::button($title ?? __('common.delete'), ['type' => 'submit', 'class' => (!empty($class) ? $class : 'btn btn-sm btn-danger'), 'data-confirm' => '']) }}
-{{ Form::close() }}
+{{ html()->form('delete', $route)->class('inline')->open() }}
+    {{ html()->button($title ?? __('common.delete'), 'submit')->attributes(['class' => (!empty($class) ? $class : 'btn btn-sm btn-danger'), 'data-confirm' => '']) }}
+{{ html()->form()->close() }}

@@ -9,5 +9,5 @@
 
     @include('shared._delete_link', ['route' => 'profile.delete', 'title' => __('profile.delete_account.submit'), 'class' => 'btn btn-danger'])
 
-    {{ Html::linkRoute('profile.index', __('common.cancel'), null, ['class' => 'btn btn-black']) }}
+    {{ html()->a(route('profile.index'), __('common.cancel'))->class('btn btn-black') }}
 @endsection

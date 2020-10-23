@@ -10,7 +10,7 @@
                     @if ($meetupUserRegistration->user->trashed())
                         <span class="italic text-muted">@lang('common.deleted_user')</span>
                     @else
-                        {{ Html::linkRoute('users.show', $meetupUserRegistration->user->name, $meetupUserRegistration->user, ['class' => 'link']) }}
+                        {{ html()->a(route('users.show', $meetupUserRegistration->user), $meetupUserRegistration->user->name)->class('link') }}
                     @endif
                 </div>
 

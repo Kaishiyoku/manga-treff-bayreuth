@@ -3,11 +3,11 @@
 @section('content')
     <h1>{{ __('profile.edit_email.title') }}</h1>
 
-    {{ Form::open(['route' => 'profile.update_email', 'method' => 'put', 'role' => 'form']) }}
+    {{ html()->form('put', route('profile.update_email'))->open() }}
         <div class="mb-8">
-            {{ Form::label('current_email', __('validation.attributes.current_email'), ['class' => 'label']) }}
+            {{ html()->label(__('validation.attributes.current_email'), 'current_email')->class('label') }}
 
-            {{ Form::email('current_email', null, ['class' => 'input' . ($errors->has('current_email') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.current_email')]) }}
+            {{ html()->email('current_email')->attributes(['class' => 'input' . ($errors->has('current_email') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.current_email')]) }}
 
             @if ($errors->has('current_email'))
                 <div class="invalid-feedback">
@@ -19,9 +19,9 @@
         <hr/>
 
         <div class="mt-6 mb-4">
-            {{ Form::label('new_email', __('validation.attributes.new_email'), ['class' => 'label']) }}
+            {{ html()->label(__('validation.attributes.new_email'), 'new_email')->class('label') }}
 
-            {{ Form::email('new_email', old('new_email'), ['class' => 'input' . ($errors->has('new_email') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.new_email')]) }}
+            {{ html()->email('new_email', old('new_email'))->attributes(['class' => 'input' . ($errors->has('new_email') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.new_email')]) }}
 
             @if ($errors->has('new_email'))
                 <div class="invalid-feedback">
@@ -31,9 +31,9 @@
         </div>
 
         <div class="mb-4">
-            {{ Form::label('new_email_confirmation', __('validation.attributes.new_email_confirmation'), ['class' => 'label']) }}
+            {{ html()->label(__('validation.attributes.new_email_confirmation'), 'new_email_confirmation')->class('label') }}
 
-            {{ Form::email('new_email_confirmation', null, ['class' => 'input' . ($errors->has('new_email_confirmation') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.new_email_confirmation')]) }}
+            {{ html()->email('new_email_confirmation')->attributes(['class' => 'input' . ($errors->has('new_email_confirmation') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.new_email_confirmation')]) }}
 
             @if ($errors->has('new_email_confirmation'))
                 <div class="invalid-feedback">
@@ -42,6 +42,6 @@
             @endif
         </div>
 
-        {{ Form::button(__('profile.edit_email.submit'), ['type' => 'submit', 'class' => 'btn btn-primary']) }}
-    {{ Form::close() }}
+        {{ html()->button(__('profile.edit_email.submit'), 'submit')->class('btn btn-primary') }}
+    {{ html()->form()->close() }}
 @endsection

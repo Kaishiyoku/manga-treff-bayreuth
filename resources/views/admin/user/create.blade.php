@@ -3,7 +3,7 @@
 @section('content')
     <h1>@lang('user.admin.create.title')</h1>
 
-    {{ Form::open(['route' => 'admin.users.store', 'method' => 'post', 'role' => 'form']) }}
+    {{ html()->form('post', route('admin.users.store'))->open() }}
         @include('admin.user._form', ['submitTitle' => __('common.create'), 'isForCreate' => true])
-    {{ Form::close() }}
+    {{ html()->form()->close() }}
 @endsection
