@@ -25,9 +25,9 @@ return [
         'password' => [
             'validation_rules' => 'string|min:8',
             'secret' => true,
-            'modifier_fn' => function ($value) {
+            'modifier_fn' => \Opis\Closure\serialize(function ($value) {
                 return Hash::make($value);
-            },
+            }),
         ],
         'is_admin' => [
             'validation_rules' => 'boolean',
@@ -36,11 +36,11 @@ return [
         ],
     ],
 
-    'post_creation_fn' => function (\App\Models\User $user) {
+    'post_creation_fn' => \Opis\Closure\serialize(function (\App\Models\User $user) {
         $user->email_verified_at = \Illuminate\Support\Carbon::now();
         $user->save();
 
         return $user;
-    },
+    }),
 
 ];
