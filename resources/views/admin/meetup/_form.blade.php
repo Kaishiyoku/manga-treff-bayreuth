@@ -1,7 +1,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.name'), 'name')->class('label') }}
 
-    {{ html()->text('name', old('name', $meetup->name))->attributes(['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.name')])->disabled(!$meetup->is_manually_added) }}
+    {{ html()->text('name', old('name', $meetup->name))->attributes(['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.name')])->readonly(!$meetup->is_manually_added) }}
 
     @if ($errors->has('name'))
         <div class="invalid-feedback">
@@ -13,7 +13,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.attendees'), 'attendees')->class('label') }}
 
-    {{ html()->text('attendees', old('attendees', $meetup->attendees))->attributes(['class' => 'input' . ($errors->has('attendees') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.attendees')])->disabled(!$meetup->is_manually_added) }}
+    {{ html()->text('attendees', old('attendees', $meetup->attendees))->attributes(['class' => 'input' . ($errors->has('attendees') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.attendees')])->readonly(!$meetup->is_manually_added) }}
 
     @if ($errors->has('attendees'))
         <div class="invalid-feedback">
@@ -25,7 +25,11 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.meetup_type_external_id'), 'meetup_type_external_id')->class('label') }}
 
-    {{ html()->select('meetup_type_external_id', $meetupTypes, old('meetup_type_external_id', $meetup->meetup_type_external_id))->attributes(['class' => 'input' . ($errors->has('meetup_type_external_id') ? ' has-error' : ''), 'disabled' => !$meetup->is_manually_added]) }}
+    {{ html()->select($meetup->is_manually_added || $isForCreate ? 'meetup_type_external_id' : '_meetup_type_external_id', $meetupTypes, old('meetup_type_external_id', $meetup->meetup_type_external_id))->attributes(['class' => 'input' . ($errors->has('meetup_type_external_id') ? ' has-error' : '')])->disabled(!$meetup->is_manually_added) }}
+
+    @if (!$meetup->is_manually_added && !$isForCreate)
+        {{ html()->hidden('meetup_type_external_id', $meetup->meetup_type_external_id) }}
+    @endif
 
     @if ($errors->has('meetup_type_external_id'))
         <div class="invalid-feedback">
@@ -159,7 +163,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.description'), 'description')->class('label') }}
 
-    {{ html()->textarea('description', old('description', $meetup->description))->attributes(['class' => 'input' . ($errors->has('description') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.description')]) }}
+    {{ html()->textarea('description', old('description', $meetup->description))->attributes(['class' => 'input' . ($errors->has('description') ? ' has-error' : ''), 'required' => true, 'rows' => 10, 'placeholder' => __('validation.attributes.description')]) }}
 
     @if ($errors->has('description'))
         <div class="invalid-feedback">

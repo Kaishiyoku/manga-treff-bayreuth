@@ -90,8 +90,7 @@ h3 {
     @apply py-2;
 }
 select.input {
-    @apply bg-white;
-
+    background: #ffffff !important;
     padding-top: .5rem;
     padding-bottom: .3rem;
 }
@@ -100,6 +99,10 @@ select.input {
 }
 .input:focus {
     @apply outline-none shadow-outline-pink-600;
+}
+
+.input:read-only {
+    @apply bg-gray-200;
 }
 
 .input:not(.input-with-btn) {

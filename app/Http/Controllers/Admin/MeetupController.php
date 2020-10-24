@@ -65,8 +65,8 @@ class MeetupController extends Controller
 
         $meetup->fill($request->only($this->getFillableFields()));
 
-        $meetup->date_start = Carbon::createFromFormat(__('date.datetime'), $request->get('date_start') . ' ' . $request->get('time_start'));
-        $meetup->date_end = Carbon::createFromFormat(__('date.datetime'), $request->get('date_end') . ' ' . $request->get('time_end'));
+        $meetup->date_start = Carbon::parse($request->get('date_start') . ' ' . $request->get('time_start'));
+        $meetup->date_end = Carbon::parse($request->get('date_end') . ' ' . $request->get('time_end'));
         $meetup->save();
 
         flash(__('meetup.admin.create.success'))->success();
@@ -99,8 +99,8 @@ class MeetupController extends Controller
         $request->validate($this->getValidationRules());
 
         $meetup->fill($request->only($this->getFillableFields()));
-        $meetup->date_start = Carbon::createFromFormat(__('date.datetime'), $request->get('date_start') . ' ' . $request->get('time_start'));
-        $meetup->date_end = Carbon::createFromFormat(__('date.datetime'), $request->get('date_end') . ' ' . $request->get('time_end'));
+        $meetup->date_start = Carbon::parse($request->get('date_start') . ' ' . $request->get('time_start'));
+        $meetup->date_end = Carbon::parse($request->get('date_end') . ' ' . $request->get('time_end'));
         $meetup->save();
 
         flash()->success(__('meetup.admin.edit.success'));
@@ -151,10 +151,10 @@ class MeetupController extends Controller
     {
         return [
             'name' => ['required', 'string'],
-            'date_start' => ['required', 'date_format:' . __('date.short')],
-            'date_end' => ['required', 'date_format:' . __('date.short')],
-            'time_start' => ['required', 'date_format:' . __('date.time')],
-            'time_end' => ['required', 'date_format:' . __('date.time')],
+            'date_start' => ['required', 'date_format:Y-m-d'],
+            'date_end' => ['required', 'date_format:Y-m-d'],
+            'time_start' => ['required', 'date_format:H:i:s'],
+            'time_end' => ['required', 'date_format:H:i:s'],
             'country' => 'required',
             'state' => 'required',
             'address' => 'required',
