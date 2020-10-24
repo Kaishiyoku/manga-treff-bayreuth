@@ -13,7 +13,19 @@
         <div class="text-4xl">{{ $user->name }}</div>
     </div>
 
-    <h2>@lang('validation.attributes.about_me')</h2>
+    <h2>@lang('profile.index.visited_meetups')</h2>
+
+    @if ($user->meetupRegistrations->isEmpty())
+        <div class="italic text-lg text-muted">@lang('profile.index.no_visited_meetups_yet')</div>
+    @else
+        @foreach ($user->meetupRegistrations as $meetupRegistration)
+            {{ html()->a(route('meetups.show', $meetupRegistration->meetup), $meetupRegistration->meetup->name)->class('link') }}
+            @lang('common.at')
+            {{ $meetupRegistration->meetup->date_start->format(__('date.datetime')) }}
+        @endforeach
+    @endif
+
+    <h2 class="mt-8">@lang('validation.attributes.about_me')</h2>
 
     @if ($user->about_me)
         <div class="prose max-w-none">
