@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
+use Ramsey\Uuid\Uuid;
 
 class ProfileController extends Controller
 {
@@ -183,6 +184,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $data = $request->validate([
+            'avatar' => ['nullable', 'image'],
             'about_me' => ['string', 'max:5000'],
         ]);
 
@@ -191,7 +193,17 @@ class ProfileController extends Controller
         $user->fill($data);
         $user->save();
 
-        flash()->success('Profil gespeichert.');
+        if ($user->is_member && $request->hasFile('avatar')) {
+            $user->clearMediaCollection();
+
+            $avatarFile = $request->file('avatar');
+            $fileName = Uuid::uuid4();
+            $tmpAvatarFilePath = $avatarFile->storeAs('public/media/tmp/', $fileName . '.' . $avatarFile->extension());
+
+            $user->addMediaFromDisk($tmpAvatarFilePath)->toMediaCollection();
+        }
+
+        flash()->success(__('profile.edit.success'));
 
         return redirect()->route('profile.index');
     }

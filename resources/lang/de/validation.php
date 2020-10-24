@@ -205,5 +205,6 @@ return [
         'comment'                   => 'Kommentar',
         'about_me'                  => 'Über mich',
         'is_member'                 => 'Mitglied',
+        'avatar'                    => 'Avatar',
     ],
 ];

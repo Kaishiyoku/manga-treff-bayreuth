@@ -339,3 +339,10 @@ select.input {
 
     border: 0 !important;
 }
+
+.avatar {
+    width: 100px;
+}
+.avatar-sm {
+    width: 30spx;
+}

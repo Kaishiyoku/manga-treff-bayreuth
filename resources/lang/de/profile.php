@@ -51,5 +51,6 @@ return [
     ],
     'edit' => [
         'title' => 'Profil anpassen',
+        'success' => 'Profil gespeichert.',
     ],
 ];

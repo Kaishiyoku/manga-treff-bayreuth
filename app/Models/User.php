@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
  * App\Models\User
@@ -32,6 +35,8 @@ use Illuminate\Notifications\Notifiable;
  * @property-read int|null $database_sessions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LoginAttempt[] $loginAttempts
  * @property-read int|null $login_attempts_count
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|Media[] $media
+ * @property-read int|null $media_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MeetupUserRegistration[] $meetupRegistrations
  * @property-read int|null $meetup_registrations_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
@@ -61,9 +66,9 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  * @mixin \Eloquent
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
-    use Sluggable, HasFactory, Notifiable, SoftDeletes;
+    use Sluggable, HasFactory, Notifiable, SoftDeletes, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -134,5 +139,25 @@ class User extends Authenticatable implements MustVerifyEmail
     public function meetupRegistrations()
     {
         return $this->hasMany(MeetupUserRegistration::class);
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb-100')
+            ->crop('crop-center', 100, 100)
+            ->optimize();
+
+        $this->addMediaConversion('thumb-50')
+            ->crop('crop-center', 50, 50)
+            ->optimize();
+
+        $this->addMediaConversion('thumb-30')
+            ->crop('crop-center', 30, 30)
+            ->optimize();
+    }
+
+    public function getLatestAvatarUrl(string $conversionName = '')
+    {
+        return $this->getMedia()->last()->getUrl($conversionName);
     }
 }
