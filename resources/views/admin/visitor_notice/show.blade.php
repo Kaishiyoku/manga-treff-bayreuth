@@ -12,7 +12,7 @@
     </h1>
 
     <div class="pb-5">
-        @include('shared._delete_link', ['route' => ['admin.visitor_notices.destroy', $visitorNotice]])
+        @include('shared._delete_link', ['route' => route('admin.visitor_notices.destroy', $visitorNotice)])
         {{ html()->a(route('admin.visitor_notices.edit'), __('common.edit'))->class('btn btn-sm btn-black') }}
     </div>
 

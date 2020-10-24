@@ -1,7 +1,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.name'), 'name')->class('label') }}
 
-    {{ html()->text('name', old('name', $meetup->name))->attributes(['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'required' => true, 'disabled' => !$meetup->is_manually_added, 'placeholder' => __('validation.attributes.name')]) }}
+    {{ html()->text('name', old('name', $meetup->name))->attributes(['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.name')])->disabled(!$meetup->is_manually_added) }}
 
     @if ($errors->has('name'))
         <div class="invalid-feedback">
@@ -13,7 +13,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.attendees'), 'attendees')->class('label') }}
 
-    {{ html()->text('attendees', old('attendees', $meetup->attendees))->attributes(['class' => 'input' . ($errors->has('attendees') ? ' has-error' : ''), 'disabled' => !$meetup->is_manually_added, 'placeholder' => __('validation.attributes.attendees')]) }}
+    {{ html()->text('attendees', old('attendees', $meetup->attendees))->attributes(['class' => 'input' . ($errors->has('attendees') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.attendees')])->disabled(!$meetup->is_manually_added) }}
 
     @if ($errors->has('attendees'))
         <div class="invalid-feedback">

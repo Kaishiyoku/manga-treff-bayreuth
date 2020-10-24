@@ -29,8 +29,8 @@
             </div>
 
             <div class="mt-5">
-                @include('shared._delete_link', ['route' => ['admin.users.destroy', $user->id]])
-                {{ html()->a(route('admin.users.edit'), __('common.edit'))->class('btn btn-sm btn-black') }}
+                @include('shared._delete_link', ['route' => route('admin.users.destroy', $user)])
+                {{ html()->a(route('admin.users.edit', $user), __('common.edit'))->class('btn btn-sm btn-black') }}
             </div>
         </div>
     </div>

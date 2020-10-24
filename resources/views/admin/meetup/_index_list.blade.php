@@ -19,7 +19,7 @@
                     @if ($meetup->is_manually_added)
                         /
                     @else
-                        {{ html()->a($meetup->getUrl(), $meetup->external_id)->class('link') }}
+                        {{ html()->a($meetup->getUrl(), (string)$meetup->external_id)->class('link') }}
                     @endif
                 </div>
             </div>
@@ -29,8 +29,8 @@
             </div>
 
             <div class="mt-5">
-                @include('shared._delete_link', ['route' => ['admin.meetups.destroy', $meetup]])
-                {{ html()->a(route('admin.meetups.edit'), __('common.edit'))->class('btn btn-sm btn-black') }}
+                @include('shared._delete_link', ['route' => route('admin.meetups.destroy', $meetup)])
+                {{ html()->a(route('admin.meetups.edit', $meetup), __('common.edit'))->class('btn btn-sm btn-black') }}
             </div>
         </div>
     </div>

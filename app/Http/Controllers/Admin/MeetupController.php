@@ -169,6 +169,6 @@ class MeetupController extends Controller
 
     private function getMeetupTypes()
     {
-        return MeetupType::pluck('title', 'external_id');
+        return MeetupType::pluck('name', 'external_id');
     }
 }

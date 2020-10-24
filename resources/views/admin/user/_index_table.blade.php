@@ -26,10 +26,10 @@
                     </td>
                     <td>
                         @if ($user->id !== auth()->user()->id && !$user->is_admin)
-                            @include('shared._delete_link', ['route' => ['admin.users.destroy', $user->id]])
+                            @include('shared._delete_link', ['route' => route('admin.users.destroy', $user)])
                         @endif
 
-                        {{ html()->a(route('admin.users.edit'), __('common.edit'))->class('btn btn-sm btn-black') }}
+                        {{ html()->a(route('admin.users.edit', $user), __('common.edit'))->class('btn btn-sm btn-black') }}
                     </td>
                 </tr>
             @endforeach
