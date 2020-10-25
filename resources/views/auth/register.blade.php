@@ -8,7 +8,7 @@
             <div class="mb-4">
                 {{ html()->label(__('validation.attributes.name'), 'name')->class('label') }}
 
-                {{ html()->text('name', old('name'))->attributes(['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'required' => 'true', 'placeholder' => __('validation.attributes.name'), 'autofocus' => 'true']) }}
+                {{ html()->text('name', old('name'))->attributes(['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.name'), 'autofocus' => 'true'])->required() }}
 
                 @if ($errors->has('name'))
                     <p class="invalid-feedback">{{ $errors->first('name') }}</p>
@@ -18,7 +18,7 @@
             <div class="mb-4">
                 {{ html()->label(__('validation.attributes.email'), 'email')->class('label') }}
 
-                {{ html()->email('email', old('email'))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.email')]) }}
+                {{ html()->email('email', old('email'))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.email')])->required() }}
 
                 @if ($errors->has('email'))
                     <p class="invalid-feedback">{{ $errors->first('email') }}</p>
@@ -28,7 +28,7 @@
             <div class="mb-4">
                 {{ html()->label(__('validation.attributes.password'))->class('password') }}
 
-                {{ html()->password('password')->attributes(['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.password')]) }}
+                {{ html()->password('password')->attributes(['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.password')])->required() }}
 
                 @if ($errors->has('password'))
                     <p class="invalid-feedback">{{ $errors->first('password') }}</p>
@@ -38,7 +38,7 @@
             <div class="mb-4">
                 {{ html()->label(__('validation.attributes.password_confirmation'), 'password_confirmation')->class('label') }}
 
-                {{ html()->password('password_confirmation')->attributes(['class' => 'input' . ($errors->has('password_confirmation') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.password_confirmation')]) }}
+                {{ html()->password('password_confirmation')->attributes(['class' => 'input' . ($errors->has('password_confirmation') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.password_confirmation')])->required() }}
 
                 @if ($errors->has('password_confirmation'))
                     <p class="invalid-feedback">{{ $errors->first('password_confirmation') }}</p>

@@ -7,7 +7,7 @@
         <div class="mb-4">
             {{ html()->label(__('validation.attributes.email'), 'email')->class('label') }}
 
-            {{ html()->email('email', old('email'))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.email')]) }}
+            {{ html()->email('email', old('email'))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.email')])->required() }}
 
             @if ($errors->has('email'))
                 <div class="invalid-feedback">
@@ -19,7 +19,7 @@
         <div class="mb-4">
             {{ html()->label(__('validation.attributes.fullname'), 'fullname')->class('label') }}
 
-            {{ html()->text('fullname', old('fullname'))->attributes(['class' => 'input' . ($errors->has('fullname') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.fullname')]) }}
+            {{ html()->text('fullname', old('fullname'))->attributes(['class' => 'input' . ($errors->has('fullname') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.fullname')])->required() }}
 
             @if ($errors->has('fullname'))
                 <div class="invalid-feedback">
@@ -31,7 +31,7 @@
         <div class="mb-4">
             {{ html()->label(__('validation.attributes.content'), 'content')->class('label') }}
 
-            {{ html()->textarea('content', old('content'))->attributes(['class' => 'input' . ($errors->has('content') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.content')]) }}
+            {{ html()->textarea('content', old('content'))->attributes(['class' => 'input' . ($errors->has('content') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.content')])->required() }}
 
             @if ($errors->has('content'))
                 <div class="invalid-feedback">

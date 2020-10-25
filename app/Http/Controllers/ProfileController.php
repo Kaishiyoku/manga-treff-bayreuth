@@ -178,14 +178,15 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
 
-        return view('profile.edit', compact('user'));
+        return view(
+            'profile.edit', compact('user'));
     }
 
     public function update(Request $request)
     {
         $data = $request->validate([
             'avatar' => ['nullable', 'image'],
-            'about_me' => ['string', 'max:5000'],
+            'about_me' => ['nullable', 'string', 'max:5000'],
         ]);
 
         $user = auth()->user();

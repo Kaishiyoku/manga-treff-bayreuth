@@ -1,7 +1,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.name'), 'name')->class('label') }}
 
-    {{ html()->text('name', old('name', $user->name))->attributes(['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'required' => false, 'placeholder' => __('validation.attributes.name')]) }}
+    {{ html()->text('name', old('name', $user->name))->attributes(['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.name')]) }}
 
     @if ($errors->has('name'))
         <div class="invalid-feedback">
@@ -13,7 +13,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.email'), 'email')->class('label') }}
 
-    {{ html()->email('email', old('email', $user->email))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.email')]) }}
+    {{ html()->email('email', old('email', $user->email))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.email')])->required() }}
 
     @if ($errors->has('email'))
         <div class="invalid-feedback">
@@ -63,7 +63,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.password'), 'password')->class('label') }}
 
-    {{ html()->password('password')->attributes(['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'required' => $isForCreate, 'placeholder' => __('validation.attributes.password')]) }}
+    {{ html()->password('password')->attributes(['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.password')])->required($isForCreate) }}
 
     @if (!$isForCreate)
         <div class="text-sm text-muted pt-1">@lang('user.admin.edit.password_help')</div>

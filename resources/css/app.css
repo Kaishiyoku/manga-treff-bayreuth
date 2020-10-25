@@ -90,9 +90,11 @@ h3 {
     @apply py-2;
 }
 select.input {
-    background: #ffffff !important;
     padding-top: .5rem;
     padding-bottom: .3rem;
+}
+select.input:not(:disabled) {
+    background: #ffffff !important;
 }
 .input {
     @apply px-3 shadow border w-full text-gray-700 leading-tight transition-all duration-200;

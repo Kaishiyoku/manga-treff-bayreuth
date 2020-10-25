@@ -14,7 +14,7 @@
             <div class="mb-4">
                 {{ html()->label(__('validation.attributes.email'), 'label')->class('label') }}
 
-                {{ html()->email('email', old('email'))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'autofocus' => 'true', 'placeholder' => __('validation.attributes.email')]) }}
+                {{ html()->email('email', old('email'))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'autofocus' => 'true', 'placeholder' => __('validation.attributes.email')])->required() }}
 
                 @if ($errors->has('email'))
                     <p class="invalid-feedback">{{ $errors->first('email') }}</p>
@@ -24,7 +24,7 @@
             <div class="mb-4">
                 {{ html()->label(__('validation.attributes.password'), 'password')->class('label') }}
 
-                {{ html()->password('password')->attributes(['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.password')]) }}
+                {{ html()->password('password')->attributes(['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.password')])->required() }}
 
                 @if ($errors->has('password'))
                     <p class="invalid-feedback">{{ $errors->first('password') }}</p>
@@ -34,7 +34,7 @@
             <div class="mb-4">
                 {{ html()->label(__('validation.attributes.password_confirmation'), 'password_confirmation')->class('label') }}
 
-                {{ html()->password('password_confirmation')->attributes(['class' => 'input' . ($errors->has('password_confirmation') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.password_confirmation')]) }}
+                {{ html()->password('password_confirmation')->attributes(['class' => 'input' . ($errors->has('password_confirmation') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.password_confirmation')])->required() }}
 
                 @if ($errors->has('password_confirmation'))
                     <p class="invalid-feedback">{{ $errors->first('password_confirmation') }}</p>

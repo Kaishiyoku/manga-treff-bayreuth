@@ -57,9 +57,11 @@
                 <div class="italic text-lg text-muted">@lang('profile.index.no_visited_meetups_yet')</div>
             @else
                 @foreach ($user->meetupRegistrations as $meetupRegistration)
-                    {{ html()->a(route('meetups.show', $meetupRegistration->meetup), $meetupRegistration->meetup->name)->class('link') }}
-                    @lang('common.at')
-                    {{ $meetupRegistration->meetup->date_start->format(__('date.datetime')) }}
+                    <div>
+                        {{ html()->a(route('meetups.show', $meetupRegistration->meetup), $meetupRegistration->meetup->name)->class('link') }}
+                        @lang('common.at')
+                        {{ $meetupRegistration->meetup->date_start->format(__('date.datetime')) }}
+                    </div>
                 @endforeach
             @endif
 

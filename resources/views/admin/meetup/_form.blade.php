@@ -1,7 +1,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.name'), 'name')->class('label') }}
 
-    {{ html()->text('name', old('name', $meetup->name))->attributes(['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.name')])->readonly(!$meetup->is_manually_added) }}
+    {{ html()->text('name', old('name', $meetup->name))->attributes(['class' => 'input' . ($errors->has('name') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.name')])->readonly(!$meetup->is_manually_added)->required() }}
 
     @if ($errors->has('name'))
         <div class="invalid-feedback">
@@ -41,7 +41,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.date_start'), 'date_start')->class('label') }}
 
-    {{ html()->date('date_start', old('date_start', $meetup->date_start->format(__('date.short'))))->attributes(['class' => 'input' . ($errors->has('date_start') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.date_start')]) }}
+    {{ html()->date('date_start', old('date_start', $meetup->date_start->format(__('date.short'))))->attributes(['class' => 'input' . ($errors->has('date_start') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.date_start')])->required() }}
 
     @if ($errors->has('date_start'))
         <div class="invalid-feedback">
@@ -53,7 +53,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.time_start'), 'time_start')->class('label') }}
 
-    {{ html()->time('time_start', old('time_start', $meetup->date_start->format(__('date.time'))))->attributes(['class' => 'input' . ($errors->has('time_start') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.time_start')]) }}
+    {{ html()->time('time_start', old('time_start', $meetup->date_start->format(__('date.time'))))->attributes(['class' => 'input' . ($errors->has('time_start') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.time_start')])->required() }}
 
     @if ($errors->has('time_start'))
         <div class="invalid-feedback">
@@ -65,7 +65,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.date_end'), 'date_end')->class('label') }}
 
-    {{ html()->date('date_end', old('date_end', $meetup->date_end->format(__('date.short'))))->attributes(['class' => 'input' . ($errors->has('date_end') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.date_end')]) }}
+    {{ html()->date('date_end', old('date_end', $meetup->date_end->format(__('date.short'))))->attributes(['class' => 'input' . ($errors->has('date_end') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.date_end')])->required() }}
 
     @if ($errors->has('date_end'))
         <div class="invalid-feedback">
@@ -77,7 +77,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.time_end'), 'time_end')->class('label') }}
 
-    {{ html()->time('time_end', old('time_end', $meetup->date_end->format(__('date.time'))))->attributes(['class' => 'input' . ($errors->has('time_end') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.time_end')]) }}
+    {{ html()->time('time_end', old('time_end', $meetup->date_end->format(__('date.time'))))->attributes(['class' => 'input' . ($errors->has('time_end') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.time_end')])->required() }}
 
     @if ($errors->has('time_end'))
         <div class="invalid-feedback">
@@ -91,7 +91,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.country'), 'country')->class('label') }}
 
-    {{ html()->text('country', old('country', $meetup->country))->attributes(['class' => 'input' . ($errors->has('country') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.country')]) }}
+    {{ html()->text('country', old('country', $meetup->country))->attributes(['class' => 'input' . ($errors->has('country') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.country')])->required() }}
 
     @if ($errors->has('country'))
         <div class="invalid-feedback">
@@ -103,7 +103,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.state'), 'state')->class('label') }}
 
-    {{ html()->text('state', old('state', $meetup->state))->attributes(['class' => 'input' . ($errors->has('state') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.state')]) }}
+    {{ html()->text('state', old('state', $meetup->state))->attributes(['class' => 'input' . ($errors->has('state') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.state')])->required() }}
 
     @if ($errors->has('state'))
         <div class="invalid-feedback">
@@ -115,7 +115,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.address'), 'address')->class('label') }}
 
-    {{ html()->text('address', old('address', $meetup->address))->attributes(['class' => 'input' . ($errors->has('address') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.address')]) }}
+    {{ html()->text('address', old('address', $meetup->address))->attributes(['class' => 'input' . ($errors->has('address') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.address')])->required() }}
 
     @if ($errors->has('address'))
         <div class="invalid-feedback">
@@ -127,7 +127,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.zip'), 'zip')->class('label') }}
 
-    {{ html()->text('zip', old('zip', $meetup->zip))->attributes(['class' => 'input' . ($errors->has('zip') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.zip')]) }}
+    {{ html()->text('zip', old('zip', $meetup->zip))->attributes(['class' => 'input' . ($errors->has('zip') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.zip')])->required() }}
 
     @if ($errors->has('zip'))
         <div class="invalid-feedback">
@@ -139,7 +139,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.city'), 'city')->class('label') }}
 
-    {{ html()->text('city', old('city', $meetup->city))->attributes(['class' => 'input' . ($errors->has('city') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.city')]) }}
+    {{ html()->text('city', old('city', $meetup->city))->attributes(['class' => 'input' . ($errors->has('city') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.city')])->required() }}
 
     @if ($errors->has('city'))
         <div class="invalid-feedback">
@@ -151,7 +151,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.intro'), 'intro')->class('label') }}
 
-    {{ html()->textarea('intro', old('intro', $meetup->intro))->attributes(['class' => 'input' . ($errors->has('intro') ? ' has-error' : ''), 'required' => true, 'rows' => 5, 'placeholder' => __('validation.attributes.intro')]) }}
+    {{ html()->textarea('intro', old('intro', $meetup->intro))->attributes(['class' => 'input' . ($errors->has('intro') ? ' has-error' : ''), 'rows' => 5, 'placeholder' => __('validation.attributes.intro')])->required() }}
 
     @if ($errors->has('intro'))
         <div class="invalid-feedback">
@@ -163,7 +163,7 @@
 <div class="mb-4">
     {{ html()->label(__('validation.attributes.description'), 'description')->class('label') }}
 
-    {{ html()->textarea('description', old('description', $meetup->description))->attributes(['class' => 'input' . ($errors->has('description') ? ' has-error' : ''), 'required' => true, 'rows' => 10, 'placeholder' => __('validation.attributes.description')]) }}
+    {{ html()->textarea('description', old('description', $meetup->description))->attributes(['class' => 'input' . ($errors->has('description') ? ' has-error' : ''), 'rows' => 10, 'placeholder' => __('validation.attributes.description')])->required() }}
 
     @if ($errors->has('description'))
         <div class="invalid-feedback">

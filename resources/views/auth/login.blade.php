@@ -9,7 +9,7 @@
         {{ html()->label(__('validation.attributes.email'), 'email')->class('label') }}
 
             <div class="mb-4">
-                {{ html()->email('email', old('email'))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'required' => true, 'autofocus' => 'true', 'placeholder' => __('validation.attributes.email')]) }}
+                {{ html()->email('email', old('email'))->attributes(['class' => 'input' . ($errors->has('email') ? ' has-error' : ''), 'autofocus' => 'true', 'placeholder' => __('validation.attributes.email')])->required() }}
 
                 @if ($errors->has('email'))
                     <p class="invalid-feedback">{{ $errors->first('email') }}</p>
@@ -19,7 +19,7 @@
             <div class="mb-4">
                 {{ html()->label(__('validation.attributes.password'), 'password')->class('label') }}
 
-                {{ html()->password('password')->attributes(['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'required' => true, 'placeholder' => __('validation.attributes.password')]) }}
+                {{ html()->password('password')->attributes(['class' => 'input' . ($errors->has('password') ? ' has-error' : ''), 'placeholder' => __('validation.attributes.password')])->required() }}
 
                 @if ($errors->has('password'))
                     <p class="invalid-feedback">{{ $errors->first('password') }}</p>
