@@ -54,7 +54,7 @@ class Menus
             ->addClassNames('mr-auto')
             ->link('home.index', '<i class="fas fa-home"></i> <span class="md:hidden lg:inline-block">' . __('common.home') . '</span>', true)
             ->link('meetups.upcoming,meetups.past,meetups.show', '<i class="fas fa-calendar"></i> ' . __('common.meetups'))
-            ->link('home.about_us', '<i class="fas fa-info-circle"></i> ' . __('common.about_us'))
+            ->link('home.about_us', '<i class="fas fa-info-circle"></i> ' . __('common.about_us'), true)
             ->link('users.members', '<i class="fas fa-user-friends"></i> ' . __('user.member.title'), true);
 
         \LaravelMenu::register('auth_public')
@@ -69,7 +69,8 @@ class Menus
             ->addClassNames('mr-auto nav-dark')
             ->link('admin.users.index,admin.users.create,admin.users.edit', '<i class="fas fa-users"></i> ' . __('common.users'), true)
             ->link('admin.meetups.index,admin.meetups.create,admin.meetups.edit', '<i class="fas fa-calendar"></i> ' . __('common.meetups'), true)
-            ->link('admin.visitor_notices.index,admin.visitor_notices.create,admin.visitor_notices.edit', '<i class="fas fa-info-circle"></i> ' . __('common.visitor_notices'), true);
+            ->link('admin.visitor_notices.index,admin.visitor_notices.create,admin.visitor_notices.edit', '<i class="fas fa-info-circle"></i> ' . __('common.visitor_notices'), true)
+            ->link('admin.settings.edit', '<i class="fas fa-cogs"></i> ' . __('common.settings'), true);
 
         return $next($request);
     }

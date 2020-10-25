@@ -43,4 +43,5 @@ return [
     ],
     'at' => 'am',
     'about_us' => 'Über uns',
+    'settings' => 'Einstellungen',
 ];

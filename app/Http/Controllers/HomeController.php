@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\SettingType;
 use App\Mail\ContactFormSent;
 use App\Models\Meetup;
+use App\Models\Setting;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -96,6 +98,8 @@ class HomeController extends Controller
 
     public function aboutUs()
     {
-        return view('home.about_us');
+        $text = parseMarkdown(Setting::find(SettingType::AboutUsText)->value ?? '');
+
+        return view('home.about_us', compact('text'));
     }
 }

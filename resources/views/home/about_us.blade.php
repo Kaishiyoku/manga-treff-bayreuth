@@ -3,5 +3,7 @@
 @section('content')
     <h1>{{ __('home.about_us.title') }}</h1>
 
-{{--    TODO--}}
+    <div class="prose max-w-none">
+        {!! $text !!}
+    </div>
 @endsection

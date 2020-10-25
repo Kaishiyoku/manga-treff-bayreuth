@@ -53,4 +53,7 @@ return [
             'date' => 'Datum',
         ],
     ],
+    'about_us' => [
+        'title' => 'Über uns',
+    ],
 ];
