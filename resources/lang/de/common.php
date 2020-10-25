@@ -42,4 +42,5 @@ return [
         'failure' => 'Fehlschlag',
     ],
     'at' => 'am',
+    'about_us' => 'Über uns',
 ];

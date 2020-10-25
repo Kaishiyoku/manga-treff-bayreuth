@@ -93,4 +93,9 @@ class HomeController extends Controller
     {
         return redirect(config('site.google_calendar_public_url'));
     }
+
+    public function aboutUs()
+    {
+        return view('home.about_us');
+    }
 }

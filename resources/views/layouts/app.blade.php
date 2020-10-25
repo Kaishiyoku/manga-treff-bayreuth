@@ -22,12 +22,12 @@
     <div id="app">
         <div class="mb-6 bg-pink-600 shadow">
             <div class="container lg:px-20 mx-auto">
-                <div class="md:flex md:items-center">
-                    <div class="flex items-center py-3 md:py-0">
-                        <div class="text-white text-xl mr-2 ml-2 md:ml-0"><a href="{{ URL::route('home.index') }}">{{ config('app.name', 'Laravel') }}</a></div>
+                <div class="xl:flex xl:items-center">
+                    <div class="flex items-center py-3 xl:py-0">
+                        <div class="text-white xl:text-xl mr-2 ml-2 md:ml-0"><a href="{{ URL::route('home.index') }}">{{ config('app.name', 'Laravel') }}</a></div>
                     </div>
 
-                    <div class="sm:flex sm:flex-grow sm:justify-between">
+                    <div class="md:flex md:flex-grow md:justify-between">
                         {!! \LaravelMenu::render() !!}
 
                         <div class="flex">

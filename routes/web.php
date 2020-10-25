@@ -33,6 +33,8 @@ Route::resource('users', UserController::class)->only(['index', 'show']);
 
 Route::get('/members', [UserController::class, 'members'])->name('users.members');
 
+Route::get('/about_us', [HomeController::class, 'aboutUs'])->name('home.about_us');
+
 /////////////////////
 // Logged on users //
 /////////////////////
