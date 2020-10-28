@@ -7,7 +7,7 @@
 /* Navbar
 ---------------------------------------------------------------------------- */
 .navbar-link {
-    @apply cursor-pointer transition-all duration-200 px-4 py-4 text-white text-opacity-50;
+    @apply cursor-pointer block transition-all duration-200 px-4 py-4 text-white text-opacity-50;
 }
 .navbar-link:hover {
     @apply text-white bg-pink-900 bg-opacity-25;
@@ -349,5 +349,5 @@ select.input:not(:disabled) {
     width: 100px;
 }
 .avatar-sm {
-    width: 30spx;
+    width: 30px;
 }

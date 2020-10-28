@@ -22,15 +22,21 @@
     <div id="app">
         <div class="mb-6 bg-pink-600 shadow">
             <div class="container lg:px-20 mx-auto">
-                <div class="xl:flex xl:items-center">
-                    <div class="flex items-center py-3 xl:py-0">
-                        <div class="text-white xl:text-xl mr-2 ml-2 md:ml-0"><a href="{{ URL::route('home.index') }}">{{ config('app.name', 'Laravel') }}</a></div>
+                <div class="lg:flex lg:items-center">
+                    <div class="flex justify-between items-center">
+                        <div class="text-white text-xl mr-2 ml-2 md:ml-0 py-2"><a href="{{ URL::route('home.index') }}">{{ config('app.name', 'Laravel') }}</a></div>
+
+                        <button class="lg:hidden py-4 px-6 text-xl transition-all duration-200 text-white text-opacity-50 hover:text-white hover:bg-pink-900 hover:bg-opacity-25" data-navbar-control>
+                            <i class="fas fa-bars"></i>
+                        </button>
                     </div>
 
-                    <div class="md:flex md:flex-grow md:justify-between">
-                        {!! \LaravelMenu::render() !!}
+                    <div class="flex flex-grow flex-col lg:flex-row lg:justify-between transition-all duration-500 hidden overflow-hidden" data-navbar-content>
+                        <div>
+                            {!! \LaravelMenu::render() !!}
+                        </div>
 
-                        <div class="flex">
+                        <div class="flex flex-col lg:flex-row">
                             @if (auth()->check())
                                 {!! LaravelMenu::render('auth_logged_in') !!}
 

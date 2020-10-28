@@ -1,5 +1,6 @@
 import HandyCollapse from 'handy-collapse';
 import _ from 'lodash';
+import navbarCollapser from './navbarCollapser';
 
 window._ = _;
 
@@ -38,6 +39,8 @@ try {
         new HandyCollapse({
             closeOthers: false,
         });
+
+        navbarCollapser();
     });
 } catch (e) {}
 
