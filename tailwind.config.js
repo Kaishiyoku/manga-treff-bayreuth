@@ -1,8 +1,19 @@
 module.exports = {
-    purge: [
-        './resources/views/**/*.blade.php',
-        './resources/css/**/*.css',
-    ],
+    future: {
+        purgeLayersByDefault: true,
+        defaultLineHeights: true,
+        standardFontWeights: true,
+    },
+    purge: {
+        layers: ['utilities'],
+        content: [
+            './resources/views/**/*.blade.php',
+            './resources/css/**/*.css',
+        ],
+        options: {
+            whitelist: ['lg:hidden', 'xl:inline-block'],
+        }
+    },
     theme: {
         extend: {
             fontFamily: {
