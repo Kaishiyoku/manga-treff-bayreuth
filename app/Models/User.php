@@ -158,6 +158,6 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
 
     public function getLatestAvatarUrl(string $conversionName = '')
     {
-        return $this->getMedia()->last()->getUrl($conversionName);
+        return optional($this->getMedia()->last())->getUrl($conversionName);
     }
 }
