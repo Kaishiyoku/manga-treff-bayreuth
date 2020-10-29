@@ -1,1 +1,1 @@
-<div class="md:hidden lg:inline-block sm:hidden md:inline-block"></div>
+<div class="lg:hidden xl:inline-block"></div>
