@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * App\Models\MeetupType
@@ -29,7 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MeetupType extends Model
 {
-    use Sluggable;
+    use HasSlug;
 
     /**
      * The primary key for the model.
@@ -69,6 +70,26 @@ class MeetupType extends Model
     protected $hidden = [
         //
     ];
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom(['id', 'name'])
+            ->saveSlugsTo('slug');
+    }
 
     public function meetups()
     {

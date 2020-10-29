@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * App\Models\Meetup
@@ -69,7 +70,7 @@ use Illuminate\Support\Carbon;
  */
 class Meetup extends Model
 {
-    use Sluggable;
+    use HasSlug;
 
     protected $primaryKey = 'id';
 
@@ -132,6 +133,26 @@ class Meetup extends Model
         'date_end' => 'datetime',
         'animexx_data' => 'array',
     ];
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom(['id', 'name'])
+            ->saveSlugsTo('slug');
+    }
 
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query

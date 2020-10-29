@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Traits\Sluggable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,6 +11,8 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * App\Models\User
@@ -68,7 +69,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  */
 class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
-    use Sluggable, HasFactory, Notifiable, SoftDeletes, InteractsWithMedia;
+    use HasSlug, HasFactory, Notifiable, SoftDeletes, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -103,6 +104,26 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'is_member' => 'boolean',
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom(['id', 'name'])
+            ->saveSlugsTo('slug');
+    }
 
     /**
      * Scope a query to only include unverified users.
