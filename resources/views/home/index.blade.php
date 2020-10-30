@@ -104,7 +104,7 @@
                                 <img src="{{ $member->avatar_url }}" class="mr-3 rounded-full w-5" alt="Avatar"/>
                                 <div class="flex-grow">{{ $member->username }}</div>
                                 @if (property_exists($member, 'game'))
-                                    <div class="text-muted">
+                                    <div class="text-xs text-muted">
                                         {{ $member->game->name }}
                                     </div>
                                 @endif
