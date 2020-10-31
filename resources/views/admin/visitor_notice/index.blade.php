@@ -7,37 +7,19 @@
         {{ html()->a(route('admin.visitor_notices.create'), __('visitor_notice.admin.index.new_visitor_notice'))->class('btn btn-primary') }}
     </div>
 
-    @if ($visitorNotices->get()->count() === 0)
-        @include('shared._no_entries_yet')
-    @else
-        <div class="italic text-lg text-gray-700 py-5">
-            {{ trans_choice('visitor_notice.admin.index.current_number_of_visitor_notices_being_displayed', visitorNoticesForToday()->count()) }}
-        </div>
+    <div class="italic text-lg text-gray-700 py-5">
+        {{ trans_choice('visitor_notice.admin.index.current_number_of_visitor_notices_being_displayed', $activeVisitorNotices->count()) }}
+    </div>
 
-        <div class="card">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>@lang('validation.attributes.starting_at')</th>
-                        <th>@lang('validation.attributes.ending_at')</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($visitorNotices->get() as $visitorNotice)
-                        <tr>
-                            <td>{{ $visitorNotice->starting_at->format(__('date.date')) }}</td>
-                            <td>{{ $visitorNotice->ending_at->format(__('date.date')) }}</td>
-                            <td class="text-right">
-                                @include('shared._delete_link', ['route' => route('admin.visitor_notices.destroy', $visitorNotice)])
+    <h2>@lang('visitor_notice.admin.index.future_visitor_notices')</h2>
 
-                                {{ html()->a(route('admin.visitor_notices.edit', $visitorNotice), __('common.edit'))->class('btn btn-sm btn-black') }}
-                                {{ html()->a(route('admin.visitor_notices.show', $visitorNotice), __('common.show'))->class('btn btn-sm btn-black') }}
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    @endif
+    @include('admin.visitor_notice._visitor_notices_table', ['visitorNotices' => $futureVisitorNotices])
+
+    <h2 class="pt-5">@lang('visitor_notice.admin.index.active_visitor_notices')</h2>
+
+    @include('admin.visitor_notice._visitor_notices_table', ['visitorNotices' => $activeVisitorNotices])
+
+    <h2 class="pt-5">@lang('visitor_notice.admin.index.past_visitor_notices')</h2>
+
+    @include('admin.visitor_notice._visitor_notices_table', ['visitorNotices' => $pastVisitorNotices])
 @endsection

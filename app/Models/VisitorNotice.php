@@ -67,8 +67,10 @@ class VisitorNotice extends Model
      */
     public function scopeToday(Builder $query)
     {
+        $nowDateStr = now()->toDateString();
+
         return $query
-            ->whereDate('starting_at', '<=', now()->toDateString())
-            ->whereDate('ending_at', '>=', now()->toDateString());
+            ->whereDate('starting_at', '<=', $nowDateStr)
+            ->whereDate('ending_at', '>=', $nowDateStr);
     }
 }

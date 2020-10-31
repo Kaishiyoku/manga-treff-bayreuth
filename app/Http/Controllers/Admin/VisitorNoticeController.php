@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Models\VisitorNotice;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class VisitorNoticeController extends Controller
 {
@@ -22,9 +20,23 @@ class VisitorNoticeController extends Controller
      */
     public function index()
     {
-        $visitorNotices = VisitorNotice::orderBy('starting_at')->orderBy('ending_at');
+        $futureVisitorNotices = VisitorNotice::whereDate('starting_at', '>=', now())
+            ->orderBy('starting_at')
+            ->orderBy('ending_at')
+            ->get();
 
-        return view('admin.visitor_notice.index', compact('visitorNotices'));
+        $activeVisitorNotices = VisitorNotice::whereDate('starting_at', '<=', today())
+            ->whereDate('ending_at', '>=', today())
+            ->orderBy('starting_at')
+            ->orderBy('ending_at')
+            ->get();
+
+        $pastVisitorNotices = VisitorNotice::whereDate('ending_at', '<', now())
+            ->orderBy('starting_at')
+            ->orderBy('ending_at')
+            ->get();
+
+        return view('admin.visitor_notice.index', compact('activeVisitorNotices', 'futureVisitorNotices', 'pastVisitorNotices'));
     }
 
     /**
