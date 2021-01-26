@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Hash;
 
 return [
     /*
+     * Whether or not the Opis Closure serialization is enabled
+     */
+    'enable_serialization' => false,
+
+    /*
     * The class name of the user model to be used.
     */
     'model' => App\Models\User::class,
@@ -25,9 +30,9 @@ return [
         'password' => [
             'validation_rules' => 'string|min:8',
             'secret' => true,
-            'modifier_fn' => \Opis\Closure\serialize(function ($value) {
+            'modifier_fn' => function ($value) {
                 return Hash::make($value);
-            }),
+            },
         ],
         'is_admin' => [
             'validation_rules' => 'boolean',
@@ -36,11 +41,11 @@ return [
         ],
     ],
 
-    'post_creation_fn' => \Opis\Closure\serialize(function (\App\Models\User $user) {
+    'post_creation_fn' => function (\App\Models\User $user) {
         $user->email_verified_at = \Illuminate\Support\Carbon::now();
         $user->save();
 
         return $user;
-    }),
+    },
 
 ];
