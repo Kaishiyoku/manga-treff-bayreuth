@@ -1,9 +1,6 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
-    future: {
-        purgeLayersByDefault: true,
-        defaultLineHeights: true,
-        standardFontWeights: true,
-    },
     purge: {
         layers: ['utilities'],
         content: [
@@ -20,22 +17,8 @@ module.exports = {
                 sans: ['Nunito', 'sans-serif'],
             },
             colors: {
-                gray: {
-                    100: '#fcfcfc',
-                    200: '#f7f7f7',
-                    300: '#f0f0f0',
-                    400: '#e0e0e0',
-                    450: '#cccccc',
-                    500: '#bfbfbf',
-                    600: '#969696',
-                    700: '#696969',
-                    800: '#474747',
-                    900: '#2b2b2b',
-                },
-            },
-            shadowOutline: {
-                'shadow': '0 0 0 .2rem',
-                'alpha': '.4',
+                gray: colors.gray,
+                teal: colors.teal,
             },
             height: {
                 96: '24rem',
@@ -91,11 +74,16 @@ module.exports = {
                     },
                 },
             },
-        }
+        },
+        screens: {
+            sm: '640px',
+            md: '768px',
+            lg: '1024px',
+            xl: '1280px',
+        },
     },
     variants: {},
     plugins: [
-        require('tailwindcss-shadow-outline-colors')(),
         require('@tailwindcss/typography'),
     ],
 };

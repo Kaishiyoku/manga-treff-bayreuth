@@ -2,7 +2,7 @@
 
 return [
     'index' => [
-        'description' => 'Wir treffen uns jeden 1. Samstag eines Monats. Treffpunk ist der Bayreuther Hauptbahnhof gegen 14:00 Uhr.',
+        'description' => 'Wir treffen uns jeden 1. Samstag eines Monats. Treffpunkt ist der Bayreuther Hauptbahnhof gegen 14:00 Uhr.',
         'meetups' => [
             'animexx_series' => 'Animexx-Eventreihe',
             'google_calendar' => 'Google Kalender',

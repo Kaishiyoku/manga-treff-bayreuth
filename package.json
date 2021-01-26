@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.15",
+        "@tailwindcss/postcss7-compat": "^2.0.2",
         "@tailwindcss/typography": "^0.2",
         "autoprefixer": "^9.0",
         "axios": "^0.20",
@@ -26,8 +27,7 @@
         "rxjs": "^6.6.3",
         "sass": "^1.27",
         "sass-loader": "^10.0",
-        "tailwindcss": "^1.9",
-        "tailwindcss-shadow-outline-colors": "^0.0.8",
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
         "transition-height": "^1.0.2",
         "vue-template-compiler": "^2.6"
     }

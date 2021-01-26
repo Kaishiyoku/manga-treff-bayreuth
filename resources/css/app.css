@@ -1,13 +1,11 @@
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
 
 /* Navbar
 ---------------------------------------------------------------------------- */
 .navbar-link {
-    @apply cursor-pointer block transition-all duration-200 px-4 py-4 text-white text-opacity-50;
+    @apply cursor-pointer block transition-all duration-300 px-4 py-4 text-white text-opacity-50;
 }
 .navbar-link:hover {
     @apply text-white bg-pink-900 bg-opacity-25;
@@ -17,7 +15,7 @@
 }
 
 .nav-dark .navbar-link {
-    @apply cursor-pointer transition-all duration-200 px-4 py-4 text-white text-opacity-50;
+    @apply cursor-pointer transition-all duration-300 px-4 py-4 text-white text-opacity-50;
 }
 .nav-dark .navbar-link:hover {
     @apply text-white bg-gray-700 bg-opacity-25;
@@ -64,7 +62,7 @@ h3 {
 }
 
 .dropdown-item {
-    @apply text-left px-4 py-2 leading-5 text-gray-700 cursor-pointer transition-all duration-200;
+    @apply text-left px-4 py-2 leading-5 text-gray-700 cursor-pointer transition-all duration-300;
 }
 .dropdown-item:hover {
     @apply bg-gray-200 text-gray-900;
@@ -97,10 +95,10 @@ select.input:not(:disabled) {
     background: #ffffff !important;
 }
 .input {
-    @apply px-3 shadow border w-full text-gray-700 leading-tight transition-all duration-200;
+    @apply px-3 shadow border w-full text-gray-700 leading-tight transition-all duration-300;
 }
 .input:focus {
-    @apply outline-none shadow-outline-pink-600;
+    @apply outline-none ring-4 ring-pink-600 ring-opacity-25;
 }
 
 .input:read-only {
@@ -136,7 +134,7 @@ select.input:not(:disabled) {
     @apply inline-flex items-center mt-3;
 }
 .checkbox {
-    @apply block h-5 w-5 bg-white appearance-none border border-gray-500 rounded outline-none transition-all duration-200 mr-2;
+    @apply block h-5 w-5 bg-white appearance-none border border-gray-500 rounded outline-none transition-all duration-300 mr-2;
 }
 .checkbox:checked {
     @apply bg-pink-600 border-pink-600;
@@ -153,7 +151,7 @@ select.input:not(:disabled) {
     content: "\f00c";
 }
 .checkbox:focus {
-    @apply shadow-outline-pink-600;
+    @apply ring-4 ring-pink-600 ring-opacity-25;
 }
 
 /* Breadcrumbs
@@ -179,7 +177,7 @@ select.input:not(:disabled) {
 /* Buttons
 ---------------------------------------------------------------------------- */
 .btn {
-    @apply inline-block cursor-pointer shadow border transition-all duration-200;
+    @apply inline-block cursor-pointer shadow border transition-all duration-300;
 }
 .btn:not(.btn-sm):not(.btn-with-input) {
     @apply py-2 px-4 font-bold;
@@ -210,7 +208,7 @@ select.input:not(:disabled) {
     @apply bg-black border-black;
 }
 .btn-primary:focus:not(:disabled) {
-    @apply shadow-outline-pink-600;
+    @apply ring-4 ring-pink-600 ring-opacity-25;
 }
 
 .btn-secondary {
@@ -220,7 +218,7 @@ select.input:not(:disabled) {
     @apply bg-black;
 }
 .btn-secondary:focus:not(:disabled) {
-    @apply shadow-outline-teal-600;
+    @apply ring-4 ring-teal-600 ring-opacity-25;
 }
 
 .btn-danger {
@@ -230,7 +228,7 @@ select.input:not(:disabled) {
     @apply bg-black border-black;
 }
 .btn-danger:focus:not(:disabled) {
-    @apply shadow-outline-red-600;
+    @apply ring-4 ring-red-600 ring-opacity-25;
 }
 
 .btn-black {
@@ -240,7 +238,7 @@ select.input:not(:disabled) {
     @apply bg-black border-black;
 }
 .btn-black:focus:not(:disabled) {
-    @apply shadow-outline-gray-800;
+    @apply ring-4 ring-gray-800 ring-opacity-25;
 }
 
 .btn-outline-primary {
@@ -250,7 +248,7 @@ select.input:not(:disabled) {
     @apply text-white bg-pink-600;
 }
 .btn-outline-primary:focus:not(:disabled) {
-    @apply shadow-outline-pink-600;
+    @apply ring-4 ring-pink-600 ring-opacity-25;
 }
 
 .btn-outline-white {
@@ -260,7 +258,7 @@ select.input:not(:disabled) {
     @apply text-black bg-white;
 }
 .btn-outline-white:focus:not(:disabled) {
-    @apply shadow-outline-white;
+    @apply ring-4 ring-white ring-opacity-25;
 }
 
 .btn-outline-black {
@@ -270,7 +268,7 @@ select.input:not(:disabled) {
     @apply text-white bg-black;
 }
 .btn-outline-black:focus:not(:disabled) {
-    @apply shadow-outline-black;
+    @apply ring-4 ring-black ring-opacity-25;
 }
 
 /* Cards

@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="flex flex-col text-center">
-                        <a class="btn btn-outline-primary text-xl" href="{{ route('home.animexx') }}">
+                        <a class="btn btn-outline-primary text-xl bg-white" href="{{ route('home.animexx') }}">
                             <i class="far fa-calendar"></i>
 
                             @lang('home.index.meetups.animexx_series')
@@ -36,7 +36,7 @@
                             @lang('common.or')
                         </div>
 
-                        <a class="btn btn-outline-primary text-xl" href="{{ route('home.calendar') }}">
+                        <a class="btn btn-outline-primary text-xl bg-white" href="{{ route('home.calendar') }}">
                             <i class="far fa-calendar"></i>
 
                             @lang('home.index.meetups.google_calendar')

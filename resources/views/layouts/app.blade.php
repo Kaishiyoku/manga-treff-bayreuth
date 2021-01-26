@@ -18,7 +18,7 @@
 
     @include('shared._javascript_config')
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
     <div id="app">
         <div class="mb-6 bg-pink-600 shadow">
             <div class="container lg:px-20 mx-auto">

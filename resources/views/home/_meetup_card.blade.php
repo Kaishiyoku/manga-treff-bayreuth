@@ -1,5 +1,5 @@
 <div class="card mb-5">
-    <div class="text-xl px-5 py-3 {{ classNames($meetup->is_manually_added ? null : $classNames ?? null, ['bg-gray-300' => empty($classNames) && !$meetup->is_manually_added, 'bg-teal-500 text-white' => $meetup->is_manually_added]) }}">
+    <div class="text-xl px-5 py-3 {{ classNames($meetup->is_manually_added ? null : $classNames ?? null, ['bg-gray-100' => empty($classNames) && !$meetup->is_manually_added, 'bg-teal-500 text-white' => $meetup->is_manually_added]) }}">
         {{ $meetup->name }}
         &ndash;
         {{ $meetup->date_start->format(__('date.datetime')) }}
